@@ -30,7 +30,7 @@
     border-bottom-right-radius: 0;
     background-color: $primary-color;
     &:before {
-      @extend %openaq-ds-icon-chevron-left;
+      @extend %uisi-chevron-left;
     }
   }
 
@@ -39,7 +39,7 @@
     border-bottom-left-radius: 0;
     background-color: $primary-color;
     &:before {
-      @extend %openaq-ds-icon-chevron-right;
+      @extend %uisi-chevron-right;
     }
   }
 

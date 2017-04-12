@@ -48,7 +48,7 @@ Add the module path to the `includePaths` of gulp-sass. Should look something li
 The `ui-seed` uses [Open Sans](https://goo.gl/FZ0Ave) (General) and [Lato](https://fonts.google.com/specimen/Lato) (headings) which are available on [Google Fonts](https://fonts.google.com).  
 It needs to be included in the app:
 ```
-<link href="https://fonts.googleapis.com/css?family=Lato:700,700i|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:700,700i|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet" />
 
 ```
 

@@ -4,7 +4,28 @@
 
 .page--homepage {
   .inpage__header {
-    background-image: url(../graphics/content/page-hero-default.png);
+    @extend .antialiased;
+    position: relative;
+    background-image: url(../graphics/content/2196726835_85e35e332e_o.jpg);
+    color: #fff;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      background: linear-gradient(45deg, rgba(shade($primary-color, 48%), 1) 0%, rgba(shade($primary-color, 32%), 0.8) 64%, rgba($primary-color, 0.8) 100%);
+    }
+  }
+
+  .inpage__subtitle {
+    color: rgba(#FFF, 0.64);
+  }
+
+  .inpage__introduction {
+    color: rgba(#FFF, 0.64);
   }
 }
 
@@ -102,11 +123,11 @@
    ========================================================================== */
 
 .button--example-icon:before {
-  @extend %openaq-ds-icon-pencil;
+  @extend %uisi-pencil;
 }
 
 .drop__menu-item--example-icon:before {
-  @extend %openaq-ds-icon-download;
+  @extend %uisi-download;
 }
 
 .exhibit__content {

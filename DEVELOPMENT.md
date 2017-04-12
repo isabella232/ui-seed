@@ -20,7 +20,7 @@ After these basic requirements are met, run the following commands in the websit
 $ npm install
 ```
 
-### Design system development
+### UI system development
 All assets that belong to the design system go in the root's `assets` folder and are separated by type:
 ```
 assets/
@@ -29,7 +29,7 @@ assets/
     meta/
   icons/
   styles/
-    openaq-design-system/
+    ui-seed/
   scripts/
 ```
 These assets will then be available to be used after installing the module.

@@ -16,7 +16,7 @@ var rev = require('gulp-rev');
 var revReplace = require('gulp-rev-replace');
 var notifier = require('node-notifier');
 var cp = require('child_process');
-var OPENAQ_ADDONS = require('./gulp-addons');
+var GULP_ADDONS = require('./gulp-addons');
 
 // /////////////////////////////////////////////////////////////////////////////
 // --------------------------- Variables -------------------------------------//
@@ -52,7 +52,7 @@ gulp.task('serve', ['vendorScripts', 'javascript', 'styles'], function () {
       routes: {
         '/node_modules': './node_modules'
       },
-      middleware: OPENAQ_ADDONS.graphicsMiddleware(fs)
+      middleware: GULP_ADDONS.graphicsMiddleware(fs)
     }
   });
 
@@ -63,7 +63,7 @@ gulp.task('serve', ['vendorScripts', 'javascript', 'styles'], function () {
     '!sandbox/assets/graphics/collecticons/**/*'
   ], [reload]);
 
-  gulp.watch('assets/icons/**', ['openaq:icons']);
+  gulp.watch('assets/icons/**', ['ui-seed:icons']);
   gulp.watch('sandbox/assets/graphics/collecticons/**', ['collecticons']);
 
   gulp.watch(['sandbox/assets/styles/**/*.scss', 'assets/styles/**/*.scss'], ['styles']);
@@ -147,22 +147,22 @@ gulp.task('vendorScripts', function () {
 });
 
 // /////////////////////////////////////////////////////////////////////////////
-// ----------------------- OpenAQ icons tasks --------------------------------//
+// ----------------------- UI Seed icons tasks --------------------------------//
 // -------------------- (Font generation related) ----------------------------//
 // ---------------------------------------------------------------------------//
-gulp.task('openaq:icons', function (done) {
+gulp.task('ui-seed:icons', function (done) {
   var args = [
     'node_modules/collecticons-processor/bin/collecticons.js',
     'compile',
     'assets/icons/',
     '--font-embed',
     '--font-dest', 'assets/fonts',
-    '--font-name', 'OpenAQ DS Icons',
+    '--font-name', 'UI Seed Icons',
     '--font-types', 'woff',
     '--style-format', 'sass',
-    '--style-dest', 'assets/styles/openaq-design-system/core',
-    '--style-name', 'openaq-ds-icons',
-    '--class-name', 'openaq-ds-icon',
+    '--style-dest', 'assets/styles/ui-seed/core',
+    '--style-name', 'ui-seed-icons',
+    '--class-name', 'uisi',
     '--author-name', 'Development Seed',
     '--author-url', 'https://developmentseed.org/',
     '--no-preview'
@@ -220,7 +220,7 @@ gulp.task('html', ['styles'], function () {
 });
 
 gulp.task('images', function () {
-  return gulp.src(['sandbox/assets/graphics/**/*', OPENAQ_ADDONS.graphicsPath + '/**/*'])
+  return gulp.src(['sandbox/assets/graphics/**/*', GULP_ADDONS.graphicsPath + '/**/*'])
     .pipe($.cache($.imagemin([
       $.imagemin.gifsicle({interlaced: true}),
       $.imagemin.jpegtran({progressive: true}),

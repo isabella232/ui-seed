@@ -13,6 +13,7 @@
   font-size: 1rem;
   line-height: 1.5;
   margin: 0 0 $global-spacing 0;
+
   > *:last-child {
     margin-bottom: 0;
   }
@@ -44,25 +45,25 @@
 .alert--success {
   &:before {
     background: rgba($success-color, 0.92);
-    @extend %openaq-ds-icon-circle-tick;
+    @extend %uisi-circle-tick;
   }
 }
 .alert--info {
   &:before {
     background: rgba($info-color, 0.92);
-    @extend %openaq-ds-icon-circle-information;
+    @extend %uisi-circle-information;
   }
 }
 .alert--warning {
   &:before {
     background: rgba($warning-color, 0.92);
-    @extend %openaq-ds-icon-circle-exclamation;
+    @extend %uisi-circle-exclamation;
   }
 }
 .alert--danger {
   &:before {
     background: rgba($danger-color, 0.92);
-    @extend %openaq-ds-icon-circle-xmark;
+    @extend %uisi-circle-xmark;
   }
 }
 
@@ -95,6 +96,6 @@
     opacity: 1;
   }
   &:before {
-    @extend %openaq-ds-icon-sm-xmark;
+    @extend %uisi-sm-xmark;
   }
 }

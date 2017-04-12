@@ -38,7 +38,7 @@
 
   /* Icon handling */
   &::before, &::after,
-  [class^="openaq-ds-icon-"], [class*=" openaq-ds-icon-"],
+  [class^="uisi-"], [class*=" uisi-"],
   [class^="collecticons-"], [class*=" collecticons-"] {
     font-size: 1rem;
   }
@@ -115,24 +115,6 @@
   @include button-variation("unbounded", null, $primary-color);
 }
 
-/* Secondary */
-
-.button--secondary {
-  @include button-variation("filled", "dark", $secondary-color);
-}
-
-/* Secondary Bounded */
-
-.button--secondary-bounded {
-  @include button-variation("bounded", null, $secondary-color);
-}
-
-/* Secondary Unbounded */
-
-.button--secondary-unbounded {
-  @include button-variation("unbounded", null, $secondary-color);
-}
-
 
 /* Button size modifiers
    ========================================================================== */
@@ -188,7 +170,7 @@
   &::after {
     margin: 0;
   }
-  > *:not([class^="openaq-ds-icon-"]):not([class*=" openaq-ds-icon-"]):not([class^="collecticons-"]):not([class*=" collecticons-"]) {
+  > *:not([class^="uisi-"]):not([class*=" uisi-"]):not([class^="collecticons-"]):not([class*=" collecticons-"]) {
     @extend .visually-hidden;
   }
   :not(.button-group) & {

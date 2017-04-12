@@ -5,16 +5,16 @@
 /* Colors
    ========================================================================== */
 
-$base-color: #496A90;                                   // Kashmir Blue
-$primary-color: #36AA90;                                // Keppel
-$secondary-color: #AEAAD3;                              // Wistful
+$base-color: #000;                                      // Black
+$primary-color: #CF3F02;                                // Grenadier
+// $secondary-color: #000;                              // Undefined
 
 /* State colors */
 
-$danger-color: #e74c3c;                                 // Alizarin (Red-ish)
-$success-color: #27ae60;                                // Nephritis (Green)
+$danger-color: #c0392b;                                 // Pomegranate (red)
+$success-color: #1abc9c;                                // Turquoise
 $warning-color: #f39c12;                                // Orange
-$info-color: #2980b9;                                   // Belize Hole (Blue)
+$info-color: #2980b9;                                   // Belize hole (blue)
 
 /* Helper colors */
 
@@ -22,31 +22,25 @@ $link-color: $primary-color;
 $base-alpha-color: rgba($base-color, 0.12);
 $base-semi-alpha-color: rgba($base-color, 0.08);
 
-/* Infographic colors */
-
-$infographic-color-a: #A65890;
-$infographic-color-b: #F8634E;
-$infographic-color-c: #968AD3;
-
 
 /* Typography
    ========================================================================== */
 
 $root-font-size: 16px;
 
-$base-font-color: $base-color;
-$base-font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-color: tint($base-color, 20%);
+$base-font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $base-font-style: normal;
 $base-font-light: 300;
 $base-font-regular: 400;
 $base-font-bold: 700;
-$base-font-weight: $base-font-regular;
+$base-font-weight: $base-font-light;
 $base-font-size: 1rem;
 $base-line-height: 1.5;
 
 $code-font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 
-$heading-font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$heading-font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $heading-font-regular: 400;
 $heading-font-bold: 700;
 $heading-font-weight: $heading-font-bold;

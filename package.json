@@ -17,8 +17,8 @@
   "homepage": "https://developmentseed.org",
   "main": "assets/scripts",
   "scripts": {
-    "serve": "gulp openaq:icons && gulp serve",
-    "openaq-icons": "gulp openaq:icons",
+    "serve": "gulp ui-seed:icons && gulp serve",
+    "oui-seed-icons": "gulp ui-seed:icons",
     "lint": "eslint sandbox/assets/scripts/ assets/scripts --ext .js",
     "build": "NODE_ENV=production gulp build",
     "test": "echo \"No tests\" && exit 0"

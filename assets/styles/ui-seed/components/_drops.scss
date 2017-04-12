@@ -10,7 +10,7 @@
 .drop__toggle {
   &--caret {
     &:after {
-      @extend %openaq-ds-icon-sm-chevron-down;
+      @extend %uisi-sm-chevron-down;
       font-size: 1rem;
       line-height: inherit;
       vertical-align: top;
@@ -236,7 +236,7 @@
     outline: 0;
     font-weight: $base-font-bold;
     &:after {
-      @extend %openaq-ds-icon-sm-tick;
+      @extend %uisi-sm-tick;
       position: absolute;
       z-index: 1;
       top: $global-spacing / 4;
@@ -256,7 +256,7 @@
   .drop__menu-item {
     padding-left: $global-spacing * 2.75;
     &:before,
-    > [class^="openaq-ds-icon-"],
+    > [class^="uisi-"],
     > [class^="collecticons-"] {
       position: absolute;
       z-index: 1;

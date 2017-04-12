@@ -196,7 +196,7 @@
   }
 
   &:before {
-    @extend %openaq-ds-icon-xmark;
+    @extend %uisi-xmark;
   }
 
   @include media(medium-up) {
