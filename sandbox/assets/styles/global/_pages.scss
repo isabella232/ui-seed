@@ -14,8 +14,8 @@
   z-index: 10;
   background: transparent;
   color: $base-font-color;
-  padding: $global-spacing / 2 0;
-  box-shadow: 0 2px 0 0 $base-semi-alpha-color;
+  padding: $global-spacing 0;
+  box-shadow: 0 1px 0 0 $base-semi-alpha-color;
 
   > .inner {
     @extend .row, .row--centered;
@@ -39,6 +39,12 @@
     display: inline-block;
     vertical-align: top;
     color: inherit;
+
+    img {
+      vertical-align: top;
+      height: 2rem;
+      width: auto;
+    }
 
     span {
       @extend .visually-hidden;
