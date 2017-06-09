@@ -16,6 +16,7 @@ var rev = require('gulp-rev');
 var revReplace = require('gulp-rev-replace');
 var notifier = require('node-notifier');
 var cp = require('child_process');
+var SassString = require('node-sass').types.String;
 var GULP_ADDONS = require('./gulp-addons');
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -202,7 +203,14 @@ gulp.task('styles', function () {
     .pipe($.sass({
       outputStyle: 'expanded',
       precision: 10,
-      includePaths: require('node-bourbon').with('node_modules/jeet/scss', 'assets/styles')
+      functions: {
+        'urlencode($url)': function (url) {
+          var v = new SassString();
+          v.setValue(encodeURIComponent(url.getValue()));
+          return v;
+        }
+      },
+      includePaths: require('node-bourbon').with('node_modules/jeet', 'assets/styles')
     }))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/assets/styles'))
