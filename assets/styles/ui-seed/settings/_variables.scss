@@ -5,7 +5,7 @@
 /* Colors
    ========================================================================== */
 
-$base-color: #332E2E;                                   // Thunder
+$base-color: #282525;                                   // Thunder
 $primary-color: #CF3F02;                                // Grenadier
 // $secondary-color: #000;                              // Undefined
 
@@ -21,7 +21,7 @@ $info-color: #2980b9;                                   // Belize hole (blue)
 /* Helper colors */
 
 $link-color: $primary-color;
-$base-alpha-color: rgba($base-color, 0.08);
+$base-alpha-color: rgba($base-color, 0.12);
 
 
 /* Typography
@@ -41,7 +41,9 @@ $base-line-height: 1.5;
 
 $code-font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 
-$heading-font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+// $heading-font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$heading-font-family: $base-font-family;
+$base-font-light: 300;
 $heading-font-regular: 400;
 $heading-font-bold: 700;
 $heading-font-weight: $heading-font-bold;
