@@ -3,7 +3,8 @@
    ========================================================================== */
 
 .button {
-  @include user-select(none);
+  @extend .antialiased;
+  user-select: none;
   display: inline-block;
   text-align: center;
   white-space: nowrap;
@@ -12,7 +13,7 @@
   font-size: 1rem;
   padding: 0.25rem 0.75rem;
   min-width: 2rem;
-  background: none; 
+  background: none;
   text-shadow: none;
   border: 0;
   border-radius: $base-border-radius;
@@ -38,7 +39,7 @@
 
   /* Icon handling */
   &::before, &::after,
-  [class^="uisi-"], [class*=" uisi-"],
+  [class^="openaq-ds-icon-"], [class*=" openaq-ds-icon-"],
   [class^="collecticons-"], [class*=" collecticons-"] {
     font-size: 1rem;
   }
@@ -67,52 +68,64 @@
 /* Button color modifiers
    ========================================================================== */
 
-/* Base */
+/* Base Raised Light */
 
-.button--base {
-  @include button-variation("filled", "dark", $base-color);
+.button--base-raised-light {
+  @include button-variation($base-color, "raised", "light");
 }
 
-/* Base Bounded */
+/* Base Raised Dark */
 
-.button--base-bounded {
-  @include button-variation("bounded", null, $base-color);
+.button--base-raised-dark {
+  @include button-variation($base-color, "raised", "dark");
 }
 
-/* Base Unbounded */
+/* Base Plain */
 
-.button--base-unbounded {
-  @include button-variation("unbounded", null, $base-color);
+.button--base-plain {
+  @include button-variation($base-color, "plain", "light");
 }
 
-/* Achromic */
+/* Primary Raised Light */
+
+.button--primary-raised-light {
+  @include button-variation($primary-color, "raised", "light");
+}
+
+/* Primary Raised Dark */
+
+.button--primary-raised-dark {
+  @include button-variation($primary-color, "raised", "dark");
+}
+
+/* Primary Plain */
+
+.button--primary-plain {
+  @include button-variation($primary-color, "plain", "light");
+}
+
+/* Base Achromic */
 
 .button--achromic {
-  @include button-variation("filled", "light", #fff);
+  @include button-variation(#fff, "plain", null);
 }
 
-/* Achromic Unbounded */
+/* Danger Raised Light */
 
-.button--achromic-unbounded {
-  @include button-variation("unbounded", null, #fff);
+.button--danger-raised-light {
+  @include button-variation($danger-color, "raised", "light");
 }
 
-/* Primary */
+/* Danger Raised Dark */
 
-.button--primary {
-  @include button-variation("filled", "dark", $primary-color);
+.button--danger-raised-dark {
+  @include button-variation($danger-color, "raised", "dark");
 }
 
-/* Primary Bounded */
+/* Danger Plain */
 
-.button--primary-bounded {
-  @include button-variation("bounded", null, $primary-color);
-}
-
-/* Primary Unbounded */
-
-.button--primary-unbounded {
-  @include button-variation("unbounded", null, $primary-color);
+.button--danger-plain {
+  @include button-variation($danger-color, "plain", "light");
 }
 
 
@@ -146,7 +159,7 @@
 .button--large,
 .button-group--large .button {
   line-height: 1.5rem;
-  font-size: 1rem;
+  font-size: 1.25rem;
   padding: 0.5rem 1rem;
   min-width: 2.5rem;
 }
@@ -156,7 +169,7 @@
 .button--xlarge,
 .button-group--xlarge .button {
   line-height: 2rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding: 0.5rem 1rem;
   min-width: 3rem;
 }
@@ -170,7 +183,7 @@
   &::after {
     margin: 0;
   }
-  > *:not([class^="uisi-"]):not([class*=" uisi-"]):not([class^="collecticons-"]):not([class*=" collecticons-"]) {
+  > *:not([class^="collecticon-"]):not([class*=" collecticon-"]) {
     @extend .visually-hidden;
   }
   :not(.button-group) & {
@@ -192,6 +205,7 @@
   min-width: 16rem;
 }
 
+
 /* ==========================================================================
    Button groups
    ========================================================================== */
@@ -200,6 +214,7 @@
   position: relative;
   display: inline-block;
   vertical-align: middle;
+
   > .button {
     display: block;
     position: relative;
@@ -213,17 +228,21 @@
   > .button {
     float: left;
   }
+
   > .button:first-child:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
+
   > .button:last-child:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
+
   > .button:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
+
   > .button + .button {
     margin-left: -2px;
   }
@@ -240,17 +259,21 @@
       z-index: 2;
     }
   }
+
   > .button:first-child:not(:last-child) {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
+
   > .button:last-child:not(:first-child) {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+
   > .button:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
+
   > .button + .button {
     margin-top: -2px;
   }

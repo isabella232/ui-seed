@@ -118,7 +118,7 @@
    ========================================================================== */
 
 .panel__button-dismiss {
-  @extend .button, .button--base-unbounded, .button--small, .button--text-hidden;
+  @extend .button, .button--base-plain, .button--small, .button--text-hidden;
 
   &::before {
     @extend %uisi-sm-xmark;

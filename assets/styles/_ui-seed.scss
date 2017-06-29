@@ -39,12 +39,12 @@
 
 @import "ui-seed/core/base";
 @import "ui-seed/core/ui-seed-icons"; // Webfont icon library
-@import "ui-seed/core/animations";
 @import "ui-seed/core/typography";
 @import "ui-seed/core/tables";
 @import "ui-seed/core/code";
 @import "ui-seed/core/media";
-@import "ui-seed/core/utilities";
+@import "ui-seed/core/skins";
+@import "ui-seed/core/animation";
 
 
 /* Components
@@ -57,6 +57,12 @@
 @import "ui-seed/components/panels";
 @import "ui-seed/components/alerts";
 @import "ui-seed/components/modals";
+
+
+/* Core (...cont)
+   ========================================================================== */
+
+@import "ui-seed/core/utilities";
 
 
 /* Third-party (cont.)
