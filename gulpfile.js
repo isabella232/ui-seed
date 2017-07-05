@@ -64,7 +64,7 @@ gulp.task('serve', ['vendorScripts', 'javascript', 'styles'], function () {
     '!sandbox/assets/graphics/collecticons/**/*'
   ], [reload]);
 
-  gulp.watch('assets/icons/**', ['ui-seed:icons']);
+  gulp.watch('assets/icons/ui-seed-icons/**', ['ui-seed:icons']);
   gulp.watch('sandbox/assets/graphics/collecticons/**', ['collecticons']);
 
   gulp.watch(['sandbox/assets/styles/**/*.scss', 'assets/styles/**/*.scss'], ['styles']);
@@ -155,7 +155,7 @@ gulp.task('ui-seed:icons', function (done) {
   var args = [
     'node_modules/collecticons-processor/bin/collecticons.js',
     'compile',
-    'assets/icons/',
+    'assets/icons/ui-seed-icons/',
     '--font-embed',
     '--font-dest', 'assets/fonts',
     '--font-name', 'UI Seed Icons',
