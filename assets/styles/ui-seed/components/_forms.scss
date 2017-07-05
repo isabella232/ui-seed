@@ -346,6 +346,7 @@ textarea.form__control {
 .form__legend {
   @extend .heading-alt;
   font-size: 0.75rem;
+  color: rgba($base-font-color, 0.64);
   line-height: 1rem;
   border: 0;
   float: left;
