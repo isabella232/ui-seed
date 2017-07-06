@@ -28,10 +28,10 @@ var ModalShowcase = React.createClass({
   render: function () {
     return (
       <div>
-        <button className='button button--achromic' type='button' onClick={this.openModal}><span>Open Modal</span></button>
+        <button className='button button--primary-raised-dark' type='button' onClick={this.openModal}><span>Open Modal</span></button>
         <Modal
           id='modal-showcase'
-          className='modal--dark modal--large'
+          className='modal--dark modal--medium'
           onCloseClick={this.closeModal}
           revealed={this.state.open} >
 
@@ -39,6 +39,9 @@ var ModalShowcase = React.createClass({
             <div className='modal__headline'>
               <p className='modal__subtitle'>Modal subtitle</p>
               <h1 className='modal__title'>This is the modal title</h1>
+            </div>
+            <div className='modal__introduction'>
+              <p>This a description. It contains extra information about lorem ipsum dolor sit amet.</p>
             </div>
           </ModalHeader>
           <ModalBody>
@@ -49,8 +52,8 @@ var ModalShowcase = React.createClass({
             </div>
           </ModalBody>
           <ModalFooter>
-            <button className='button button--achromic' type='button'><span>Cancel</span></button>
-            <button className='button button--base' type='submit'><span>Save</span></button>
+            <button className='mfa-xmark' type='button' title='Cancel'><span>Cancel</span></button>
+            <button className='mfa-tick' type='submit' title='Save'><span>Save</span></button>
           </ModalFooter>
         </Modal>
       </div>
@@ -76,11 +79,17 @@ var renderPanel = function () {
     <section className='panel'>
       <header className='panel__header'>
         <div className='panel__headline'>
-        <h1 className='panel__title'>Panel title lorem ipsum dolor sit amet</h1>
-          <div className='panel__subtitle'>Panel subtitle</div>
+          <h1 className='panel__title'>Panel title</h1>
+          <p className='panel__subtitle'>Panel subtitle</p>
         </div>
-        <div className='panel__meta-actions'>
-          <button className='panel__button-dismiss' title='Dismiss panel'><span>Dismiss</span></button>
+        <div className='panel__h-actions'>
+          <ul className='panel__h-actions__menu actions'>
+            <li><a className='actions__menu-item pha-question' title='Learn more' href='#'><span>What is this?</span></a></li>
+            <li><a className='actions__menu-item pha-download' title='Download' href='#'><span>Download</span></a></li>
+          </ul>
+          <ul className='panel__h-actions__menu actions'>
+            <li><button className='actions__menu-item pha-cancel' type='button' title='Dismiss panel'><span>Dismiss</span></button></li>
+          </ul>
         </div>
       </header>
 

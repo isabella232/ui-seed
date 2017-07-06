@@ -9,7 +9,7 @@
 
 .drop__toggle {
   &--caret {
-    &:after {
+    &::after {
       @extend %uisi-sm-chevron-down;
       font-size: 1rem;
       line-height: inherit;
@@ -17,6 +17,7 @@
       margin-left: 0.25rem;
     }
   }
+
   &:focus {
     outline: 0;
   }
@@ -34,7 +35,7 @@
   font-size: 1rem;
   line-height: 1.5;
   background: #fff;
-  box-shadow: 0 4px 16px 8px $base-alpha-color;
+  box-shadow: 0 4px 16px 2px rgba($base-color, 0.08);
   border-radius: $base-border-radius;
 
   /* Animation */
@@ -87,13 +88,6 @@
   }
 }
 
-[data-hook^="dropdown:close"],
-[data-hook=" dropdown:close"] {
-  * {
-    pointer-events: none;
-  }
-}
-
 /*
   React specific styles to handle animations.
   The tether library is being used and needs animations for all directions.
@@ -110,10 +104,24 @@
   z-index: 9999;
 }
 
-.tether-element-attached-top,
-.tether-element-attached-bottom {
-  .drop__content {
+.drop-trans--up,
+.drop-trans--down {
+  &.drop__content {
     transition: opacity .16s ease, transform .16s ease;
+  }
+}
+
+.drop-trans--right {
+  &.drop__content {
+    transition: opacity .16s ease, right .16s ease;
+    margin-right: 1rem;
+  }
+}
+
+.drop-trans--left {
+  &.drop__content {
+    transition: opacity .16s ease, left .16s ease;
+    margin-left: 1rem;
   }
 }
 
@@ -137,12 +145,36 @@
   transform: translate(0, -($global-spacing / 2));
 }
 
-.tether-element-attached-top {
-  .drop__content {
+@mixin drop-left-start() {
+  opacity: 0;
+  left: -100%;
+  // transform: translate(-100%, 0);
+}
+
+@mixin drop-left-end() {
+  opacity: 1;
+  left: 0;
+  // transform: translate(1rem, 0);
+}
+
+@mixin drop-right-start() {
+  opacity: 0;
+  right: -100%;
+  // transform: translate(100%, 0);
+}
+
+@mixin drop-right-end() {
+  opacity: 1;
+  right: 0;
+  // transform: translate(-1rem, 0);
+}
+
+.drop-trans--down {
+  &.drop__content {
     @include drop-top-end();
   }
 
-  .drop-trans-enter {
+  &.drop-trans-enter {
     @include drop-top-start();
 
     &.drop-trans-enter-active {
@@ -150,7 +182,7 @@
     }
   }
 
-  .drop-trans-leave {
+  &.drop-trans-leave {
     @include drop-top-end();
 
     &.drop-trans-leave-active {
@@ -159,12 +191,12 @@
   }
 }
 
-.tether-element-attached-bottom {
-  .drop__content {
+.drop-trans--up {
+  &.drop__content {
     @include drop-bottom-end();
   }
 
-  .drop-trans-enter {
+  &.drop-trans-enter {
     @include drop-bottom-start();
 
     &.drop-trans-enter-active {
@@ -172,11 +204,55 @@
     }
   }
 
-  .drop-trans-leave {
+  &.drop-trans-leave {
     @include drop-bottom-end();
 
     &.drop-trans-leave-active {
       @include drop-bottom-start();
+    }
+  }
+}
+
+.drop-trans--left {
+  &.drop__content {
+    // @include drop-left-end();
+  }
+
+  &.drop-trans-enter {
+    @include drop-left-start();
+
+    &.drop-trans-enter-active {
+      @include drop-left-end();
+    }
+  }
+
+  &.drop-trans-leave {
+    @include drop-left-end();
+
+    &.drop-trans-leave-active {
+      @include drop-left-start();
+    }
+  }
+}
+
+.drop-trans--right {
+  &.drop__content {
+    // @include drop-right-end();
+  }
+
+  &.drop-trans-enter {
+    @include drop-right-start();
+
+    &.drop-trans-enter-active {
+      @include drop-right-end();
+    }
+  }
+
+  &.drop-trans-leave {
+    @include drop-right-end();
+
+    &.drop-trans-leave-active {
+      @include drop-right-start();
     }
   }
 }
@@ -187,8 +263,9 @@
 
 .drop__title {
   @extend .heading-alt;
+  color: rgba($base-font-color, 0.64);
   font-size: 0.875rem;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0 0 $global-spacing 0 !important;
 }
 
@@ -200,10 +277,10 @@
   @extend .clearfix;
   list-style: none;
   margin: (-$global-spacing) (-$global-spacing) $global-spacing (-$global-spacing);
-  box-shadow: 0 2px 0 0 $base-alpha-color;
+  box-shadow: 0 1px 0 0 $base-alpha-color;
   padding: ($global-spacing / 2) 0;
   max-width: 16rem;
-  font-weight: $base-font-regular;
+  font-weight: $base-font-bold;
 
   &:last-child {
     margin-bottom: (-$global-spacing);
@@ -214,13 +291,24 @@
     position: relative;
     display: block;
     padding: 0.25rem 1rem;
-    color: inherit;
+    color: $link-color;
     transition: all 0.16s ease 0s;
+    
     &:hover,
     &:focus {
-      color: $link-color;
       background-color: tint($link-color, 92%);
       opacity: 1;
+    }
+  }
+
+  /* Menu item modifiers */
+
+  .drop__menu-item--danger {
+    color: $danger-color;
+
+    &:hover,
+    &:focus {
+      background-color: tint($danger-color, 92%);
     }
   }
 }
@@ -231,11 +319,12 @@
   .drop__menu-item {
     padding-right: $global-spacing * 2.5;
   }
+
   .drop__menu-item--active {
-    color: inherit;
-    outline: 0;
-    font-weight: $base-font-bold;
-    &:after {
+    color: $link-color;
+    font-weight: $base-font-regular;
+
+    &::after {
       @extend %uisi-sm-tick;
       position: absolute;
       z-index: 1;
@@ -243,7 +332,7 @@
       right: $global-spacing / 2;
       font-size: 1rem;
       line-height: 1.5rem;
-      opacity: 0.32;
+      opacity: 0.48;
       width: 1.5rem;
       text-align: center;
     }
@@ -255,9 +344,9 @@
 .drop__menu--iconified {
   .drop__menu-item {
     padding-left: $global-spacing * 2.75;
-    &:before,
-    > [class^="uisi-"],
-    > [class^="collecticons-"] {
+
+    &::before,
+    > [class^="uisi-"] {
       position: absolute;
       z-index: 1;
       top: $global-spacing / 4;
@@ -274,20 +363,29 @@
    ========================================================================== */
 
 .drop__inset {
-  background: tint($base-color, 92%);
+  @extend %inset-skin;
   color: tint($base-font-color, 32%);
+  box-shadow: inset 0 1px 0 0 $base-alpha-color, inset 0 -1px 0 0 $base-alpha-color;
   margin: (-$global-spacing) (-$global-spacing) $global-spacing (-$global-spacing);
   padding: $global-spacing;
 
+  &:first-child {
+    box-shadow: inset 0 -1px 0 0 $base-alpha-color;
+  }
+
   &:last-child {
     margin-bottom: (-$global-spacing);
+    box-shadow: inset 0 1px 0 0 $base-alpha-color;
   }
+
   &:only-child {
     box-shadow: none;
   }
+
   > *:first-child {
     margin-top: 0;
   }
+
   > *:last-child {
     margin-bottom: 0;
   }

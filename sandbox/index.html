@@ -2,8 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="description" content="Testing OpenAQ Design System." />
+    <meta name="description" content="Testing uisi Design System." />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <title>Sandbox — UI Seed</title>
@@ -14,7 +13,7 @@
     <meta name="twitter:title" content="Sandbox — UI Seed">
     <meta name="twitter:description" content="Testing UI Seed." />
     <meta name="twitter:image:src" content="assets/graphics/meta/default-meta-image.png" />
-    <!--/ Twitter --> 
+    <!--/ Twitter -->
 
     <!-- OG -->
     <meta property="og:site_name" content="Sandbox — UI Seed" />
@@ -35,15 +34,15 @@
     <link rel="apple-touch-icon" sizes="144x144" href="assets/graphics/meta/apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="assets/graphics/meta/apple-touch-icon-152x152.png" />
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:700,700i|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:700,700i|Open+Sans:300,300i,400,400i,700,700i" />
 
     <!-- build:css assets/styles/vendor.css -->
     <!-- endbuild -->
 
     <!-- build:css assets/styles/main.css -->
-    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/main.css" />
     <!-- endbuild -->
-  
+
   </head>
   <body>
 
@@ -87,7 +86,7 @@
                   <p>Testing UI Seed, a front-end framework.</p>
                 </div>
               </div>
-            </div>         
+            </div>
           </header>
 
           <div class="inpage__body">
@@ -102,54 +101,90 @@
                   <div class="exhibit">
                     <div class="exhibit__content">
                       <h1>This is an h1 heading</h1>
-                      <h2>This is an h2 heading</h2>
+                      <h2>This is an h2 heading <span class="label label--success">Label success</span></h2>
                       <h3>This is an h3 heading</h3>
                       <h4>This is an h4 heading</h4>
                       <h5>This is an h5 heading</h5>
                       <h6>This is an h6 heading</h6>
-                      <h6 class="heading-alt">This an alt heading</h6>
-                      <h6 class="heading-deco">This a deco heading</h6>
+                      <h6 class="heading-alt">This is an alt heading</h6>
+                      <h6 class="heading-deco">This is a deco heading</h6>
+                    </div>
+                  </div>
+
+                  <h2>Tables</h2>
+                  <div class="exhibit">
+                    <div class="exhibit__content">
+
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Lorem</th>
+                            <th><a class="table__sort table__sort--none" title="Sort column"><span>Ipsum Dolor</span></a></th>
+                            <th>Sit Amet</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Aliquam erat</td>
+                            <td>Volutpat</td>
+                            <td>Praesent</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Aenean</td>
+                            <td>Finibus</td>
+                            <td>Accumsan</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>Phasellus</td>
+                            <td>Consequat</td>
+                            <td>Vivamus</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
 
                   <h2>Buttons</h2>
-                  <div class="exhibit">
+                  <div class="exhibit exhibit--mid-dark">
                     <div class="exhibit__content">
+                      <button class="button button--base-raised-light" type="button"><span>Base Raised Light</span></button>
+                      <button class="button button--base-raised-dark" type="button"><span>Base Raised Dark</span></button>
+                      <button class="button button--base-plain" type="button"><span>Base Plain</span></button>
+
+                      <button class="button button--primary-raised-light" type="button"><span>Primary Raised Light</span></button>
+                      <button class="button button--primary-raised-dark" type="button"><span>Primary Raised Dark</span></button>
+                      <button class="button button--primary-plain" type="button"><span>Primary Plain</span></button>
+
                       <button class="button button--achromic" type="button"><span>Achromic</span></button>
-                      <button class="button button--base" type="submit"><span>Base</span></button>
-                      <a class="button button--primary" role="button"><span>Primary</span></a>
-                      <button class="button button--secondary" type="button"><span>Secondary</span></button>
-                      <button class="button button--base-unbounded" type="button"><span>Base unbounded</span></button>
-                      <button class="button button--primary-unbounded" type="button"><span>Primary unbounded</span></button>
-                      <button class="button button--secondary-unbounded" type="button"><span>Secondary unbounded</span></button>
-                      <a class="button button--base-bounded" role="button"><span>Base bounded</span></a>
-                      <button class="button button--primary-bounded" type="button"><span>Primary bounded</span></button>
-                      <button class="button button--secondary-bounded" type="button"><span>Secondary bounded</span></button>
                     </div>
                   </div>
 
                   <div class="exhibit">
                     <div class="exhibit__content">
-                      <button class="button button--primary-bounded button--small" type="button"><span>Small</span></button>
-                      <button class="button button--primary-bounded button--medium" type="button"><span>Medium</span></button>
-                      <button class="button button--primary-bounded button--large" type="button"><span>Large</span></button>
-                      <button class="button button--primary-bounded button--xlarge" type="button"><span>Xlarge</span></button>
+                      <button class="button button--base-raised-light button--small" type="button"><span>Small</span></button>
+                      <button class="button button--base-raised-light button--medium" type="button"><span>Medium</span></button>
+                      <button class="button button--base-raised-light button--large" type="button"><span>Large</span></button>
+                      <button class="button button--base-raised-light button--xlarge" type="button"><span>Xlarge</span></button>
                     </div>
                   </div>
 
                   <div class="exhibit">
                     <div class="exhibit__content">
-                      <button class="button button--primary button--large button--block" type="button"><span>Block</span></button>
-                      <button class="button button--primary-bounded button--large button--semi-fluid" type="button"><span>Semi fluid</span></button>
+                      <button class="button button--base-raised-light button--large button--block" type="button"><span>Block</span></button>
+                      <button class="button button--base-raised-light button--large button--semi-fluid" type="button"><span>Semi fluid</span></button>
                     </div>
                   </div>
-                    
+
                   <div class="exhibit">
                     <div class="exhibit__content">
                       <div class="button-group button-group--horizontal" role="group" aria-label="...">
-                        <button class="button button--primary button--active" type="button"><span>Left</span></button>
-                        <button class="button button--primary" type="button"><span>Middle</span></button>
-                        <button class="button button--primary" type="button"><span>Right</span></button>
+                        <button class="button button--base-raised-light button--active" type="button"><span>Left</span></button>
+                        <button class="button button--base-raised-light" type="button"><span>Middle</span></button>
+                        <button class="button button--base-raised-light" type="button"><span>Right</span></button>
                       </div>
                     </div>
                   </div>
@@ -160,17 +195,19 @@
                       <article class="card">
                         <a href="#" class="card__contents" title="Click me">
                           <figure class="card__media">
-                            <div class="card__thumbnail">
+                            <div class="card__cover">
                               <img alt="Card thumb" width="768" height="384" src="http://placehold.it/768x384" />
                             </div>
                           </figure>
-                          <div class="card__copy">
-                            <header class="card__header">
-                              <h1 class="card__title">This is a full clickable card</h1>
-                              <p class="card__subtitle">Lorem ipsum</p>
-                            </header>
-                            <div class="card__body">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a sollicitudin eros. Sed ultricies velit massa, vitae rutrum nulla varius ut. In feugiat congue leo.</p>
+                          <header class="card__header">
+                            <div class="card__headline">
+                              <p class="card__subtitle">Card subtitle</p>
+                              <h1 class="card__title">This is a regular card</h1>
+                            </div>
+                          </header>
+                          <div class="card__body">
+                            <div class="card__prose">
+                              <p>Lorem ipsum dolor sit amet.</p>
                             </div>
                           </div>
                         </a>
@@ -179,45 +216,26 @@
                       <article class="card">
                         <div class="card__contents">
                           <figure class="card__media">
-                            <div class="card__thumbnail">
-                              <img alt="Card thumb" width="768" height="384" src="http://placehold.it/768x384" />
-                            </div>
+                            <a title="View card content" class="link-wrapper" href="#">
+                              <div class="card__cover">
+                                <img alt="Card thumb" width="768" height="384" src="http://placehold.it/768x384" />
+                              </div>
+                            </a>
                           </figure>
-                          <div class="card__copy">
-                            <header class="card__header">
-                              <h1 class="card__title"><a href="#" title="Click me">This is a regular card</a></h1>
-                            </header>
-                            <div class="card__body">
-                              <dl>
-                                <dt>Term 1</dt>
-                                <dd>Value 1</dd>
-                                <dt>Term 2</dt>
-                                <dd>Value 2</dd>
-                              </dl>
+                          <header class="card__header">
+                            <div class="card__headline">
+                              <a title="View card content" class="link-wrapper" href="#">
+                                <h1 class="card__title">This is a regular card</h1>
+                              </a>
+                              <p class="card__subtitle">Card subtitle</p>
                             </div>
-                          </div>
-                        </div>
-                      </article>
-
-                      <article class='card card--horizontal'>
-                        <div class='card__contents'>
-                          <figure class='card__media'>
-                            <div class='card__thumbnail'>
-                              <img width='320' height='320' src='http://placehold.it/320x320' alt='Card thumb' />
+                            <div class="card__h-actions actions">
+                              <button class="drop__toggle cha-ellipsis" type="button" title="Card options"><span>Options</span></button>
                             </div>
-                          </figure>
-                          <div class="card__copy">
-                            <header class='card__header'>
-                              <h1 class='card__title'><a title='Click me' href='#'>This is an horizontal card</a></h1>
-                            </header>
-                            <div class='card__body'>
-                              <dl>
-                                <dt>Term 1</dt>
-                                <dd>Value 1</dd>
-                                <dt>Term 2</dt>
-                                <dd>Value 2</dd>
-                              </dl>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem ab ut provident, placeat, repellat ea ex dolorum delectus voluptate unde eos magnam. Eaque nemo eius, voluptate accusantium accusamus, mollitia necessitatibus.</p>
+                          </header>
+                          <div class="card__body">
+                            <div class="card__prose">
+                              <p>Lorem ipsum dolor sit amet.</p>
                             </div>
                           </div>
                         </div>
@@ -234,11 +252,11 @@
                         <div class="drop__content">
                           <h6 class="drop__title">This is a title</h6>
                           <ul class="drop__menu drop__menu--iconified" role="menu">
-                            <li><a href="#" title="This is Item 1a" class="drop__menu-item"><i class="openaq-ds-icon-pencil"></i>Edit</a></li>
+                            <li><a href="#" title="This is Item 1a" class="drop__menu-item"><i class="uisi-pencil"></i>Edit</a></li>
                             <li><a href="#" title="This is Item 2a" class="drop__menu-item drop__menu-item--example-icon">Download</a></li>
                           </ul>
                           <ul class="drop__menu drop__menu--iconified" role="menu">
-                            <li><a href="#" title="This is Item 1a" class="drop__menu-item delete"><i class="openaq-ds-icon-trash-bin"></i>Delete</a></li>
+                            <li><a href="#" title="This is Item 1a" class="drop__menu-item delete"><i class="uisi-trash-bin"></i>Delete</a></li>
                           </ul>
                         </div>
                       </div>
@@ -261,7 +279,7 @@
                     </div>
 
                     <div class="exhibit__content">
-                      <div data-hook="react:drops"><!-- React rendered content --></div>  
+                      <div data-hook="react:drops"><!-- React rendered content --></div>
                     </div>
 
                   </div>
@@ -279,7 +297,7 @@
                       <div data-hook='modal'></div>
                     </div>
                   </div>
-                    
+
                   <h2>Forms</h2>
                   <div class="exhibit">
                     <div class="exhibit__content">
@@ -351,7 +369,23 @@
                           </div>
 
                           <div class="form__group">
-                            <label class="form__label">Checkbox options (custom)</label>
+                            <div class="form__inner-header">
+                              <div class="form__inner-headline">
+                                <label class="form__label">Checkbox options (custom)</label>
+                              </div>
+                              <div class="form__inner-actions">
+                                <dl class="form__options-menu">
+                                  <dt>Select</dt>
+                                  <dd>
+                                    <button type="button" class="fia-global" title="Select all"><span>All</span></button>
+                                  </dd>
+                                  <dd>
+                                    <button type="button" class="fia-global" title="Deselect none"><span>None</span></button>
+                                  </dd>
+                                </dl>
+                              </div>
+                            </div>
+
                             <label class="form__option form__option--custom-checkbox">
                               <input type="checkbox" name="form-checkbox" id="form-checkbox-1" value="Checkbox 1" />
                               <span class="form__option__text">Checkbox 1</span>
@@ -371,7 +405,14 @@
                         </fieldset>
 
                         <fieldset class="form__fieldset">
-                          <legend class="form__legend">Fieldset legend 3</legend>
+                          <div class="form__inner-header">
+                            <div class="form__inner-headline">
+                              <legend class="form__legend">Fieldset legend 3</legend>
+                            </div>
+                            <div class="form__inner-actions">
+                              <button type="button" class="fia-trash" title="Delete fieldset"><span>Delete</span></button>
+                            </div>
+                          </div>
 
                           <div class="form__group">
                             <label class="form__label" for="form-file-1">File input</label>
@@ -384,20 +425,16 @@
                           </div>
 
                           <div class="form__group">
-                            <label class="form__label" for="form-input-5">Input group</label>
+                            <label class="form__label" for="inputText5">Input group</label>
                             <div class="form__input-group">
-                              <input type="text" class="form__control form__control--medium" id="form-input-5" placeholder="This is a placeholder">
-                              <span class="form__input-group-button"><button type="submit" class="button button--secondary button--text-hidden button--medium button--example-icon"><span>Button</span></button></span>
+                              <div class="form__input-addon"><span class="form__input-addon-label">Prefix addon</span></div>
+                              <input type="text" id="inputText5" name="inputText5" class="form__control" placeholder="Input text">
+                              <div class="form__input-addon">
+                                <button type="button" class="button button--primary-raised-dark button--text-hidden" title="Delete fieldset"><i class="uisi-trash-bin"></i><span>Delete</span></button>
+                              </div>
                             </div>
                           </div>
 
-                          <div class="form__group">
-                            <label class="form__label" for="form-input-6">Input group</label>
-                            <div class="form__input-group">
-                              <span class="form__input-group-button"><button type="submit" class="button button--primary button--text-hidden button--medium button--example-icon"><span>Button</span></button></span>
-                              <input type="text" class="form__control form__control--medium" id="form-input-6" placeholder="Search location">
-                            </div>
-                          </div>
                         </fieldset>
                       </form>
                     </div>
@@ -406,7 +443,7 @@
                 </div>
                 <!--/ showcase -->
 
-              </div>                
+              </div>
             </div>
             <!--/ fold -->
 

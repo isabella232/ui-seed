@@ -1,9 +1,9 @@
 /* ==========================================================================
-   reactScrollbar
+   Vendor: reactScrollbar
    ========================================================================== */
 
 /**
- * Custom styles for react-scrollbar:
+ * Custom styles for:
  * https://github.com/souhe/reactScrollbar
  */
 
@@ -64,6 +64,7 @@
     &:hover,
     &.active {
       background: rgba($base-color, 0.08);
+
       .scrollbar {
         opacity: 0.48;
       }

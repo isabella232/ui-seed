@@ -5,9 +5,11 @@
 /* Colors
    ========================================================================== */
 
-$base-color: #000;                                      // Black
+$base-color: #443F3F;                                   // Earth
 $primary-color: #CF3F02;                                // Grenadier
 // $secondary-color: #000;                              // Undefined
+
+$accent-color: $primary-color;
 
 /* State colors */
 
@@ -20,7 +22,6 @@ $info-color: #2980b9;                                   // Belize hole (blue)
 
 $link-color: $primary-color;
 $base-alpha-color: rgba($base-color, 0.12);
-$base-semi-alpha-color: rgba($base-color, 0.08);
 
 
 /* Typography
@@ -28,7 +29,7 @@ $base-semi-alpha-color: rgba($base-color, 0.08);
 
 $root-font-size: 16px;
 
-$base-font-color: tint($base-color, 20%);
+$base-font-color: tint($base-color, 8%);
 $base-font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $base-font-style: normal;
 $base-font-light: 300;
@@ -40,7 +41,9 @@ $base-line-height: 1.5;
 
 $code-font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 
-$heading-font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+// $heading-font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$heading-font-family: $base-font-family;
+$base-font-light: 300;
 $heading-font-regular: 400;
 $heading-font-bold: 700;
 $heading-font-weight: $heading-font-bold;

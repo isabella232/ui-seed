@@ -89,67 +89,69 @@
    Buttons
    ========================================================================== */
 
-@mixin button-variation($style, $brightness, $color) {
+@mixin button-variation($color, $style, $brightness) {
   $text-color: null;
   $bg-color: null;
   $bg-color-hover: null;
   $bg-color-active: null;
-  $border-shadow-color: null;
-  $inner-shadow-color: null;
+  $shadow-color: null;
 
-  @if $style == "filled" {
+  @if $style == "raised" {
+
     @if $brightness == "light" {
-      $text-color: $base-font-color;
+      $text-color: $color;
+      $bg-color: tint($color, 100%);
+      $bg-color-hover: tint($color, 92%);
+      $bg-color-active: tint($color, 84%);
+      $shadow-color: rgba($base-color, 0.12);
+    }
+
+    @else if $brightness == "dark" {
+      $text-color: tint($color, 100%);
       $bg-color: $color;
       $bg-color-hover: shade($color, 4%);
       $bg-color-active: shade($color, 8%);
-      $border-shadow-color: rgba($base-color, 0.16);
-      $inner-shadow-color: rgba($base-color, 0.12);
+      $shadow-color: rgba($base-color, 0.12);
     }
-    @else if $brightness == "dark" {
-      $text-color: #fff;
-      $bg-color: $color;
-      $bg-color-hover: shade($color, 8%);
-      $bg-color-active: shade($color, 16%);
-      $border-shadow-color: rgba($base-color, 0.24);
-      $inner-shadow-color: rgba($base-color, 0.24);
 
-      @extend .antialiased;
-    }
     @else {
-      @error "Invalid brightness property for button variation.";
+      @error "Invalid brightness property for button raised.";
     }
   }
-  @else if $style == "bounded" or $style == "unbounded" {
+
+  @else if $style == "plain" {
     $text-color: $color;
     $bg-color: rgba($color, 0);
-    $bg-color-hover: rgba($color, 0.08);
-    $bg-color-active: rgba($color, 0.16);
-    
-    @if $style == "bounded" {
-      box-shadow: inset 0 0 0 2px $border-shadow-color;
-      .drop--open > &,
-      &.button--active,
-      &:active {
-        box-shadow: inset 0 0 0 2px $border-shadow-color;
-      }
-    }
+    $bg-color-hover: rgba($color, 0.16);
+    $bg-color-active: rgba($color, 0.24);
   }
+
   @else {
-    @error "Invalid style property for button variation.";
+    @error "Invalid style property for button.";
   }
 
   background-color: $bg-color;
+
   &, &:visited {
     color: $text-color;
   }
+
+  @if $shadow-color {
+    box-shadow: 0 -1px 1px 0 rgba($base-color, 0.04), 0 2px 6px 0 $shadow-color;
+  }
+
   &:hover {
     background-color: $bg-color-hover;
   }
+
   .drop--open > &,
   &.button--active,
   &.button--active:hover,
   &:active {
     background-color: $bg-color-active;
+
+    @if $shadow-color {
+      box-shadow: inset 0 1px 2px 0 $shadow-color, 0 -1px 1px 0 rgba($base-color, 0.04), 0 2px 6px 0 $shadow-color;
+    }
   }
 }

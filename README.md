@@ -10,7 +10,7 @@ Style guide and UI components library that aims to standardize the look and feel
 
 Install it as an `node module`: (Not available on `npm`, use direct link)
 ```
-npm install https://github.com/developmentseed/ui-seed#v1.0.0
+yarn add git+ssh://git@github.com/developmentseed/ui-seed.git#v0.1.0-alpha
 ```
 For the most recent version omit the tag.
 
@@ -58,7 +58,7 @@ Now you can include it in the main scss file:
 // Bourbon is a dependency
 @import "bourbon";
 
-@import "jeet/index";
+@import "jeet";
 
 @import "ui-seed";
 ```

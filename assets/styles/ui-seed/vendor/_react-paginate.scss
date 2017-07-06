@@ -1,6 +1,11 @@
 /* ==========================================================================
-   Global: pagination
+   Vendor: react-paginate
    ========================================================================== */
+
+/**
+ * Custom styles for:
+ * https://github.com/AdeleD/react-paginate
+ */
 
 .pagination {
   @extend .clearfix;
@@ -13,22 +18,19 @@
     float: left;
   }
 
-  .previous a, .next a {
-    @extend .button;
+  .previous a,
+  .next a {
+    @extend .button, .button--primary-plain, .button--text-hidden;
     text-decoration: none;
     text-transform: uppercase;
-    color: #fff;
     padding-right: 0;
     padding-left: 0;
-    span {
-      @extend .visually-hidden;
-    }
   }
 
   .previous a {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    background-color: $primary-color;
+
     &:before {
       @extend %uisi-chevron-left;
     }
@@ -37,7 +39,7 @@
   .next a {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    background-color: $primary-color;
+
     &:before {
       @extend %uisi-chevron-right;
     }
@@ -45,16 +47,16 @@
 
   .pages {
     @extend .clearfix;
+
     &__wrapper {
       float: left;
-      
+
       &.active .pages__page {
-        @include button-variation("filled", "light", tint($base-color, 64%));
+        @extend .button--primary-plain:active;
       }
 
       .pages__page {
-        @extend .button;
-        @include button-variation("filled", "light", tint($base-color, 92%));
+        @extend .button, .button--primary-plain;
         border-radius: 0;
       }
     }
@@ -67,5 +69,14 @@
       background: tint($base-color, 92%);
       opacity: 1;
     }
+  }
+}
+
+.pagination-wrapper {
+  text-align: center;
+
+  .pagination {
+    display: inline-block;
+    margin-bottom: 0;
   }
 }

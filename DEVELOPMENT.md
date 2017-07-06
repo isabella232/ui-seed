@@ -9,15 +9,14 @@ The following instructions are divided in two sections:
 The main purpose of this system is to modularize the assets, therefore is important to maintain a clear separation between the design-system and the sandbox. The sandbox depends on the design-system but not the other way around.
 
 ## Development environment
-The development environment is the same for both parts and has the following dependencies:
+To set up the development environment for this website, you'll need to install the following on your system:
 
-- Node (v4.2.x) & Npm ([nvm](https://github.com/creationix/nvm) usage is advised)
-
-> The versions mentioned are the ones used during development. It could work with newer ones.
+- [Node](http://nodejs.org/) v6 (To manage multiple node versions we recommend [nvm](https://github.com/creationix/nvm))
+- [Yarn](https://yarnpkg.com/) Package manager
 
 After these basic requirements are met, run the following commands in the website's folder:
 ```
-$ npm install
+$ yarn install
 ```
 
 ### UI system development
@@ -45,14 +44,14 @@ These files can then be liked in the doc's files and used.
 Svg icons to be compiled into a webfont. The resulting compiled file must be committed with the rest of the styles.  
 To manually compile the `ui-seed` icons run:
 ```
-$ npm run ui-seed-icons
+$ yarn run ui-seed-icons
 ```
 
 ### Sandbox
 The sandbox site resides in `sandbox/`.
 
 ```
-$ npm run serve
+$ yarn run serve
 ```
 Compiles the sass files, javascript, and launches the server making the site available at `http://localhost:3000/`  
 The system will watch files and execute tasks whenever one of them changes.  
@@ -84,4 +83,4 @@ In this particular case, Travis will only publish new versions to the npm regist
 
 ## Linting
 Code follows the `semistandard` code style and should be linted.
-- `npm run lint` - will run linter and warn of any errors.
+- `yarn run lint` - will run linter and warn of any errors.

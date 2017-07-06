@@ -16,6 +16,7 @@ var rev = require('gulp-rev');
 var revReplace = require('gulp-rev-replace');
 var notifier = require('node-notifier');
 var cp = require('child_process');
+var SassString = require('node-sass').types.String;
 var GULP_ADDONS = require('./gulp-addons');
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -63,7 +64,7 @@ gulp.task('serve', ['vendorScripts', 'javascript', 'styles'], function () {
     '!sandbox/assets/graphics/collecticons/**/*'
   ], [reload]);
 
-  gulp.watch('assets/icons/**', ['ui-seed:icons']);
+  gulp.watch('assets/icons/ui-seed-icons/**', ['ui-seed:icons']);
   gulp.watch('sandbox/assets/graphics/collecticons/**', ['collecticons']);
 
   gulp.watch(['sandbox/assets/styles/**/*.scss', 'assets/styles/**/*.scss'], ['styles']);
@@ -154,7 +155,7 @@ gulp.task('ui-seed:icons', function (done) {
   var args = [
     'node_modules/collecticons-processor/bin/collecticons.js',
     'compile',
-    'assets/icons/',
+    'assets/icons/ui-seed-icons/',
     '--font-embed',
     '--font-dest', 'assets/fonts',
     '--font-name', 'UI Seed Icons',
@@ -202,7 +203,14 @@ gulp.task('styles', function () {
     .pipe($.sass({
       outputStyle: 'expanded',
       precision: 10,
-      includePaths: require('node-bourbon').with('node_modules/jeet/scss', 'assets/styles')
+      functions: {
+        'urlencode($url)': function (url) {
+          var v = new SassString();
+          v.setValue(encodeURIComponent(url.getValue()));
+          return v;
+        }
+      },
+      includePaths: require('node-bourbon').with('node_modules/jeet', 'assets/styles')
     }))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/assets/styles'))
