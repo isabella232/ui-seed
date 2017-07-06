@@ -1,16 +1,15 @@
 'use strict';
-import React from 'react';
+import React, { PropTypes as T } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 var Modal = React.createClass({
-  displayName: 'Modal',
 
   propTypes: {
-    id: React.PropTypes.string.isRequired,
-    revealed: React.PropTypes.bool,
-    className: React.PropTypes.string,
-    onOverlayClick: React.PropTypes.func,
-    onCloseClick: React.PropTypes.func,
+    id: T.string.isRequired,
+    revealed: T.bool,
+    className: T.string,
+    onOverlayClick: T.func,
+    onCloseClick: T.func,
 
     children: function (props, propName, componentName) {
       let types = ['ModalHeader', 'ModalBody', 'ModalFooter'];
@@ -46,6 +45,16 @@ var Modal = React.createClass({
     }
   },
 
+  componentAddedBodyClass: false,
+
+  keyListener: function (e) {
+    // ESC.
+    if (this.props.revealed && e.keyCode === 27) {
+      e.preventDefault();
+      this.props.onCloseClick();
+    }
+  },
+
   // closeModal: function () {
   //   this.setState({ revealed: false });
   // },
@@ -60,25 +69,30 @@ var Modal = React.createClass({
   //   };
   // },
 
-  toggleUnscrollableClass: function (revealed) {
-    let bd = document.documentElement;
+  toggleBodyClass: function (revealed) {
+    let bd = document.getElementsByTagName('body')[0];
     if (revealed) {
-      bd.classList.add('unscrollable-y');
-    } else {
-      bd.classList.remove('unscrollable-y');
+      this.componentAddedBodyClass = true;
+      bd.classList.add('modal__unscrollable-y');
+    } else if (this.componentAddedBodyClass) {
+      // Only act if the class was added by this component.
+      this.componentAddedBodyClass = false;
+      bd.classList.remove('modal__unscrollable-y');
     }
   },
 
   componentDidUpdate: function () {
-    this.toggleUnscrollableClass(this.props.revealed);
+    this.toggleBodyClass(this.props.revealed);
   },
 
   componentDidMount: function () {
-    this.toggleUnscrollableClass(this.props.revealed);
+    document.addEventListener('keyup', this.keyListener);
+    this.toggleBodyClass(this.props.revealed);
   },
 
   componentWillUnmount: function () {
-    this.toggleUnscrollableClass(false);
+    document.removeEventListener('keyup', this.keyListener);
+    this.toggleBodyClass(false);
   },
 
   getDefaultProps: function () {
@@ -143,7 +157,7 @@ var Modal = React.createClass({
               {this.getChild('ModalBody')}
               {this.getChild('ModalFooter')}
             </div>
-            <button className='modal__button-dismiss' title='Close' onClick={this.onCloseClick}><span>Dismiss</span></button>
+            <button className='mma-dismiss' title='Close' onClick={this.onCloseClick}><span>Dismiss</span></button>
           </section>
         ) : null}
 
@@ -156,7 +170,7 @@ var ModalHeader = React.createClass({
   displayName: 'ModalHeader',
 
   propTypes: {
-    children: React.PropTypes.node
+    children: T.node
   },
 
   render: function () {
@@ -172,7 +186,7 @@ var ModalBody = React.createClass({
   displayName: 'ModalBody',
 
   propTypes: {
-    children: React.PropTypes.node
+    children: T.node
   },
 
   render: function () {
@@ -188,7 +202,7 @@ var ModalFooter = React.createClass({
   displayName: 'ModalFooter',
 
   propTypes: {
-    children: React.PropTypes.node
+    children: T.node
   },
 
   render: function () {

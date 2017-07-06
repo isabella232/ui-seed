@@ -15,5 +15,6 @@
 }
 
 %inset-skin {
-  background: rgba($base-color, 0.04);
+  // background: rgba($base-color, 0.04);
+  background: tint($base-color, 96%);
 }

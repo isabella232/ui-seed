@@ -130,8 +130,19 @@
   }
 
   &__headline {
+    margin-bottom: $global-spacing;
+
     > *:last-child {
       margin-bottom: 0;
+    }
+
+    &::after {
+      content: '';
+      width: 2rem;
+      height: 1px;
+      background: $base-font-color;
+      display: block;
+      margin: calc(0.5em - 1px) auto 0 auto;
     }
   }
 
@@ -140,16 +151,23 @@
   }
 
   &__subtitle {
-    text-transform: uppercase;
-    font-weight: $base-font-regular;
-    color: rgba($base-font-color, 0.48);
+    position: relative;
+    @extend .heading-alt;
+    color: rgba($base-font-color, 0.64);
     font-size: 0.875rem;
-    line-height: 1.25;
-    margin: 0;
-    width: 100%;
+    line-height: 1rem;
+    margin: ($global-spacing / 4) 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
-  &__description {
+  &__introduction {
     color: rgba($base-font-color, 0.64);
 
     > *:last-child {
@@ -183,14 +201,52 @@
 }
 
 
-/* Modal buttons
+/* Modal footer actions
    ========================================================================== */
 
-.modal__button-dismiss {
+/**
+ * "mfa-" prefix stands for "modal footer action"
+ */
+
+[class^="mfa-"],
+[class*=" mfa-"] {
+  @extend .button;
+  min-width: 6rem;
+}
+
+.mfa-tick, {
+  @extend .button--primary-raised-dark;
+}
+
+.mfa-tick::before {
+  @extend %uisi-sm-tick;
+}
+
+.mfa-xmark, {
+  @extend .button--primary-raised-light;
+
+  &::before {
+    @extend %uisi-sm-xmark;
+  }
+}
+
+
+/* Modal meta actions
+   ========================================================================== */
+
+/**
+ * "mma-" prefix stands for "modal meta action"
+ */
+
+[class^="mma-"],
+[class*=" mma-"] {
   @extend .button, .button--medium, .button--primary-plain, .button--text-hidden;
+}
+
+.mma-dismiss {
   position: absolute;
   top: $global-spacing * 2;
-    right: $global-spacing * 2;
+  right: $global-spacing * 2;
   z-index: 10;
 
   &::before {
