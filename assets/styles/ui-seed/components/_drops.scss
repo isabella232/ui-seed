@@ -9,7 +9,7 @@
 
 .drop__toggle {
   &--caret {
-    &:after {
+    &::after {
       @extend %uisi-sm-chevron-down;
       font-size: 1rem;
       line-height: inherit;
@@ -17,6 +17,7 @@
       margin-left: 0.25rem;
     }
   }
+
   &:focus {
     outline: 0;
   }
@@ -263,7 +264,7 @@
 .drop__title {
   @extend .heading-alt;
   color: rgba($base-font-color, 0.64);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1rem;
   margin: 0 0 $global-spacing 0 !important;
 }
@@ -279,7 +280,7 @@
   box-shadow: 0 1px 0 0 $base-alpha-color;
   padding: ($global-spacing / 2) 0;
   max-width: 16rem;
-  font-weight: $base-font-regular;
+  font-weight: $base-font-bold;
 
   &:last-child {
     margin-bottom: (-$global-spacing);
@@ -321,10 +322,9 @@
 
   .drop__menu-item--active {
     color: $link-color;
-    outline: 0;
-    font-weight: $base-font-bold;
+    font-weight: $base-font-regular;
 
-    &:after {
+    &::after {
       @extend %uisi-sm-tick;
       position: absolute;
       z-index: 1;
@@ -345,7 +345,7 @@
   .drop__menu-item {
     padding-left: $global-spacing * 2.75;
 
-    &:before,
+    &::before,
     > [class^="uisi-"] {
       position: absolute;
       z-index: 1;
@@ -363,7 +363,7 @@
    ========================================================================== */
 
 .drop__inset {
-  background: tint($base-color, 96%);
+  @extend %inset-skin;
   color: tint($base-font-color, 32%);
   box-shadow: inset 0 1px 0 0 $base-alpha-color, inset 0 -1px 0 0 $base-alpha-color;
   margin: (-$global-spacing) (-$global-spacing) $global-spacing (-$global-spacing);

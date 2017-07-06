@@ -5,8 +5,7 @@
 .form {
   margin-bottom: $global-spacing;
 
-  > *:last-child,
-  .inner > *:last-child {
+  > *:last-child {
     margin-bottom: 0;
   }
 }
@@ -330,13 +329,12 @@ textarea.form__control {
    ========================================================================== */
 
 .form__fieldset {
-  @extend .clearfix;
+  @extend .clearfix, %inset-skin;
   position: relative;
   border: 0;
   border-radius: $base-border-radius;
-  margin: 0 (-$global-spacing) $global-spacing (-$global-spacing);
+  margin: 0 0 $global-spacing 0;
   padding: $global-spacing;
-  background: rgba($base-color, 0.04);
 
   > *:last-child {
     margin-bottom: 0;
@@ -345,8 +343,8 @@ textarea.form__control {
 
 .form__legend {
   @extend .heading-alt;
-  font-size: 0.75rem;
   color: rgba($base-font-color, 0.64);
+  font-size: 0.875rem;
   line-height: 1rem;
   border: 0;
   float: left;
@@ -571,21 +569,6 @@ label[for] {
   }
 }
 
-/* Form misc
-   ========================================================================== */
-
-.form__help {
-  text-align: right;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  color: rgba($base-font-color, 0.48);
-  margin-top: $global-spacing / 2;
-
-  > *:last-child {
-    margin-bottom: 0;
-  }
-}
-
 
 /* Form inner actions
    ========================================================================== */
@@ -614,10 +597,6 @@ label[for] {
 
   * {
     vertical-align: top;
-  }
-
-  > *:last-child {
-    margin-right: -$global-spacing / 2;
   }
 }
 
@@ -656,6 +635,7 @@ label[for] {
     @extend .heading-alt;
     font-size: 0.75rem;
     line-height: 1.5rem;
+    color: rgba($base-font-color, 0.64);
     margin: 0 ($global-spacing / 2) 0 0;
   }
 }
@@ -731,5 +711,21 @@ label[for] {
     &:nth-child(4) {
       margin-top: 0;
     }
+  }
+}
+
+
+/* Form misc
+   ========================================================================== */
+
+.form__help {
+  text-align: right;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgba($base-font-color, 0.48);
+  margin-top: $global-spacing / 2;
+
+  > *:last-child {
+    margin-bottom: 0;
   }
 }

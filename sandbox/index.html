@@ -332,7 +332,23 @@
                           </div>
 
                           <div class="form__group">
-                            <label class="form__label">Checkbox options (custom)</label>
+                            <div class="form__inner-header">
+                              <div class="form__inner-headline">
+                                <label class="form__label">Checkbox options (custom)</label>
+                              </div>
+                              <div class="form__inner-actions">
+                                <dl class="form__options-menu">
+                                  <dt>Select</dt>
+                                  <dd>
+                                    <button type="button" class="fia-global" title="Select all"><span>All</span></button>
+                                  </dd>
+                                  <dd>
+                                    <button type="button" class="fia-global" title="Deselect none"><span>None</span></button>
+                                  </dd>
+                                </dl>
+                              </div>
+                            </div>
+
                             <label class="form__option form__option--custom-checkbox">
                               <input type="checkbox" name="form-checkbox" id="form-checkbox-1" value="Checkbox 1" />
                               <span class="form__option__text">Checkbox 1</span>
@@ -352,7 +368,14 @@
                         </fieldset>
 
                         <fieldset class="form__fieldset">
-                          <legend class="form__legend">Fieldset legend 3</legend>
+                          <div class="form__inner-header">
+                            <div class="form__inner-headline">
+                              <legend class="form__legend">Fieldset legend 3</legend>
+                            </div>
+                            <div class="form__inner-actions">
+                              <button type="button" class="fia-trash" title="Delete fieldset"><span>Delete</span></button>
+                            </div>
+                          </div>
 
                           <div class="form__group">
                             <label class="form__label" for="form-file-1">File input</label>

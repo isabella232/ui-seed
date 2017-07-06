@@ -63,9 +63,9 @@
    ========================================================================== */
 
 .panel__body {
+  @extend %inset-skin;
   position: relative;
   z-index: 1;
-  background: tint($base-color, 96%);
 
   > *:last-child {
     margin-bottom: 0;
@@ -171,5 +171,5 @@
 }
 
 .pha-cancel::before {
-  @extend %uisi-sm-xmark;
+  @extend %uisi-xmark;
 }
