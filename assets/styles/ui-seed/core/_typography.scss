@@ -239,18 +239,13 @@ abbr[title] {
 }
 
 .heading-deco {
-  position: relative;
-  text-transform: uppercase;
-  padding-bottom: 0.5rem;
-
   &::after {
-    position: absolute;
-    top: calc(100% - 2px);
-    left: 0;
-    width: 2.5rem;
-    height: 2px;
-    content: "";
-    background: rgba($base-font-color, 0.32);
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: $base-font-color;
+    display: block;
+    margin: calc(0.5em - 1px) 0 0 0;
   }
 }
 

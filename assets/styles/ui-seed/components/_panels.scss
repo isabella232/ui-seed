@@ -3,101 +3,69 @@
    ========================================================================== */
 
 .panel {
+  @extend %panel-skin;
   position: relative;
-  font-size: 1rem;
-  line-height: 1.5;
-  background: tint($base-color, 92%);
-  box-shadow: 0 2px 12px 2px $base-alpha-color;
-  border-radius: $base-border-radius;
-
-  &__headline,
-  &__body,
-  &__body-inner,
-  &__footer {
-    > *:last-child {
-      margin-bottom: 0;
-    }
-  }
 }
 
-.panel__header,
-.panel__footer {
+
+/* Panel header
+   ========================================================================== */
+
+.panel__header {
   position: relative;
   z-index: 2;
   padding: $global-spacing;
   background: #fff;
+  display: flex;
+  width: 100%;
+  border-radius: $base-border-radius $base-border-radius 0 0;
+  box-shadow: 0 1px 0 0 $base-alpha-color;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
-.panel__header {
-  border-radius: $base-border-radius $base-border-radius 0 0;
+.panel__headline {
+  > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .panel__title {
   @include heading(1.25rem);
   margin: 0;
+
+  a.panel__contents & {
+    color: $link-color;
+  }
 }
 
 .panel__subtitle {
+  position: relative;
   @extend .heading-alt;
   color: rgba($base-font-color, 0.64);
   font-size: 0.875rem;
   line-height: 1rem;
-  margin: 0;
+  margin: ($global-spacing / 4) 0;
 
-  .drop__toggle {
-    &:visited, & {
-      color: $base-font-color;
-    }
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
-.panel__headline,
-.panel__meta-actions {
-  display: table-cell;
 
-  &, > * {
-    vertical-align: top;
-  }
-}
-
-.panel__headline {
-  width: 100%;
-}
-
-.panel__meta-actions {
-  text-align: right;
-  white-space: nowrap;
-
-  > * {
-    margin-left: $global-spacing / 2;
-  }
-
-  > [class*="button"]:last-child {
-    margin-right: - $global-spacing / 4;
-  }
-
-  [class*="button"],
-  [class*="drop__toggle"] {
-    opacity: 0.48;
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-}
-
-.panel__footer {
-  min-height: 1rem;
-  border-radius: 0 0 $base-border-radius $base-border-radius;
-
-  &:empty {
-    padding: 0;
-  }
-}
+/* Panel body
+   ========================================================================== */
 
 .panel__body {
   position: relative;
   z-index: 1;
+  background: tint($base-color, 96%);
 
   > *:last-child {
     margin-bottom: 0;
@@ -106,6 +74,10 @@
 
 .panel__body-inner {
   padding: $global-spacing;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .panel-blank-message {
@@ -115,13 +87,89 @@
 }
 
 
-/* Panel buttons
+/* Panel footer
    ========================================================================== */
 
-.panel__button-dismiss {
-  @extend .button, .button--base-plain, .button--small, .button--text-hidden;
+.panel__footer {
+  position: relative;
+  z-index: 2;
+  padding: $global-spacing;
+  background: #fff;
+  min-height: 1rem;
+  border-radius: 0 0 $base-border-radius $base-border-radius;
+  box-shadow: 0 -1px 0 0 $base-alpha-color;
 
-  &::before {
-    @extend %uisi-sm-xmark;
+  &:empty {
+    padding: 0;
   }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+/* Panel header actions
+   ========================================================================== */
+
+.panel__h-actions {
+  flex: 1 1 auto;
+  text-align: right;
+  font-size: 0;
+  white-space: nowrap;
+
+  * {
+    vertical-align: top;
+  }
+}
+
+.panel__h-actions__menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: inset -1px 0 0 0 $base-alpha-color;
+  padding: 0 ($global-spacing / 2);
+
+  &:last-child {
+    box-shadow: none;
+    padding-right: 0;
+  }
+
+  &, > li {
+    display: inline-block;
+  }
+
+  > li:not(:last-child) {
+    margin-right: $global-spacing / 4;
+  }
+}
+
+
+/**
+ * "pha-" prefix stands for "panel action"
+ */
+
+[class^="pha-"],
+[class*=" pha-"] {
+  @extend .button, .button--small, .button--primary-plain, .button--text-hidden;
+}
+
+.pha-ellipsis::before {
+  @extend %uisi-ellipsis-vertical;
+}
+
+.pha-download::before {
+  @extend %uisi-download;
+}
+
+.pha-question::before {
+  @extend %uisi-circle-question;
+}
+
+.pha-pencil::before {
+  @extend %uisi-pencil;
+}
+
+.pha-cancel::before {
+  @extend %uisi-sm-xmark;
 }
