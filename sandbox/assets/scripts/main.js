@@ -88,7 +88,7 @@ var renderPanel = function () {
             <li><a className='actions__menu-item pha-download' title='Download' href='#'><span>Download</span></a></li>
           </ul>
           <ul className='panel__h-actions__menu actions'>
-            <li><button className='actions__menu-item pha-cancel' type='button' title='Dismiss panel'><span>Dismiss</span></button></li>
+            <li><button className='actions__menu-item pha-xmark' type='button' title='Dismiss panel'><span>Dismiss</span></button></li>
           </ul>
         </div>
       </header>
@@ -131,11 +131,11 @@ var renderDrop = function () {
 
       <h6 className='drop__title'>This is a title</h6>
       <ul className='drop__menu drop__menu--iconified' role='menu'>
-        <li><a href='#' title='This is Item 1a' className='drop__menu-item'><i className='oam-ds-icon-pencil'></i>Edit</a></li>
+        <li><a href='#' title='This is Item 1a' className='drop__menu-item'><i className='uisi-pencil'></i>Edit</a></li>
         <li><a href='#' title='This is Item 2a' className='drop__menu-item drop__menu-item--example-icon'>Download</a></li>
       </ul>
       <ul className='drop__menu drop__menu--iconified' role='menu'>
-        <li><a href='#' title='This is Item 1a' className='drop__menu-item delete'><i className='oam-ds-icon-trash-bin'></i>Delete</a></li>
+        <li><a href='#' title='This is Item 1a' className='drop__menu-item delete'><i className='uisi-trash-bin'></i>Delete</a></li>
       </ul>
 
     </Dropdown>,
