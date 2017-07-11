@@ -13,6 +13,10 @@
   > * {
     margin-bottom: $base-font-size * $base-line-height; // same as line-height
   }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .prose--responsive {
@@ -58,11 +62,16 @@ p, ul, ol, dl, pre, blockquote {
   }
 }
 
+
 /* Lists
    ========================================================================== */
 
 ol ol, ol ul, ul ol, ul ul {
   margin-bottom: 0;
+}
+
+ul, ol, dl {
+  padding: 0;
 }
 
 ul {
@@ -75,6 +84,7 @@ ol {
 
 dt {
   @extend .heading-alt;
+  color: rgba($base-font-color, 0.64);
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
@@ -87,11 +97,84 @@ dd {
   }
 }
 
-.dl-horizontal {
+.ul--tick,
+.ol--tick,
+.ul--go,
+.ol--go {
+  list-style: none;
+  margin-left: 0;
+
+  li {
+    display: block;
+    position: relative;
+    padding-left:$global-spacing * 1.5;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      color: $base-color;
+      opacity: 0.48;
+    }
+  }
+}
+
+.ul--tick li::before,
+.ol--tick li::before {
+  @extend %uisi-tick;
+}
+
+.ul--go li::before,
+.ol--go li::before {
+  @extend %uisi-arrow-right;
+}
+
+.dl--table {
   @extend .clearfix;
+  padding: 0;
+
+  &:not(:last-child) {
+    box-shadow: inset 0 -1px 0 0 $base-alpha-color;
+    padding-bottom: 0.5rem;
+  }
+
+  dd:not(:last-child) {
+    box-shadow: 0 1px 0 0 $base-alpha-color;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.ul--footnotes,
+.ol--footnotes {
+  position: relative;
+  color: rgba($base-font-color, 0.64);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-top: $global-spacing;
+  font-weight: $base-font-regular;
+  margin-left: 1rem;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: -$global-spacing;
+    width: 4rem;
+    height: 1px;
+    content: "";
+    background: $base-alpha-color;
+  }
+}
+
+.dl--horizontal {
+  @extend .clearfix;
+
   dt, dd {
     float: left;
   }
+
   dt {
     width: 32%;
     clear: left;
@@ -99,14 +182,17 @@ dd {
     padding-bottom: $global-spacing / 8;
     padding-right: $global-spacing / 2;
   }
+
   dd {
     width: 68%;
     padding-left: $global-spacing / 2;
   }
+
   dd + dd {
     margin-left: 32%;
   }
 }
+
 
 /* Prose specific */
 
@@ -117,6 +203,61 @@ dd {
       padding-bottom: $global-spacing / 4;
       font-size: 1rem;
       line-height: 1.5;
+    }
+  }
+
+  > .dl--table {
+    @include media(small-up) {
+      padding-bottom: 0;
+      
+      dt, dd {
+        float: left;
+        width: 50%;
+        margin: 0;
+        padding: 0.5rem 0;
+        box-shadow: inset 0 1px 0 0 $base-alpha-color;
+
+        &:first-of-type {
+          box-shadow: none;
+        }
+      }
+
+      dt {
+        clear: left;
+        padding-right: 0.5rem;
+      }
+
+      dd {
+        text-align: right;
+        padding-left: 0.5rem;
+      }
+    }
+
+    @include media(medium-up) {
+      dt, dd {
+        padding: 0.5rem 0;
+      }
+    }
+  }
+
+  > .ul--tick,
+  > .ol--tick,
+  > .ul--go,
+  > .ol--go {
+    @include media(medium-up) {
+      li {
+        &::before {
+          line-height: 2rem;
+        }
+      }
+    }
+  }
+
+  > .ul--footnotes,
+  > .ol--footnotes, {
+    @include media(medium-up) {
+      font-size: 1rem;
+      line-height: 1.5rem;
     }
   }
 }

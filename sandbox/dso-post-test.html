@@ -98,131 +98,18 @@
                 <!-- showcase -->
                 <div class="showcase prose prose--responsive">
 
-                  <p class="lead">This is a lead paragraph.</p>
-
-                  <h2 id="yaml-variables">Yaml variables</h2>
-                  <p>The post configuration goes into the YAML Front Matter. Some of the most important variables:</p>
-
-                  <p><strong>Base variables</strong></p>
-
-                  <pre><code>layout: blog
-                  category: blog
-                  published: true 
-                  </code></pre>
-
-                  <p><strong>Date</strong></p>
-
-                  <pre><code>date: "2015-06-07 16:30"
-                  </code></pre>
-                  <p>The date for a post is got from the file name. Only use this variable if the date differs from the one in the file name.<br>
-                  This should be avoided, if possible the file should be renamed.</p>
-
-                  <p><strong>Author</strong></p>
-
-                  <pre><code>author: Author name
-                  </code></pre>
-                  <p>The post author is defined by using his/her name as it appears under Team.</p>
-
-                  <p><strong>Title</strong></p>
-
-                  <pre><code>title: Title of the post
-                  </code></pre>
-
-                  <p><strong>Introduction</strong></p>
-
-                  <pre><code>introduction: Small introductory sentence
-                  </code></pre>
-                  <p>The introduction appears below the title in the post header and in the post card. Should be a small sentence that complements the title.<br>
-                  It’s not a mandatory variable.</p>
-
-                  <p><strong>Description</strong></p>
-
-                  <pre><code>description: Description of the post
-                  </code></pre>
-                  <p>The description is just used for the <code>&lt;meta&gt;</code> tags for SEO and sharing purposes. If not used will assume the value of <code>introduction</code>.<br>
-                  When there’s no introduction, part of the content will be used.</p>
-
-                  <p><strong>Topics</strong></p>
-
-                  <pre><code>topics:
-                    - Topic A
-                    - Topic B
-                    - ...
-                  </code></pre>
-                  <p>Posts can have multiple topics. These are used to categorize posts and assist browsing and exploration. Topics appear on list and single pages linking to the respective topic content.</p>
-
-                  <p><strong>Media</strong></p>
-
-                  <pre><code>media:
-                    card:
-                      url: /assets/graphics/content/mapathon-card.jpg
-                    cover:
-                      url: /assets/graphics/content/mapathon-cover.jpg
-                      attribution:
-                        author: Marco Antonio
-                        url: https://www.flickr.com/photos/38295840@N03/15574324266
-                  </code></pre>
-                  <p>The media tag defines the images to use for the post header (cover) and for the post card.</p>
-
-                  <p>The <code>media.card</code> is mandatory and does not support attribution.</p>
-
-                  <p>The <code>media.cover</code> is optional and should include the attribution (when pertinent).<br>
-                  This image is mostly decorative and should not be used as a replacement of other content images.<br>
-                  Also, an image used as the post cover should not be used in the post content.</p>
-
-                  <p>Check the <em>Cover and card images</em> section for instruction on how to prepare the images for preprocessing.</p>
-
-                  <p><strong>Theme</strong></p>
-
-                  <pre><code>theme: positive or negative
-                  </code></pre>
-                  <p>It’s <strong>highly</strong> advised to use a <code>negative</code> theme when a cover image is used. By default the <code>positive</code> theme is used.</p>
-
-                  <p>A complete list of the variables for each content type can be found in the <strong>CONTENT_GUIDELINES.md</strong> file.</p>
-
-                  <h2 id="cover-and-card-images">Cover and card images</h2>
-                  <p>The raw images must be placed in the <code>src/assets/graphics/content</code> directory in the corresponding folder.<br>
-                  They must have the correct aspect ratio and a size &gt;= the cut size.</p>
-
-                  <p>Avoid using gifs, as they can’t be processed and increase the visual noise on the list.</p>
-
-                  <ul>
-                    <li><strong>cover image</strong>: To be placed inside <code>cover</code> it will be cut to 1920x960 with a ratio of 2:1</li>
-                    <li><strong>card image</strong>: To be placed inside <code>card</code> it will be cut to 672x336 with a 2:1 ratio.</li>
-                    <li>If you need the same image for card and cover, place it inside <code>cover--card</code>. It will be cut to both sizes.</li>
-                  </ul>
-
-                  <p>The url to use can be easily predicted:<br>
-                  - <strong>cover image</strong>: /assets/graphics/content/[img_name]-cover.[ext]<br>
-                  - <strong>card image</strong>: /assets/graphics/content/[img_name]-card.[ext]</p>
-
                   <h2 id="headings">Headings</h2>
                   <p>The content of a post should not have level 1 headings as these are reserved for the post main title.</p>
+
+                  <h2>Paragraphs</h2>
+
+                  <p class="lead">This is a lead paragraph.</p>
+                  <p>This is a regular paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sodales, nibh ac consequat viverra, lectus nunc lacinia ligula, id sodales nibh sapien eu leo. Suspendisse et fringilla ante. Proin euismod feugiat fringilla. In hac habitasse platea dictumst.</p>
 
                   <h2 id="dropcap">Dropcap</h2>
                   <p class="dropcap">The dropcap is the capitalized first letter of a paragraph. It’s not for every occasion, but when the post/page starts with a paragraph that spans at least two full lines it should be added as it has a big impact on the look and feel of the post.</p>
 
                   <p>Unlike this example there should be only one dropcap and only at the beginning of the post.</p>
-
-                  <p>To add it, just place <code>{: .dropcap }</code> after the paragraph:</p>
-
-                  <pre><code>Lorem ipsum dolor sit amet, ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
-                  {: .dropcap }
-                  </code></pre>
-
-                  <p><strong>The <code>dropcap</code> is mandatory be default</strong> and its existence is checked by a test that will fail if it is not found.<br>
-                  However, since using it is an editorial choice it can be disabled by adding the <code># no-dropcap</code> comment to the front matter:</p>
-
-                  <pre><code>---
-                  # no-dropcap
-                  layout: blog
-
-                  </code></pre>
-
-                  <p>This tag just adds the <code>.dropcap</code> class to the element immediately before it, in this case the paragraph.<br>
-                  The same technique can be used to add other classes as can be seen in the lists section.</p>
 
                   <h2 id="content-media">Content media</h2>
                   <p>Images for content should be placed inside <code>/assets/graphics/content/prose/</code>.<br>
@@ -275,57 +162,33 @@
                     <p>This is a callout. And it supports <strong>markdown</strong> and all.</p>
                   </div>
 
-                  <pre><code>&lt;div class="callout" markdown="1"&gt;
-                    This is a callout. And it supports **markdown** and all. 
-                  &lt;/div&gt;
-                  </code></pre>
-
-                  <p>Note that by using <code>markdown="1"</code> on an HTML tag you ensure that any markdown content inside it will be parsed.</p>
-
                   <h2 id="lists">Lists</h2>
                   <p>Besides the regular markdown lists there are a couple of extra ones that can be styled with a class.</p>
 
-                  <p><strong>Check lists</strong></p>
+                  <h3>Check list</h3>
 
-                  <ul class="check-list">
+                  <ul class="ul--tick">
                     <li>Check list item 1</li>
                     <li>Check list item 2</li>
                     <li>Check list item 3</li>
                   </ul>
 
-                  <pre><code>* Check list item 1
-                  * Check list item 2
-                  * Check list item 3
-                  {: .check-list }
-                  </code></pre>
+                  <h3>Call-to-Action list</h3>
 
-                  <p><strong>Call-to-Action lists</strong></p>
-
-                  <ul class="cta-list">
+                  <ul class="ul--go">
                     <li>Call-to-Action list item 1</li>
                     <li>Call-to-Action list item 2</li>
                     <li>Call-to-Action list item 3</li>
                   </ul>
 
-                  <pre><code>* Call-to-Action list item 1
-                  * Call-to-Action list item 2
-                  * Call-to-Action list item 3
-                  {: .cta-list }
-                  </code></pre>
 
-                  <p><strong>Footnotes lists</strong></p>
+                  <h3>Footnotes list</h3>
 
-                  <ol class="footnotes-list">
+                  <ol class="ol--footnotes">
                     <li>Footnote list item 1</li>
                     <li>Footnote list item 2</li>
                     <li>Footnote list item 3</li>
                   </ol>
-
-                  <pre><code>1. Footnote list item 1
-                  2. Footnote list item 2
-                  3. Footnote list item 3
-                  {: .footnotes-list }
-                  </code></pre>
 
                   <h2 id="blockquotes">Blockquotes</h2>
 
@@ -335,10 +198,6 @@
                     <footer>Crazy hunch-backed old guy from the movie <cite title="Aladin">Aladin</cite></footer>
                   </blockquote>
 
-                  <pre><code>&gt; You know the golden rule, don’t you boy? Those who have the gold make the rules.
-                  &gt;
-                  &gt; &lt;footer&gt;Crazy hunch-backed old guy from the movie &lt;cite title="Aladin"&gt;Aladin&lt;/cite&gt;&lt;/footer&gt;
-                  </code></pre>
 
                   <h2 id="definition-lists">Definition lists</h2>
 
@@ -351,34 +210,29 @@
                     <dd>Definiton/description B</dd>
                   </dl>
 
-                  <pre><code>Term A
-                  : Definiton/description A
+                  <p>They can also be horizontal:</p>
 
-                  Term B
-                  : Definiton/description B
-                  </code></pre>
+                  <dl class="dl--horizontal">
+                    <dt>Social networks</dt>
+                    <dd>Twitter: <a href="https://twitter.com/developmentseed">@developmentseed</a></dd>
+                    <dd>Flicker: <a href="https://www.flickr.com/photos/developmentseed/">developmentseed</a></dd>
+                    <dt>Email</dt>
+                    <dd>Info: <a href="mailto:info@developmentseed.org">info@developmentseed.org</a></dd>
+                  </dl>
 
-                  <p>They can also be presented inline with the use of a class:</p>
+                  <p>Or presented like a table with the use of a class:</p>
 
-                  <dl class="details-list">
+                  <dl class="dl--table">
                     <dt>Twitter</dt>
                     <dd><a href="https://twitter.com/developmentseed">@developmentseed</a></dd>
                     <dt>Email</dt>
                     <dd><a href="mailto:info@developmentseed.org">info@developmentseed.org</a></dd>
                   </dl>
 
-                  <pre><code>Twitter
-                  : [@developmentseed](https://twitter.com/developmentseed)
-
-                  Email
-                  : [info@developmentseed.org](mailto:info@developmentseed.org)
-                  {: .details-list }
-                  </code></pre>
-
                   <h2 id="tables">Tables</h2>
                   <p>To ensure that tables work on small screens always add a wrapper around them:</p>
 
-                  <div class="table-responsive">
+                  <div class="scrollable-x">
 
                     <table class="table">
                       <thead>
@@ -424,18 +278,7 @@
 
                   </div>
 
-                  <pre><code>&lt;div class="table-responsive" markdown="1"&gt;
-
-                    instance type | process type| old-landsat-util | new-landsat-util | speedup
-                    -----|---- | ----------- | ----------- | -------
-                    R3.large | non-pansharpened | 252.7s | 122.05s | **2x**
-                    R3.large | pansharpened | 846.9s | 349.17s | **2.4x**
-                    C4.2xlarge | non-pansharpened | 216.6s | 106.67s | **2x**
-                    C4.2xlarge | pansharpened | 438s | 290s | **1.5x**
-
-                  &lt;/div&gt;
-                  </code></pre>
-                  <p>Note that the line break between the wrapper div and the markdown is of the utmost importance. Without it the table won’t render correctly.</p>
+                  <p>Lorem ipsum dolor sit amet.</p>
 
                 </div>
                 <!--/ showcase -->
