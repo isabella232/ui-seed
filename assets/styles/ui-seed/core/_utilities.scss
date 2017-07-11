@@ -16,6 +16,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 /* Truncated text
    ========================================================================== */
 
@@ -24,6 +25,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 
 /* Hidden content
    ========================================================================== */
@@ -80,6 +82,42 @@
 }
 
 
+/* Disabled
+   ========================================================================== */
+
+.disabled {
+  opacity: 0.48;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.visually-disabled {
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    opacity: 0.48 !important;
+    cursor: not-allowed;
+  }
+}
+
+
+/* Scrollable
+   ========================================================================== */
+
+.scrollable-x  {
+  position: relative;
+  min-height: .01%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
 /* Unscrollable
    ========================================================================== */
 
@@ -96,29 +134,13 @@
    ========================================================================== */
 
 .clearfix {
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     content: " ";
     display: table;
   }
-  &:after {
+
+  &::after {
     clear: both;
-  }
-}
-
-
-/* Disabled
-   ========================================================================== */
-
-.disabled {
-  opacity: 0.48;
-  pointer-events: none;
-  cursor: not-allowed;
-}
-
-.visually-disabled {
-  &, &:hover, &:active, &:focus {
-    opacity: 0.48 !important;
-    cursor: not-allowed;
   }
 }
