@@ -12,30 +12,33 @@ img {
   vertical-align: middle;
 }
 
-.image-fluid {
+.img--fluid {
   max-width: 100%;
   height: auto;
 }
 
-.image-full {
+.img--full {
   width: 100%;
   height: auto;
 }
 
 /* Prose specific */
 
-.prose > img,
-.prose > figure img {
-  max-width: 100%;
-  height: auto;
-}
+.prose {
+  > img,
+  > figure img {
+    max-width: 100%;
+    height: auto;
+  }
 
-.prose > figure figcaption {
-  color: rgba($base-color, 0.48);
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  padding-top: 1rem;
-  font-weight: $base-font-regular;
+  > figure figcaption {
+    color: rgba($base-font-color, 0.64);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding-top: 1rem;
+    font-weight: $base-font-regular;
+    text-align: center;
+  }
 }
 
 

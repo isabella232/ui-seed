@@ -116,8 +116,9 @@ dd {
       z-index: 1;
       font-size: 1rem;
       line-height: 1.5rem;
-      color: $base-color;
-      opacity: 0.48;
+      color: inherit;
+      width: 1rem;
+      text-align: center;
     }
   }
 }
@@ -209,7 +210,7 @@ dd {
   > .dl--table {
     @include media(small-up) {
       padding-bottom: 0;
-      
+
       dt, dd {
         float: left;
         width: 50%;
@@ -275,6 +276,7 @@ blockquote {
   }
 
   footer {
+    font-weight: $base-font-regular;
     color: rgba($base-font-color, 0.64);
     margin-top: -$global-spacing / 2;
     font-size: 0.875rem;
