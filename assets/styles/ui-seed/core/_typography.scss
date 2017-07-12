@@ -82,6 +82,12 @@ ol {
   list-style-type: decimal;
 }
 
+ul,
+ol {
+  list-style-position: outside;
+  margin-left: $global-spacing;
+}
+
 dt {
   @extend .heading-alt;
   color: rgba($base-font-color, 0.64);
@@ -198,6 +204,13 @@ dd {
 /* Prose specific */
 
 .prose--responsive {
+  > ul,
+  > ol {
+    @include media(medium-up) {
+      margin-left: $global-spacing * 1.5;
+    }
+  }
+
   > dl dt {
     @include media(medium-up) {
       padding-top: $global-spacing / 4;
