@@ -48,12 +48,12 @@
 
 .exhibit {
   @extend .clearfix;
-  box-shadow: inset 0 0 0 1px $base-alpha-color;
   border-radius: $base-border-radius;
   background: #fff;
   font-size: 1rem;
   line-height: 1.5;
   overflow: hidden;
+  box-shadow: inset 0 0 0 1px $base-alpha-color;
 
   li > & {
     margin: 0;
@@ -83,17 +83,15 @@
   }
 }
 
-.exhibit__content {
-  .exhibit--mid-dark & {
-    @extend .antialiased;
-    background: tint($base-color, 92%);
-  }
+.exhibit--mid-dark  {
+  @extend .antialiased;
+  background: tint($base-color, 92%);
+}
 
-  .exhibit--dark & {
-    @extend .antialiased;
-    background: $base-color;
-    color: #fff;
-  }
+.exhibit--dark {
+  @extend .antialiased;
+  background: $base-color;
+  color: #fff;
 }
 
 .exhibit__caption {
