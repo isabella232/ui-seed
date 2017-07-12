@@ -3,20 +3,18 @@
    ========================================================================== */
 
 .label {
-  @extend .antialiased;
   position: relative;
   display: inline-block;
-  vertical-align: top;
+  vertical-align: baseline;
   border-radius: $full-border-radius;
-  padding: 0 0.75rem;
+  padding: 0.25rem 0.75rem;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 0.75rem;
-  line-height: 1.25rem;
-  text-transform: uppercase;
+  font-size: 0.875rem;
+  line-height: 1rem;
   font-weight: $base-font-regular;
-  color: rgba($base-color, 0.48);
-  background: rgba($base-color, 0.08);
+  color: $base-font-color;
+  background: $base-alpha-color;
 }
 
 
@@ -24,6 +22,7 @@
    ========================================================================== */
 
 .label--light {
+  @extend .antialiased;
   color: #fff;
   background: rgba(#fff, 0.16);
 }
@@ -36,7 +35,7 @@
 .label--info,
 .label--warning,
 .label--danger {
-  padding: 0 0.75rem 0 1.25rem;
+  padding-left: 1.25rem;
 
   &::before {
     position: absolute;
