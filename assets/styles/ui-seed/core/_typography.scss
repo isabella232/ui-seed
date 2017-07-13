@@ -228,7 +228,7 @@ dd {
         float: left;
         width: 50%;
         margin: 0;
-        padding: 0.5rem 0;
+        padding: ($global-spacing / 2) 0;
         box-shadow: inset 0 1px 0 0 $base-alpha-color;
 
         &:first-of-type {
@@ -238,18 +238,18 @@ dd {
 
       dt {
         clear: left;
-        padding-right: 0.5rem;
+        padding-right: $global-spacing / 2;
       }
 
       dd {
         text-align: right;
-        padding-left: 0.5rem;
+        padding-left: $global-spacing / 2;
       }
     }
 
     @include media(medium-up) {
       dt, dd {
-        padding: 0.5rem 0;
+        padding: ($global-spacing / 2) 0;
       }
     }
   }
@@ -259,6 +259,8 @@ dd {
   > .ul--go,
   > .ol--go {
     @include media(medium-up) {
+      margin-left: 0;
+
       li {
         &::before {
           line-height: 2rem;
@@ -324,13 +326,15 @@ blockquote {
 /* Dividers
    ========================================================================== */
 
-hr, .hr {
+hr,
+.hr {
   border: 0;
-  height: 2px;
-  background: $base-alpha-color;
+  height: ($global-spacing / 2);
+  background: none;
   width: 80%;
   max-width: 16rem;
-  margin: ($global-spacing * 2) auto;
+  margin: ($global-spacing / 4) auto;
+  background: transparent linear-gradient(transparent, $base-alpha-color, transparent) 50% / auto 1px repeat-x;
 }
 
 /* Prose specific */
@@ -338,7 +342,7 @@ hr, .hr {
 .prose {
   > hr,
   >.hr {
-    margin: ($global-spacing * 3) auto;
+    margin: $global-spacing auto;
   }
 }
 
@@ -346,7 +350,7 @@ hr, .hr {
   > hr,
   > .hr {
     @include media(medium-up) {
-      margin: ($global-spacing * 4) auto;
+      margin: ($global-spacing * 2) auto;
     }
   }
 }
@@ -366,7 +370,7 @@ small, .small {
 
 mark, .mark {
   padding: 0 0.25rem;
-  background: rgba($primary-color, 0.16);
+  background: rgba($accent-color, 0.16);
   border-radius: $base-border-radius;
 }
 
@@ -376,7 +380,7 @@ mark, .mark {
 
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dashed $base-alpha-color;
+  border-bottom: 1px dashed rgba($accent-color, 0.32);
   text-decoration: none;
   text-transform: initial;
 }
