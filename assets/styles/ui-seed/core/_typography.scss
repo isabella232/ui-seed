@@ -245,6 +245,11 @@ dd {
         text-align: right;
         padding-left: $global-spacing / 2;
       }
+
+      dd + dd {
+        margin-left: 50%;
+        box-shadow: none;
+      }
     }
 
     @include media(medium-up) {
