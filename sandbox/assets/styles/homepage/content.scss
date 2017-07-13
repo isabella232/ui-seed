@@ -180,6 +180,12 @@
     right: initial;
     margin-bottom: 1rem;
   }
+
+  > .callout,
+  > pre {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .exhibit--modal {
