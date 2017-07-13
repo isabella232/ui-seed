@@ -169,6 +169,8 @@
 
   &__introduction {
     color: rgba($base-font-color, 0.64);
+    font-size: 1rem;
+    line-height: 1.5rem;
 
     > *:last-child {
       margin-bottom: 0;
