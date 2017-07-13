@@ -216,6 +216,10 @@ textarea.form__control {
   border-collapse: separate;
   width: 100%;
   white-space: nowrap;
+
+  * {
+    vertical-align: top;
+  }
 }
 
 .form__input-addon {
