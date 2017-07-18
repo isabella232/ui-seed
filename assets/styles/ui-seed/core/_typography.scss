@@ -287,7 +287,8 @@ dd {
 /* Blockquote
    ========================================================================== */
 
-blockquote {
+blockquote,
+.blockquote {
   box-shadow: inset 1px 0 0 0 $base-alpha-color;
   padding: ($global-spacing / 2) $global-spacing;
 
@@ -308,6 +309,27 @@ blockquote {
   }
 }
 
+.blockquote--quote-left {
+  position: relative;
+  box-shadow: none;
+  padding: ($global-spacing / 2) $global-spacing ($global-spacing / 2) ($global-spacing * 2);
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  &::before {
+    @extend %uisi-quote-left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    font-size: 4em;
+    color: $base-alpha-color;
+  }
+}
+
 /* Prose specific */
 
 .prose--responsive {
@@ -317,11 +339,17 @@ blockquote {
     }
   }
 
+  > .blockquote--quote-left {
+    @include media(medium-up) {
+      padding: $global-spacing ($global-spacing * 2) $global-spacing ($global-spacing * 4);
+    }
+  }
+
   > blockquote footer {
     @include media(medium-up) {
       font-size: 1rem;
       line-height: 1.5rem;
-       margin-top: 0;
+      margin-top: 0;
     }
   }
 }
