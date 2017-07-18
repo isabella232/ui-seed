@@ -22,7 +22,7 @@
       right: 0;
       bottom: 0;
       content: '';
-      background: linear-gradient(45deg, rgba(shade($accent-color, 92%), 1) 0%, rgba(shade($accent-color, 64%), 0.8) 64%, rgba($accent-color, 0.8) 100%);
+      background: linear-gradient(45deg, rgba(shade($primary-color, 92%), 1) 0%, rgba(shade($primary-color, 64%), 0.8) 64%, rgba($primary-color, 0.8) 100%);
     }
   }
 
