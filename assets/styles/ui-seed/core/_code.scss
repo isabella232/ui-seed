@@ -56,14 +56,14 @@ pre {
 .prose--responsive {
   > pre {
     @include media(small-up) {
-      margin-left: -1rem;
-      margin-right: -1rem;
+      margin-left: -$global-spacing; 
+      margin-right: -$global-spacing;
     }
 
     @include media(medium-up) {
-      padding: 2rem;
-      margin-left: -2rem;
-      margin-right: -2rem;
+      padding: $global-spacing * 2;
+      margin-left: -$global-spacing * 2;
+      margin-right: -$global-spacing * 2;
     }
   }
 }
