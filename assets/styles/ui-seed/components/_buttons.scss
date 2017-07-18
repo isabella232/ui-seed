@@ -38,6 +38,7 @@
   }
 
   /* Icon handling */
+
   &::before, &::after,
   [class^="openaq-ds-icon-"], [class*=" openaq-ds-icon-"],
   [class^="uisis-"], [class*=" uisis-"] {
@@ -55,12 +56,14 @@
   }
 
   /* Checkbox/radio handling */
+
   > input[type=checkbox],
   > input[type=radio] {
     @extend .visually-hidden;
   }
 
   /* Animation */
+
   transition: background-color 0.24s ease 0s;
 }
 
@@ -249,7 +252,7 @@
   }
 
   > .button + .button {
-    margin-left: -2px;
+    margin-left: -1px;
   }
 }
 
@@ -260,9 +263,10 @@
     clear: both;
     width: 100%;
     border-radius: $base-border-radius;
-    &:hover {
-      z-index: 2;
-    }
+    
+    // &:hover {
+    //   z-index: 2;
+    // }
   }
 
   > .button:first-child:not(:last-child) {
@@ -280,6 +284,6 @@
   }
 
   > .button + .button {
-    margin-top: -2px;
+    margin-top: -1px;
   }
 }
