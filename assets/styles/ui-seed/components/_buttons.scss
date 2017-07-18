@@ -173,7 +173,7 @@
 .button-group--xlarge .button {
   line-height: 2rem;
   font-size: 1.25rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.25rem;
   min-width: 3rem;
 }
 
@@ -206,6 +206,10 @@
 
 .button--semi-fluid {
   min-width: 16rem;
+}
+
+.button--rounded {
+  border-radius: $full-border-radius;
 }
 
 
@@ -263,7 +267,7 @@
     clear: both;
     width: 100%;
     border-radius: $base-border-radius;
-    
+
     // &:hover {
     //   z-index: 2;
     // }
