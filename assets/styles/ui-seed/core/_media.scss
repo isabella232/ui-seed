@@ -2,8 +2,8 @@
    Media
    ========================================================================== */
 
-
-figure {
+figure,
+.figure {
   padding: 0;
   margin: 0 0 $global-spacing 0;
 }
@@ -25,8 +25,7 @@ img {
 /* Prose specific */
 
 .prose {
-  > img,
-  > figure img {
+  img {
     max-width: 100%;
     height: auto;
   }
@@ -39,30 +38,4 @@ img {
     font-weight: $base-font-regular;
     text-align: center;
   }
-}
-
-
-/* Aligning
-   ========================================================================== */
-
-img.align-center,
-figure.align-center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-img.align-left,
-figure.align-left {
-  float: left;
-  margin-right: $global-spacing * 1.5;
-  text-align: left;
-}
-
-img.align-right,
-figure.align-right {
-  float: right;
-  margin-left:  $global-spacing * 1.5;
-  text-align: right;
 }

@@ -17,6 +17,23 @@
   > *:last-child {
     margin-bottom: 0;
   }
+
+  .align-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .align-left {
+    float: left;
+    margin-right: $global-spacing * 1.5;
+  }
+
+
+  .align-right {
+    float: right;
+    margin-left:  $global-spacing * 1.5;
+  }
 }
 
 .prose--responsive {
@@ -29,6 +46,15 @@
   
     > * {
       margin-bottom: $prose-resp-font-size * $prose-resp-line-height; // same as line-height
+    }
+
+    .align-left {
+      margin-right: $prose-resp-font-size * $prose-resp-line-height;
+    }
+
+
+    .align-right {
+      margin-left: $prose-resp-font-size * $prose-resp-line-height;
     }
   }
 }
