@@ -130,6 +130,53 @@
 }
 
 
+/* Round shapes
+   ========================================================================== */
+
+.circle,
+.capsule {
+  border-radius: 100vh;
+}
+
+.oval {
+  border-radius: 100% / 50%;
+}
+
+.rounded {
+  border-radius: $base-border-radius;
+}
+
+
+/* Aligning
+   ========================================================================== */
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.text-left {
+  align: left;
+}
+
+.text-right {
+  align: right;
+}
+
+.text-center {
+  align: center;
+}
+
+.block-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 /* Clearfix
    ========================================================================== */
 
