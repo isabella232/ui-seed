@@ -34,6 +34,8 @@
     <link rel="apple-touch-icon" sizes="144x144" href="assets/graphics/meta/apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="assets/graphics/meta/apple-touch-icon-152x152.png" />
 
+    <link rel="author" type="text/plain" href="humans.txt" />
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i" />
 
     <!-- build:css assets/styles/vendor.css -->
@@ -399,7 +401,7 @@
                   </div>
 
                   <h2>Buttons</h2>
-                  <div class="exhibit exhibit--mid-dark">
+                  <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
                       <button class="button button--base-raised-light" type="button"><span>Base Raised Light</span></button>
                       <button class="button button--base-raised-dark" type="button"><span>Base Raised Dark</span> <span class="uisi-sm-chevron-right"></span></button>
@@ -408,8 +410,13 @@
                       <button class="button button--primary-raised-light" type="button"><span>Primary Raised Light</span></button>
                       <button class="button button--primary-raised-dark" type="button"><span>Primary Raised Dark</span></button>
                       <button class="button button--primary-plain" type="button"><span>Primary Plain</span></button>
+                    </div>
+                  </div>
 
-                      <button class="button button--achromic" type="button"><span>Achromic</span></button>
+                  <div class="exhibit exhibit--dark">
+                    <div class="exhibit__content prose prose--responsive">
+                      <button class="button button--achromic-plain" type="button"><span>Achromic Plain</span></button>
+                      <button class="button button--achromic-glass" type="button"><span>Achromic Glass</span></button>
                     </div>
                   </div>
 
@@ -445,7 +452,7 @@
                         <button class="button button--base-raised-light" type="button"><span>Bottom</span></button>
                       </div>
 
-                      <div class="button-group button-group--horizontal button-group--large" role="group" aria-label="...">
+                      <div class="button-group button-group--horizontal button-group--xlarge" role="group" aria-label="...">
                         <button class="button button--primary-raised-dark" type="button"><span>Left</span></button>
                         <button class="button button--primary-raised-dark" type="button"><span>Middle</span></button>
                         <button class="button button--primary-raised-dark button--active" type="button"><span>Right</span></button>
@@ -512,7 +519,7 @@
                   <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
                       <div class="drop drop--down drop--align-left drop--open">
-                        <button class="button button--achromic drop__toggle drop__toggle--caret" type="button"><span>Toggle</span></button>
+                        <button class="button button--base-raised-dark drop__toggle drop__toggle--caret" type="button"><span>Toggle</span></button>
                         <div class="drop__content">
                           <h6 class="drop__title">This is a title</h6>
                           <ul class="drop__menu drop__menu--iconified" role="menu">
@@ -526,7 +533,7 @@
                       </div>
 
                       <div class="drop drop--down drop--align-left drop--open">
-                        <button class="button button--achromic drop__toggle drop__toggle--caret" type="button"><span>Toggle</span></button>
+                        <button class="button button--primary-raised-dark button--achromic drop__toggle drop__toggle--caret" type="button"><span>Toggle</span></button>
                         <div class="drop__content">
                           <h6 class="drop__title">This is a title</h6>
                           <ul class="drop__menu drop__menu--select" role="menu">
@@ -541,14 +548,16 @@
                       </div>
 
                     </div>
+                  </div>
 
+                  <h3>Powered by React</h3>
+                  <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
                       <div data-hook="react:drops"><!-- React rendered content --></div>
                     </div>
-
                   </div>
 
-                  <h2>Panels <small>(with scrollable area)</small></h2>
+                  <h2>Panels <small>(with scrollable area powered by React)</small></h2>
                   <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
                       <div data-hook='scroll'></div>
@@ -759,6 +768,26 @@
                         <button class="alert__button-dismiss" title="Dismiss alert"><span>Dismiss</span></button>
                         <p><strong>Danger:</strong> This is a danger alert message. Popover style!</p>
                       </div>
+                    </div>
+                  </div>
+
+                  <h2>Labels</h2>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <span class="label">Default</span>
+                      <span class="label label--success">Success</span>
+                      <span class="label label--info">Info</span>
+                      <span class="label label--warning">Warning</span>
+                      <span class="label label--danger">Danger</span>
+                    </div>
+                  </div>
+
+                  <div class="exhibit exhibit--dark">
+                    <div class="exhibit__content prose prose--responsive">
+                      <span class="label label--negative">Default Negative</span>
+                      <span class="label label--negative label--success">Success Negative</span>
+                      <span class="label label--negative label--info">Info Negative</span>
+                      <span class="label label--negative label--warning">Warning Negative</span>
                     </div>
                   </div>
 

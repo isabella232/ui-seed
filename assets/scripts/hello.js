@@ -1,7 +1,11 @@
+/* eslint-disable */
 module.exports = function () {
-  console.log('     / \\ ');
-  console.log('   / / \\ \\ ');
-  console.log(' /  /   \\  \\ ');
-  console.log(' `_ / ^ \\ _´ ');
-  console.log('Hello OpenAQ');
+  console.log(" _____               _                                  _     _____               _");
+  console.log("|  _  \             | |                                | |   /  ___|             | |");
+  console.log("| | | |_____   _____| | ___  _ __  _ __ ___   ___ _ __ | |_  \ `--.  ___  ___  __| |");
+  console.log("| | | / _ \ \ / / _ \ |/ _ \| '_ \| '_ ` _ \ / _ \ '_ \| __|  `--. \/ _ \/ _ \/ _` |");
+  console.log("| |/ /  __/\ V /  __/ | (_) | |_) | | | | | |  __/ | | | |_  /\__/ /  __/  __/ (_| |");
+  console.log("|___/ \___| \_/ \___|_|\___/| .__/|_| |_| |_|\___|_| |_|\__| \____/ \___|\___|\__,_|");
+  console.log("                            | |");
+  console.log("                            |_|");
 };
