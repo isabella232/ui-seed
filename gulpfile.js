@@ -16,6 +16,7 @@ var rev = require('gulp-rev');
 var revReplace = require('gulp-rev-replace');
 var notifier = require('node-notifier');
 var cp = require('child_process');
+var ejs = require('gulp-ejs');
 var SassString = require('node-sass').types.String;
 var GULP_ADDONS = require('./gulp-addons');
 
@@ -240,10 +241,26 @@ gulp.task('images', function () {
     .pipe(gulp.dest('dist/assets/graphics'));
 });
 
-gulp.task('extras', function () {
+gulp.task('humans', function () {
+  let date = new Date();
+  let day = date.getDate();
+  day = day < 10 ? `0${day}` : day;
+  let month = date.getMonth() + 1;
+  month = month < 10 ? `0${month}` : month;
+  let year = date.getFullYear();
+
+  return gulp.src('sandbox/humans.txt')
+    .pipe(ejs({
+      lastUpdate: `${year}/${month}/${day}`
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('extras', ['humans'], function () {
   return gulp.src([
     'sandbox/**/*',
     '!sandbox/*.html',
+    '!sandbox/humans.txt',
     '!sandbox/assets/graphics/**',
     '!sandbox/assets/vendor/**',
     '!sandbox/assets/styles/**',

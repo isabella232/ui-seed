@@ -23,7 +23,7 @@ Location: Lisbon, Portugal
 
 /* PROJECT */
 
-Last update: 2017/07/27
+Last update: <%- lastUpdate %>
 Standards: CSS3, HTML5, RWD, WAI-ARIA
 Components: Bourbon, Collecticons, Jeet, React
 Software: GitHub (Mac), Sublime Text
