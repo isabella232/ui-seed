@@ -56,8 +56,10 @@
 @import "ui-seed/components/drops";
 @import "ui-seed/components/cards";
 @import "ui-seed/components/panels";
+@import "ui-seed/components/callouts";
 @import "ui-seed/components/alerts";
 @import "ui-seed/components/modals";
+@import "ui-seed/components/frames";
 
 
 /* Core (cont.)
@@ -69,5 +71,6 @@
 /* Third-party (cont.)
    ========================================================================== */
 
+@import "ui-seed/vendor/pygments";
 @import "ui-seed/vendor/react-scrollbar";
 @import "ui-seed/vendor/react-paginate";

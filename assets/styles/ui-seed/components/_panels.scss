@@ -5,6 +5,9 @@
 .panel {
   @extend %panel-skin;
   position: relative;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  text-align: initial;
 }
 
 
@@ -170,6 +173,6 @@
   @extend %uisi-pencil;
 }
 
-.pha-cancel::before {
+.pha-xmark::before {
   @extend %uisi-xmark;
 }

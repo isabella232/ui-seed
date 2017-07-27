@@ -25,7 +25,7 @@
 /* Headline */
 
 .page__headline {
-  float: left;
+  text-align: center;
 }
 
 .page__title {
@@ -34,6 +34,7 @@
   font-weight: $base-font-bold;
   text-transform: uppercase;
   margin: 0;
+  display: inline-block;
 
   a {
     display: inline-block;

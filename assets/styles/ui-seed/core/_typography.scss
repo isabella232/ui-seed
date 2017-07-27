@@ -13,6 +13,27 @@
   > * {
     margin-bottom: $base-font-size * $base-line-height; // same as line-height
   }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .align-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .align-left {
+    float: left;
+    margin-right: $global-spacing * 1.5;
+  }
+
+
+  .align-right {
+    float: right;
+    margin-left:  $global-spacing * 1.5;
+  }
 }
 
 .prose--responsive {
@@ -25,6 +46,15 @@
   
     > * {
       margin-bottom: $prose-resp-font-size * $prose-resp-line-height; // same as line-height
+    }
+
+    .align-left {
+      margin-right: $prose-resp-font-size * $prose-resp-line-height;
+    }
+
+
+    .align-right {
+      margin-left: $prose-resp-font-size * $prose-resp-line-height;
     }
   }
 }
@@ -58,11 +88,16 @@ p, ul, ol, dl, pre, blockquote {
   }
 }
 
+
 /* Lists
    ========================================================================== */
 
 ol ol, ol ul, ul ol, ul ul {
   margin-bottom: 0;
+}
+
+ul, ol, dl {
+  padding: 0;
 }
 
 ul {
@@ -73,8 +108,15 @@ ol {
   list-style-type: decimal;
 }
 
+ul,
+ol {
+  list-style-position: outside;
+  margin-left: $global-spacing;
+}
+
 dt {
   @extend .heading-alt;
+  color: rgba($base-font-color, 0.64);
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
@@ -87,11 +129,86 @@ dd {
   }
 }
 
-.dl-horizontal {
+.ul--tick,
+.ol--tick,
+.ul--go,
+.ol--go {
+  list-style: none;
+  margin-left: 0;
+
+  li {
+    display: block;
+    position: relative;
+    padding-left:$global-spacing * 1.5;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      color: inherit;
+      width: 1rem;
+      text-align: center;
+    }
+  }
+}
+
+.ul--tick li::before,
+.ol--tick li::before {
+  @extend %uisi-tick;
+}
+
+.ul--go li::before,
+.ol--go li::before {
+  @extend %uisi-arrow-right;
+}
+
+.dl--table {
   @extend .clearfix;
+  padding: 0;
+
+  &:not(:last-child) {
+    box-shadow: inset 0 -1px 0 0 $base-alpha-color;
+    padding-bottom: 0.5rem;
+  }
+
+  dd:not(:last-child) {
+    box-shadow: 0 1px 0 0 $base-alpha-color;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.ul--footnotes,
+.ol--footnotes {
+  @include font-feature-settings("pnum" 0); // Use proportional numbers
+  position: relative;
+  color: rgba($base-font-color, 0.64);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-top: $global-spacing;
+  font-weight: $base-font-regular;
+  margin-left: 1rem;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: -$global-spacing;
+    width: 4rem;
+    height: 1px;
+    content: "";
+    background: $base-alpha-color;
+  }
+}
+
+.dl--horizontal {
+  @extend .clearfix;
+
   dt, dd {
     float: left;
   }
+
   dt {
     width: 32%;
     clear: left;
@@ -99,18 +216,28 @@ dd {
     padding-bottom: $global-spacing / 8;
     padding-right: $global-spacing / 2;
   }
+
   dd {
     width: 68%;
     padding-left: $global-spacing / 2;
   }
+
   dd + dd {
     margin-left: 32%;
   }
 }
 
+
 /* Prose specific */
 
 .prose--responsive {
+  > ul,
+  > ol {
+    @include media(medium-up) {
+      margin-left: $global-spacing * 1.5;
+    }
+  }
+
   > dl dt {
     @include media(medium-up) {
       padding-top: $global-spacing / 4;
@@ -119,13 +246,76 @@ dd {
       line-height: 1.5;
     }
   }
+
+  > .dl--table {
+    @include media(small-up) {
+      padding-bottom: 0;
+
+      dt, dd {
+        float: left;
+        width: 50%;
+        margin: 0;
+        padding: ($global-spacing / 2) 0;
+        box-shadow: inset 0 1px 0 0 $base-alpha-color;
+
+        &:first-of-type {
+          box-shadow: none;
+        }
+      }
+
+      dt {
+        clear: left;
+        padding-right: $global-spacing / 2;
+      }
+
+      dd {
+        text-align: right;
+        padding-left: $global-spacing / 2;
+      }
+
+      dd + dd {
+        margin-left: 50%;
+        box-shadow: none;
+      }
+    }
+
+    @include media(medium-up) {
+      dt, dd {
+        padding: ($global-spacing / 2) 0;
+      }
+    }
+  }
+
+  > .ul--tick,
+  > .ol--tick,
+  > .ul--go,
+  > .ol--go {
+    @include media(medium-up) {
+      margin-left: 0;
+
+      li {
+        &::before {
+          line-height: 2rem;
+        }
+      }
+    }
+  }
+
+  > .ul--footnotes,
+  > .ol--footnotes, {
+    @include media(medium-up) {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+  }
 }
 
 
 /* Blockquote
    ========================================================================== */
 
-blockquote {
+blockquote,
+.blockquote {
   box-shadow: inset 1px 0 0 0 $base-alpha-color;
   padding: ($global-spacing / 2) $global-spacing;
 
@@ -134,25 +324,77 @@ blockquote {
   }
 
   footer {
+    font-weight: $base-font-regular;
     color: rgba($base-font-color, 0.64);
-    margin-top: -0.5rem;
+    margin-top: -$global-spacing / 2;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+
     &:before {
       content: '— ';
     }
   }
 }
 
+.blockquote--quote-left {
+  position: relative;
+  box-shadow: none;
+  padding: ($global-spacing / 2) $global-spacing ($global-spacing / 2) ($global-spacing * 2);
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  &::before {
+    @extend %uisi-quote-left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    font-size: 4em;
+    color: $base-alpha-color;
+  }
+}
+
+/* Prose specific */
+
+.prose--responsive {
+  > blockquote {
+    @include media(medium-up) {
+      padding: $global-spacing ($global-spacing * 2);
+    }
+  }
+
+  > .blockquote--quote-left {
+    @include media(medium-up) {
+      padding: $global-spacing ($global-spacing * 2) $global-spacing ($global-spacing * 4);
+    }
+  }
+
+  > blockquote footer {
+    @include media(medium-up) {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      margin-top: 0;
+    }
+  }
+}
+
+
 
 /* Dividers
    ========================================================================== */
 
-hr, .hr {
+hr,
+.hr {
   border: 0;
-  height: 2px;
-  background: $base-alpha-color;
+  height: ($global-spacing / 2);
+  background: none;
   width: 80%;
   max-width: 16rem;
-  margin: ($global-spacing * 2) auto;
+  margin: ($global-spacing / 4) auto;
+  background: transparent linear-gradient(transparent, $base-alpha-color, transparent) 50% / auto 1px repeat-x;
 }
 
 /* Prose specific */
@@ -160,7 +402,7 @@ hr, .hr {
 .prose {
   > hr,
   >.hr {
-    margin: ($global-spacing * 3) auto;
+    margin: $global-spacing auto;
   }
 }
 
@@ -168,7 +410,7 @@ hr, .hr {
   > hr,
   > .hr {
     @include media(medium-up) {
-      margin: ($global-spacing * 4) auto;
+      margin: ($global-spacing * 2) auto;
     }
   }
 }
@@ -198,7 +440,7 @@ mark, .mark {
 
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dashed $base-alpha-color;
+  border-bottom: 1px dashed rgba($primary-color, 0.32);
   text-decoration: none;
   text-transform: initial;
 }
@@ -233,6 +475,7 @@ abbr[title] {
 }
 
 .heading-alt {
+  @include font-feature-settings("pnum" 0); // Use proportional numbers
   font-family: $heading-font-family;
   font-weight: $heading-font-regular;
   text-transform: uppercase;
@@ -285,6 +528,19 @@ h4, h5, h6 {
     margin-top: 0;
   }
 }
+
+
+/* Decoration
+   ========================================================================== */
+
+.dropcap:first-letter {
+  font-size: 3.4em;
+  padding: 0 0.1em 0 0;
+  line-height: 0.7;
+  float: left;
+  margin: 0.1em 0.1em 0 0;
+}
+
 
 .prose--responsive {
   > h1 { @include heading(1.75rem, xlarge-up); }            // 28, 32, 36, 40

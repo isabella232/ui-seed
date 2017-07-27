@@ -169,6 +169,8 @@
 
   &__introduction {
     color: rgba($base-font-color, 0.64);
+    font-size: 1rem;
+    line-height: 1.5rem;
 
     > *:last-child {
       margin-bottom: 0;
@@ -223,7 +225,7 @@
 }
 
 .mfa-xmark, {
-  @extend .button--primary-raised-light;
+  @extend .button--base-raised-light;
 
   &::before {
     @extend %uisi-sm-xmark;
@@ -243,7 +245,7 @@
   @extend .button, .button--medium, .button--primary-plain, .button--text-hidden;
 }
 
-.mma-dismiss {
+.mma-xmark {
   position: absolute;
   top: $global-spacing * 2;
   right: $global-spacing * 2;

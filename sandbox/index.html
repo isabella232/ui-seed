@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Testing uisi Design System." />
+    <meta name="description" content="Testing UI Seed." />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <title>Sandbox — UI Seed</title>
@@ -10,7 +10,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@hotosm" />
-    <meta name="twitter:title" content="Sandbox — UI Seed">
+    <meta name="twitter:title" content="Sandbox — UI Seed" />
     <meta name="twitter:description" content="Testing UI Seed." />
     <meta name="twitter:image:src" content="assets/graphics/meta/default-meta-image.png" />
     <!--/ Twitter -->
@@ -34,7 +34,9 @@
     <link rel="apple-touch-icon" sizes="144x144" href="assets/graphics/meta/apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="assets/graphics/meta/apple-touch-icon-152x152.png" />
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:700,700i|Open+Sans:300,300i,400,400i,700,700i" />
+    <link rel="author" type="text/plain" href="humans.txt" />
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i" />
 
     <!-- build:css assets/styles/vendor.css -->
     <!-- endbuild -->
@@ -47,7 +49,7 @@
   <body>
 
     <!-- page -->
-    <div class="page page--homepage">
+    <div class="page page--dark page--homepage">
 
       <header class="page__header" role="banner">
         <div class="inner">
@@ -82,9 +84,9 @@
               <div class="inpage__headline">
                 <p class="inpage__subtitle">UI Seed</p>
                 <h1 class="inpage__title">Sandbox</h1>
-                <div class="inpage__introduction">
-                  <p>Testing UI Seed, a front-end framework.</p>
-                </div>
+              </div>
+              <div class="inpage__introduction">
+                <p>Testing UI Seed, a front-end framework.</p>
               </div>
             </div>
           </header>
@@ -99,7 +101,7 @@
                 <div class="showcase prose prose--responsive">
                   <h2>Headings</h2>
                   <div class="exhibit">
-                    <div class="exhibit__content">
+                    <div class="exhibit__content prose prose--responsive">
                       <h1>This is an h1 heading</h1>
                       <h2>This is an h2 heading <span class="label label--success">Label success</span></h2>
                       <h3>This is an h3 heading</h3>
@@ -111,10 +113,191 @@
                     </div>
                   </div>
 
-                  <h2>Tables</h2>
+                  <h2>Lead</h2>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <p class="lead">This is a lead paragraph. Morbi eget mattis ipsum. Donec massa nibh, bibendum at sit amet ipsum.</p>
+                    </div>
+                  </div>
+
+                  <h2>Inline text elements</h2>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <p><mark>Highlight</mark>. <del>Deleted</del>. <s>Innacurate or irrelevant</s>.</p>
+                      <p><ins>Added</ins>. <u>Underlined</u>. <small>Small text</small>.</p>
+                      <p><strong>Bold</strong>. <em>Italicized</em>.</p>
+                      <p>The abbr tag is used to represent an <abbr title="attribute">abbreviation</abbr>.</p>
+                    </div>
+                  </div>
+
+                  <h2>Blockquotes</h2>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <blockquote>
+                        <p>As my fellow HTML5 Doctor, Oli Studholme has showed, people seldom quote exactly 
+                        – so sacrosanctity of the quoted text isn’t a useful ideal – and in print etc, 
+                        citations almost always appear as part of the quotation – it’s highly conventional.</p>
+                        <footer>
+                          <cite><a href="http://www.brucelawson.co.uk/2013/on-citing-quotations-again/">Bruce Lawson</a></cite>
+                        </footer>
+                      </blockquote>
+                    </div>
+                  </div>
+
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <blockquote class="blockquote--quote-left">
+                        <p>As my fellow HTML5 Doctor, Oli Studholme has showed, people seldom quote exactly 
+                        – so sacrosanctity of the quoted text isn’t a useful ideal – and in print etc, 
+                        citations almost always appear as part of the quotation – it’s highly conventional.</p>
+                        <footer>
+                          <cite><a href="http://www.brucelawson.co.uk/2013/on-citing-quotations-again/">Bruce Lawson</a></cite>
+                        </footer>
+                      </blockquote>
+                    </div>
+                  </div>
+
+                  <h2>Dropcap</h2>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <p class="dropcap">The dropcap is the capitalized first letter of a paragraph. It’s not for every occasion, but when the post/page starts with a paragraph that spans at least two full lines it should be added as it has a big impact on the look and feel of the post.</p>
+                    </div>
+                  </div>
+
+                  <h2>Lists</h2>
+
+                  <h3>Unordered</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <ul>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Nulla volutpat aliquam velit
+                          <ul>
+                            <li>Phasellus iaculis neque</li>
+                            <li>Ac tristique libero volutpat at</li>
+                          </ul>
+                        </li>
+                        <li>Faucibus porta lacus fringilla vel</li>
+                        <li>Aenean sit amet erat nunc</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <h3>Ordered</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <ol>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Consectetur adipiscing elit</li>
+                          <ol>
+                            <li>Phasellus iaculis neque</li>
+                            <li>Purus sodales ultricies</li>
+                          </ol>
+                        </li>
+                        <li>Faucibus porta lacus fringilla vel</li>
+                        <li>Aenean sit amet erat nunc</li>
+                      </ol>
+                    </div>
+                  </div>
+
+                  <h3>Descriptive regular</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <dl>
+                        <dt>Description list term</dt>
+                        <dd>Description list description.</dd>
+                        <dt>Euismod lorem ipsum dolor sit amet</dt>
+                        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                        <dd>Third.</dd>
+                        <dt>Malesuada porta</dt>
+                        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+                        <dt>Yet another term</dt>
+                        <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+                      </dl>
+                    </div>
+                  </div>
+
+                  <h3>Descriptive horizontal</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <dl class="dl--horizontal">
+                        <dt>Description list term</dt>
+                        <dd>Description list description.</dd>
+                        <dt>Euismod lorem ipsum dolor sit amet</dt>
+                        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                        <dd>Third.</dd>
+                        <dt>Malesuada porta</dt>
+                        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+                        <dt>Yet another term</dt>
+                        <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+                      </dl>
+                    </div>
+                  </div>
+
+                  <h3>Checklist</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <ul class="ul--tick">
+                        <li>Check list item 1</li>
+                        <li>Check list item 2</li>
+                        <li>Check list item 3</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <h3>Call-to-action list</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <ul class="ul--go">
+                        <li>Call-to-Action list item 1</li>
+                        <li>Call-to-Action list item 2</li>
+                        <li>Call-to-Action list item 3</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <h3>Footnotes</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <ol class="ol--footnotes">
+                        <li>Footnote list item 1</li>
+                        <li>Footnote list item 2</li>
+                        <li>Footnote list item 3</li>
+                      </ol>
+                    </div>
+                  </div>
+
+                  <h3>Table list</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <dl class="dl--table">
+                        <dt>Description list term</dt>
+                        <dd>Description list description.</dd>
+                        <dt>Euismod lorem ipsum dolor sit amet</dt>
+                        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                        <dd>Third.</dd>
+                        <dt>Malesuada porta</dt>
+                        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+                        <dt>Yet another term</dt>
+                        <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+                      </dl>
+                    </div>
+                  </div>
+
+                  <h2>Horizontal ruler</h2>
                   <div class="exhibit">
                     <div class="exhibit__content">
+                      <hr />
+                    </div>
+                  </div>
 
+                  <h2>Tables</h2>
+                  <h3>Regular</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
                       <table class="table">
                         <thead>
                           <tr>
@@ -148,23 +331,97 @@
                     </div>
                   </div>
 
+                  <h3>Zebra</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <table class="table table--zebra">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Lorem</th>
+                            <th><a class="table__sort table__sort--none" title="Sort column"><span>Ipsum Dolor</span></a></th>
+                            <th>Sit Amet</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Aliquam erat</td>
+                            <td>Volutpat</td>
+                            <td>Praesent</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Aenean</td>
+                            <td>Finibus</td>
+                            <td>Accumsan</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>Phasellus</td>
+                            <td>Consequat</td>
+                            <td>Vivamus</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <h2>Callout</h2>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <div class="callout">
+                        <p>This is a callout. It <strong>calls out</strong> and all.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h2>Media</h2>
+
+                  <h3>Global</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <img class="align-right" alt="Media example" width="256" height="128" src="http://via.placeholder.com/256x128?text=align-right" />
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis lectus quis facilisis bibendum. Mauris aliquet orci vitae sapien tempor varius fermentum id ex. Aenean sit amet porta eros, in egestas sapien. Morbi luctus sodales tincidunt. Morbi quis magna vitae ex pellentesque maximus. Sed nunc ipsum, volutpat et cursus non, tempor quis dui. Morbi pretium ornare commodo. Curabitur cursus libero sapien, eleifend imperdiet dui congue at. Duis nulla dolor, elementum vitae orci sed, varius eleifend mauris.</p>
+                      <img class="align-left" alt="Media example" width="256" height="128" src="http://via.placeholder.com/256x128?text=align-left" />
+                      <p>Sed bibendum turpis sem, nec lacinia tellus pulvinar a. Donec euismod, urna non ullamcorper posuere, mi sapien ornare libero, accumsan ornare massa enim sollicitudin diam. Sed vitae sodales mauris, vitae dictum lectus. Praesent at lectus sit amet eros mattis tincidunt. Integer eu massa sit amet tortor dapibus aliquam. Ut pretium pulvinar risus eu vulputate. Suspendisse potenti. Suspendisse mollis tortor sit amet venenatis condimentum. Nulla dapibus massa tellus, et cursus augue rhoncus in.</p>
+                      <img class="align-center" alt="Media example" width="256" height="128" src="http://via.placeholder.com/256x128?text=align-center" />
+                      <p>Sed bibendum turpis sem, nec lacinia tellus pulvinar a. Donec euismod, urna non ullamcorper posuere, mi sapien ornare libero, accumsan ornare massa enim sollicitudin diam. Sed vitae sodales mauris, vitae dictum lectus. Praesent at lectus sit amet eros mattis tincidunt. Integer eu massa sit amet tortor dapibus aliquam. Ut pretium pulvinar risus eu vulputate. Suspendisse potenti. Suspendisse mollis tortor sit amet venenatis condimentum. Nulla dapibus massa tellus, et cursus augue rhoncus in.</p>
+                    </div>
+                  </div>
+
+                  <h3>Figure</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <figure>
+                        <img src="http://loremflickr.com/1440/360/lego" alt="Image" width="1440" height="360" />
+                        <figcaption>Wow, this is a really cool caption!</figcaption>
+                      </figure>
+                    </div>
+                  </div>
+
                   <h2>Buttons</h2>
-                  <div class="exhibit exhibit--mid-dark">
-                    <div class="exhibit__content">
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
                       <button class="button button--base-raised-light" type="button"><span>Base Raised Light</span></button>
-                      <button class="button button--base-raised-dark" type="button"><span>Base Raised Dark</span></button>
+                      <button class="button button--base-raised-dark" type="button"><span>Base Raised Dark</span> <span class="uisi-sm-chevron-right"></span></button>
                       <button class="button button--base-plain" type="button"><span>Base Plain</span></button>
 
                       <button class="button button--primary-raised-light" type="button"><span>Primary Raised Light</span></button>
                       <button class="button button--primary-raised-dark" type="button"><span>Primary Raised Dark</span></button>
                       <button class="button button--primary-plain" type="button"><span>Primary Plain</span></button>
+                    </div>
+                  </div>
 
-                      <button class="button button--achromic" type="button"><span>Achromic</span></button>
+                  <div class="exhibit exhibit--dark">
+                    <div class="exhibit__content prose prose--responsive">
+                      <button class="button button--achromic-plain" type="button"><span>Achromic Plain</span></button>
+                      <button class="button button--achromic-glass" type="button"><span>Achromic Glass</span></button>
                     </div>
                   </div>
 
                   <div class="exhibit">
-                    <div class="exhibit__content">
+                    <div class="exhibit__content prose prose--responsive">
                       <button class="button button--base-raised-light button--small" type="button"><span>Small</span></button>
                       <button class="button button--base-raised-light button--medium" type="button"><span>Medium</span></button>
                       <button class="button button--base-raised-light button--large" type="button"><span>Large</span></button>
@@ -173,25 +430,39 @@
                   </div>
 
                   <div class="exhibit">
-                    <div class="exhibit__content">
+                    <div class="exhibit__content prose prose--responsive">
                       <button class="button button--base-raised-light button--large button--block" type="button"><span>Block</span></button>
                       <button class="button button--base-raised-light button--large button--semi-fluid" type="button"><span>Semi fluid</span></button>
+                      <button class="button button--base-raised-light button--large button--capsule" type="button"><span>Capsule</span></button>
+                      <button class="button button--base-raised-light button--large button--capsule button--text-hidden" type="button"><span class="uisi-twitter"></span> <span>Rounded with icon</span></button>
                     </div>
                   </div>
 
                   <div class="exhibit">
-                    <div class="exhibit__content">
+                    <div class="exhibit__content prose prose--responsive">
                       <div class="button-group button-group--horizontal" role="group" aria-label="...">
                         <button class="button button--base-raised-light button--active" type="button"><span>Left</span></button>
                         <button class="button button--base-raised-light" type="button"><span>Middle</span></button>
                         <button class="button button--base-raised-light" type="button"><span>Right</span></button>
+                      </div>
+
+                      <div class="button-group button-group--vertical" role="group" aria-label="...">
+                        <button class="button button--base-raised-light" type="button"><span>Top</span></button>
+                        <button class="button button--base-raised-light button--active" type="button"><span>Middle</span></button>
+                        <button class="button button--base-raised-light" type="button"><span>Bottom</span></button>
+                      </div>
+
+                      <div class="button-group button-group--horizontal button-group--xlarge" role="group" aria-label="...">
+                        <button class="button button--primary-raised-dark" type="button"><span>Left</span></button>
+                        <button class="button button--primary-raised-dark" type="button"><span>Middle</span></button>
+                        <button class="button button--primary-raised-dark button--active" type="button"><span>Right</span></button>
                       </div>
                     </div>
                   </div>
 
                   <h2>Cards</h2>
                   <div class="exhibit">
-                    <div class="exhibit__content">
+                    <div class="exhibit__content prose prose--responsive">
                       <article class="card">
                         <a href="#" class="card__contents" title="Click me">
                           <figure class="card__media">
@@ -202,7 +473,7 @@
                           <header class="card__header">
                             <div class="card__headline">
                               <p class="card__subtitle">Card subtitle</p>
-                              <h1 class="card__title">This is a regular card</h1>
+                              <h1 class="card__title">This is a fully clickable card</h1>
                             </div>
                           </header>
                           <div class="card__body">
@@ -246,9 +517,9 @@
 
                   <h2>Drops</h2>
                   <div class="exhibit">
-                    <div class="exhibit__content">
+                    <div class="exhibit__content prose prose--responsive">
                       <div class="drop drop--down drop--align-left drop--open">
-                        <button class="button button--achromic drop__toggle drop__toggle--caret" type="button"><span>Toggle</span></button>
+                        <button class="button button--base-raised-dark drop__toggle drop__toggle--caret" type="button"><span>Toggle</span></button>
                         <div class="drop__content">
                           <h6 class="drop__title">This is a title</h6>
                           <ul class="drop__menu drop__menu--iconified" role="menu">
@@ -262,7 +533,7 @@
                       </div>
 
                       <div class="drop drop--down drop--align-left drop--open">
-                        <button class="button button--achromic drop__toggle drop__toggle--caret" type="button"><span>Toggle</span></button>
+                        <button class="button button--primary-raised-dark button--achromic drop__toggle drop__toggle--caret" type="button"><span>Toggle</span></button>
                         <div class="drop__content">
                           <h6 class="drop__title">This is a title</h6>
                           <ul class="drop__menu drop__menu--select" role="menu">
@@ -277,30 +548,32 @@
                       </div>
 
                     </div>
-
-                    <div class="exhibit__content">
-                      <div data-hook="react:drops"><!-- React rendered content --></div>
-                    </div>
-
                   </div>
 
-                  <h2>Panels <small>(with scrollable area)</small></h2>
+                  <h3>Powered by React</h3>
                   <div class="exhibit">
-                    <div class="exhibit__content">
+                    <div class="exhibit__content prose prose--responsive">
+                      <div data-hook="react:drops"><!-- React rendered content --></div>
+                    </div>
+                  </div>
+
+                  <h2>Panels <small>(with scrollable area powered by React)</small></h2>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
                       <div data-hook='scroll'></div>
                     </div>
                   </div>
 
                   <h2>Modal</h2>
                   <div class="exhibit">
-                    <div class="exhibit__content">
+                    <div class="exhibit__content prose prose--responsive">
                       <div data-hook='modal'></div>
                     </div>
                   </div>
 
                   <h2>Forms</h2>
                   <div class="exhibit">
-                    <div class="exhibit__content">
+                    <div class="exhibit__content prose prose--responsive">
                       <form class="form">
                         <fieldset class="form__fieldset">
                           <legend class="form__legend">Fieldset legend 1</legend>
@@ -437,6 +710,84 @@
 
                         </fieldset>
                       </form>
+                    </div>
+                  </div>
+
+                  <h2>Code</h2>
+                  <h3>Inline</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      This contains code rendered inline: <code>&lt;article&gt;</code>.
+                    </div>
+                  </div>
+
+                  <h3>Preformatted</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <pre>&lt;p&gt;Lorem ipsum dolor...&lt;/p&gt;</pre>
+                    </div>
+                  </div>
+
+                  <h3 id="inline">User input</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      This contains instructions: lorem ipsum <kbd>cd</kbd> dolor sit <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
+                    </div>
+                  </div>
+
+                  <h2>Alerts</h2>
+                  <h3>Block</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <div class="alert alert--success" role="alert">
+                        <button class="alert__button-dismiss" title="Dismiss alert"><span>Dismiss</span></button>
+                        <p><strong>Success:</strong> This is a success alert message.</p>
+                      </div>
+
+                      <div class="alert alert--info" role="alert">
+                        <button class="alert__button-dismiss" title="Dismiss alert"><span>Dismiss</span></button>
+                        <p><strong>Info:</strong> This is an info alert message.</p>
+                      </div>
+
+                      <div class="alert alert--warning" role="alert">
+                        <button class="alert__button-dismiss" title="Dismiss alert"><span>Dismiss</span></button>
+                        <p><strong>Warning:</strong> This is a warning alert message.</p>
+                      </div>
+
+                      <div class="alert alert--danger" role="alert">
+                        <button class="alert__button-dismiss" title="Dismiss alert"><span>Dismiss</span></button>
+                        <p><strong>Danger:</strong> This is a danger alert message.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h3>Popover</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <div class="alert alert--popover alert--danger" role="alert">
+                        <button class="alert__button-dismiss" title="Dismiss alert"><span>Dismiss</span></button>
+                        <p><strong>Danger:</strong> This is a danger alert message. Popover style!</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h2>Labels</h2>
+                  <div class="exhibit">
+                    <div class="exhibit__content prose prose--responsive">
+                      <span class="label">Default</span>
+                      <span class="label label--success">Success</span>
+                      <span class="label label--info">Info</span>
+                      <span class="label label--warning">Warning</span>
+                      <span class="label label--danger">Danger</span>
+                    </div>
+                  </div>
+
+                  <div class="exhibit exhibit--dark">
+                    <div class="exhibit__content prose prose--responsive">
+                      <span class="label label--negative">Default Negative</span>
+                      <span class="label label--negative label--success">Success Negative</span>
+                      <span class="label label--negative label--info">Info Negative</span>
+                      <span class="label label--negative label--warning">Warning Negative</span>
                     </div>
                   </div>
 

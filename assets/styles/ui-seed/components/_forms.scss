@@ -216,6 +216,10 @@ textarea.form__control {
   border-collapse: separate;
   width: 100%;
   white-space: nowrap;
+
+  * {
+    vertical-align: top;
+  }
 }
 
 .form__input-addon {
@@ -561,7 +565,7 @@ label[for] {
   }
 
   input:checked ~ .form__option__ui {
-    background: $accent-color;
+    background: $primary-color;
 
     &::before {
       transform: translate(100%, -50%);

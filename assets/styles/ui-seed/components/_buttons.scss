@@ -38,6 +38,7 @@
   }
 
   /* Icon handling */
+
   &::before, &::after,
   [class^="openaq-ds-icon-"], [class*=" openaq-ds-icon-"],
   [class^="uisis-"], [class*=" uisis-"] {
@@ -55,12 +56,14 @@
   }
 
   /* Checkbox/radio handling */
+
   > input[type=checkbox],
   > input[type=radio] {
     @extend .visually-hidden;
   }
 
   /* Animation */
+
   transition: background-color 0.24s ease 0s;
 }
 
@@ -104,12 +107,6 @@
   @include button-variation($primary-color, "plain", "light");
 }
 
-/* Base Achromic */
-
-.button--achromic {
-  @include button-variation(#fff, "plain", null);
-}
-
 /* Danger Raised Light */
 
 .button--danger-raised-light {
@@ -126,6 +123,18 @@
 
 .button--danger-plain {
   @include button-variation($danger-color, "plain", "light");
+}
+
+/* Achromic Plain (white plain) */
+
+.button--achromic-plain {
+  @include button-variation(#fff, "plain", null);
+}
+
+/* Achromic Glass (white ghost-like) */
+
+.button--achromic-glass {
+  @include button-variation(#fff, "glass", null);
 }
 
 
@@ -150,7 +159,7 @@
 .button-group--medium .button {
   line-height: 1.5rem;
   font-size: 1rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 1rem;
   min-width: 2rem;
 }
 
@@ -159,8 +168,8 @@
 .button--large,
 .button-group--large .button {
   line-height: 1.5rem;
-  font-size: 1.25rem;
-  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
   min-width: 2.5rem;
 }
 
@@ -169,8 +178,8 @@
 .button--xlarge,
 .button-group--xlarge .button {
   line-height: 2rem;
-  font-size: 1.25rem;
-  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  padding: 0.5rem 2rem;
   min-width: 3rem;
 }
 
@@ -205,6 +214,10 @@
   min-width: 16rem;
 }
 
+.button--capsule {
+  border-radius: $full-border-radius;
+}
+
 
 /* ==========================================================================
    Button groups
@@ -219,6 +232,7 @@
     display: block;
     position: relative;
     margin: 0;
+    z-index: 2;
   }
 }
 
@@ -232,19 +246,22 @@
   > .button:first-child:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    clip-path: inset(-100% 0 -100% -100%);
   }
 
   > .button:last-child:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    clip-path: inset(-100% -100% -100% 0);
   }
 
   > .button:not(:first-child):not(:last-child) {
     border-radius: 0;
+    clip-path: inset(-100% 0);
   }
 
   > .button + .button {
-    margin-left: -2px;
+    margin-left: -1px;
   }
 }
 
@@ -255,26 +272,26 @@
     clear: both;
     width: 100%;
     border-radius: $base-border-radius;
-    &:hover {
-      z-index: 2;
-    }
   }
 
   > .button:first-child:not(:last-child) {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+    clip-path: inset(-100% -100% 0 -100%);
   }
 
   > .button:last-child:not(:first-child) {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    clip-path: inset(0 -100% -100% -100%);
   }
 
   > .button:not(:first-child):not(:last-child) {
     border-radius: 0;
+    clip-path: inset(0 -100%);
   }
 
   > .button + .button {
-    margin-top: -2px;
+    margin-top: -1px;
   }
 }

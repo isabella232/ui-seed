@@ -88,7 +88,7 @@ var renderPanel = function () {
             <li><a className='actions__menu-item pha-download' title='Download' href='#'><span>Download</span></a></li>
           </ul>
           <ul className='panel__h-actions__menu actions'>
-            <li><button className='actions__menu-item pha-cancel' type='button' title='Dismiss panel'><span>Dismiss</span></button></li>
+            <li><button className='actions__menu-item pha-xmark' type='button' title='Dismiss panel'><span>Dismiss</span></button></li>
           </ul>
         </div>
       </header>
@@ -126,16 +126,19 @@ var renderDrop = function () {
 
   var el = React.createElement('div', null,
     <Dropdown
-      triggerClassName='button button--achromic'
-      triggerText='Toggle' >
+      triggerClassName='button button--primary-plain'
+      triggerActiveClassName='button--active'
+      triggerText='Drop down center'
+      direction='down'
+      alignment='center' >
 
       <h6 className='drop__title'>This is a title</h6>
       <ul className='drop__menu drop__menu--iconified' role='menu'>
-        <li><a href='#' title='This is Item 1a' className='drop__menu-item'><i className='oam-ds-icon-pencil'></i>Edit</a></li>
+        <li><a href='#' title='This is Item 1a' className='drop__menu-item'><i className='uisi-pencil'></i>Edit</a></li>
         <li><a href='#' title='This is Item 2a' className='drop__menu-item drop__menu-item--example-icon'>Download</a></li>
       </ul>
       <ul className='drop__menu drop__menu--iconified' role='menu'>
-        <li><a href='#' title='This is Item 1a' className='drop__menu-item delete'><i className='oam-ds-icon-trash-bin'></i>Delete</a></li>
+        <li><a href='#' title='This is Item 1a' className='drop__menu-item delete'><i className='uisi-trash-bin'></i>Delete</a></li>
       </ul>
 
     </Dropdown>,
@@ -143,11 +146,12 @@ var renderDrop = function () {
     <Dropdown
       className='drop__content--special'
       triggerElement='a'
-      triggerClassName='button button--achromic drop__toggle drop__toggle--caret'
+      triggerClassName='button button--base-plain'
+      triggerActiveClassName='button--active'
       triggerTitle='Show/hide options'
-      triggerText='Toggle'
+      triggerText='Drop up left'
       direction='up'
-      aligment='left' >
+      alignment='left' >
 
       <ul className='drop__menu' role='menu'>
         <li><a href='#' title='This is Item 1a' className='drop__menu-item'>Item 1a</a></li>

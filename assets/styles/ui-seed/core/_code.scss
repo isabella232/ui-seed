@@ -49,3 +49,21 @@ pre {
     font-size: inherit;
   }
 }
+
+
+/* Prose specific */
+
+.prose--responsive {
+  > pre {
+    @include media(small-up) {
+      margin-left: -$global-spacing; 
+      margin-right: -$global-spacing;
+    }
+
+    @include media(medium-up) {
+      padding: $global-spacing * 2;
+      margin-left: -$global-spacing * 2;
+      margin-right: -$global-spacing * 2;
+    }
+  }
+}
