@@ -127,9 +127,10 @@ var renderDrop = function () {
   var el = React.createElement('div', null,
     <Dropdown
       triggerClassName='button button--primary-plain'
+      triggerActiveClassName='button--active'
       triggerText='Drop down center'
       direction='down'
-      aligment='center' >
+      alignment='center' >
 
       <h6 className='drop__title'>This is a title</h6>
       <ul className='drop__menu drop__menu--iconified' role='menu'>
@@ -146,10 +147,11 @@ var renderDrop = function () {
       className='drop__content--special'
       triggerElement='a'
       triggerClassName='button button--base-plain'
+      triggerActiveClassName='button--active'
       triggerTitle='Show/hide options'
       triggerText='Drop up left'
       direction='up'
-      aligment='left' >
+      alignment='left' >
 
       <ul className='drop__menu' role='menu'>
         <li><a href='#' title='This is Item 1a' className='drop__menu-item'>Item 1a</a></li>
