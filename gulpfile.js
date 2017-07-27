@@ -63,7 +63,7 @@ gulp.task('serve', ['vendorScripts', 'javascript', 'styles'], function () {
     'sandbox/**/*.html',
     'sandbox/assets/graphics/**/*',
     '!sandbox/assets/graphics/collecticons/**/*'
-  ], [reload]);
+  ], function (e) { return reload(); });
 
   gulp.watch('assets/icons/ui-seed-icons/**', ['ui-seed:icons']);
   gulp.watch('sandbox/assets/graphics/collecticons/**', ['collecticons']);
