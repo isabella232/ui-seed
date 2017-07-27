@@ -107,12 +107,6 @@
   @include button-variation($primary-color, "plain", "light");
 }
 
-/* Base Achromic */
-
-.button--achromic {
-  @include button-variation(#fff, "plain", null);
-}
-
 /* Danger Raised Light */
 
 .button--danger-raised-light {
@@ -129,6 +123,18 @@
 
 .button--danger-plain {
   @include button-variation($danger-color, "plain", "light");
+}
+
+/* Achromic Plain (white plain) */
+
+.button--achromic-plain {
+  @include button-variation(#fff, "plain", null);
+}
+
+/* Achromic Glass (white ghost-like) */
+
+.button--achromic-glass {
+  @include button-variation(#fff, "glass", null);
 }
 
 

@@ -401,7 +401,7 @@
                   </div>
 
                   <h2>Buttons</h2>
-                  <div class="exhibit exhibit--mid-dark">
+                  <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
                       <button class="button button--base-raised-light" type="button"><span>Base Raised Light</span></button>
                       <button class="button button--base-raised-dark" type="button"><span>Base Raised Dark</span> <span class="uisi-sm-chevron-right"></span></button>
@@ -410,8 +410,13 @@
                       <button class="button button--primary-raised-light" type="button"><span>Primary Raised Light</span></button>
                       <button class="button button--primary-raised-dark" type="button"><span>Primary Raised Dark</span></button>
                       <button class="button button--primary-plain" type="button"><span>Primary Plain</span></button>
+                    </div>
+                  </div>
 
-                      <button class="button button--achromic" type="button"><span>Achromic</span></button>
+                  <div class="exhibit exhibit--dark">
+                    <div class="exhibit__content prose prose--responsive">
+                      <button class="button button--achromic-plain" type="button"><span>Achromic Plain</span></button>
+                      <button class="button button--achromic-glass" type="button"><span>Achromic Glass</span></button>
                     </div>
                   </div>
 
@@ -514,7 +519,7 @@
                   <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
                       <div class="drop drop--down drop--align-left drop--open">
-                        <button class="button button--achromic drop__toggle drop__toggle--caret" type="button"><span>Toggle</span></button>
+                        <button class="button button--base-raised-dark drop__toggle drop__toggle--caret" type="button"><span>Toggle</span></button>
                         <div class="drop__content">
                           <h6 class="drop__title">This is a title</h6>
                           <ul class="drop__menu drop__menu--iconified" role="menu">
@@ -528,7 +533,7 @@
                       </div>
 
                       <div class="drop drop--down drop--align-left drop--open">
-                        <button class="button button--achromic drop__toggle drop__toggle--caret" type="button"><span>Toggle</span></button>
+                        <button class="button button--primary-raised-dark button--achromic drop__toggle drop__toggle--caret" type="button"><span>Toggle</span></button>
                         <div class="drop__content">
                           <h6 class="drop__title">This is a title</h6>
                           <ul class="drop__menu drop__menu--select" role="menu">
@@ -543,14 +548,16 @@
                       </div>
 
                     </div>
+                  </div>
 
+                  <h3>Powered by React</h3>
+                  <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
                       <div data-hook="react:drops"><!-- React rendered content --></div>
                     </div>
-
                   </div>
 
-                  <h2>Panels <small>(with scrollable area)</small></h2>
+                  <h2>Panels <small>(with scrollable area powered by React)</small></h2>
                   <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
                       <div data-hook='scroll'></div>
