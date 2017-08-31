@@ -743,3 +743,17 @@ label[for] {
     margin-bottom: 0;
   }
 }
+
+.form__note {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgba($base-font-color, 0.64);
+  background: rgba($base-color, 0.04);
+  border-radius: $base-border-radius;
+  padding: $global-spacing;
+  margin-bottom: $global-spacing;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
