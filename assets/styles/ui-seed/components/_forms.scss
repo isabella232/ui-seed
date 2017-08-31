@@ -576,7 +576,7 @@ label[for] {
       top: 50%;
       right: 12%;
       z-index: 1;
-      font-size: 0.875rem;
+      font-size: 1rem;
       line-height: 1rem !important;
       height: 1rem;
       width: 1rem;
@@ -616,6 +616,7 @@ label[for] {
 
   .form__option__ui::after {
     @extend %uisi-sm-xmark;
+    font-size: 0.875rem;
   }
 
   &.form__option--checked .form__option__ui::after,
