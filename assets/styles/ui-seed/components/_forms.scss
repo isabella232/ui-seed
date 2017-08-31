@@ -694,36 +694,43 @@ label[for] {
 
 .form__hascol--2 {
   > * {
-    @include column(6/12, $cycle: 2);
+    $col-group: 2;
+    @include column(6/12, $cycle: $col-group);
 
-    &:nth-child(1),
-    &:nth-child(2) {
-      margin-top: 0;
+    @for $child from 1 through $col-group {
+      &:nth-child(#{$child}) {
+        margin-top: 0;
+      }
+      #{$child}: #{$child + 1}; 
     }
   }
 }
 
 .form__hascol--3 {
   > * {
-    @include column(4/12, $cycle: 3);
+    $col-group: 3;
+    @include column(4/12, $cycle: $col-group);
 
-    &:nth-child(1),
-    &:nth-child(2),
-    &:nth-child(3) {
-      margin-top: 0;
+    @for $child from 1 through $col-group {
+      &:nth-child(#{$child}) {
+        margin-top: 0;
+        background: red;
+      }
+      #{$child}: #{$child + 1}; 
     }
   }
 }
 
 .form__hascol--4 {
   > * {
-    @include column(3/12, $cycle: 4);
+    $col-group: 4;
+    @include column(3/12, $cycle: $col-group);
 
-    &:nth-child(1),
-    &:nth-child(2),
-    &:nth-child(3),
-    &:nth-child(4) {
-      margin-top: 0;
+    @for $child from 1 through $col-group {
+      &:nth-child(#{$child}) {
+        margin-top: 0;
+      }
+      #{$child}: #{$child + 1}; 
     }
   }
 }
