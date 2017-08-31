@@ -541,45 +541,86 @@ label[for] {
    ========================================================================== */
 
 .form__option--switch {
-  position: relative;
-  padding: 0;
 
-  input,
-  .form__option__text {
+  input {
     @extend .visually-hidden;
   }
 
-  transition: all 0.16s ease 0s;
-
   .form__option__ui {
-    position: relative;
-    display: block;
-    width: 1.75rem;
-    height: 1rem;
-    background: tint($base-color, 64%);
+    margin: 0.125rem 0;
+    width: 2.75rem;
+    height: 1.25rem;
     border-radius: $full-border-radius;
+    background: rgba($base-color, 0.24);
+    box-shadow: inset 0 0 0 1px $base-alpha-color;
 
     &::before {
+      @extend .button--base-raised-light;
       position: absolute;
       top: 50%;
       left: 0;
-      transform: translate(0, -50%);
+      z-index: 2;
       content: '';
-      height: 0.75rem;
-      width: 0.75rem;
+      height: 1.25rem;
+      width: 1.25rem;
       border-radius: $full-border-radius;
-      background: #fff;
-      margin: 0 0.125rem;
-      transition: all 0.32s ease 0s;
+      transform: translate(0, -50%);
+      transition: all 0.24s ease 0s;
+    }
+
+    /* Icon handling */
+    [class^="uisi-"],
+    [class*=" uisi-"],
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 12%;
+      z-index: 1;
+      font-size: 0.875rem;
+      line-height: 1rem !important;
+      height: 1rem;
+      width: 1rem;
+      text-align: center;
+      color: #fff;
+      transform: translate(0, -50%);
+      transition: all 0.24s ease 0s;
     }
   }
 
+  &:hover .form__option__ui {
+    @extend .button--hover;
+  }
+
+  &.form__option--checked .form__option__ui,
   input:checked ~ .form__option__ui {
-    background: $primary-color;
+    background: $link-color;
 
     &::before {
+      left: 100%;
+      transform: translate(-100%, -50%);
+    }
+
+    /* Icon handling */
+    [class^="uisi-"],
+    [class*=" uisi-"],
+    &::after {
+      right: 88%;
       transform: translate(100%, -50%);
     }
+  }
+}
+
+/* Iconified cases */
+
+.form__option.fos-io {
+
+  .form__option__ui::after {
+    @extend %uisi-sm-xmark;
+  }
+
+  &.form__option--checked .form__option__ui::after,
+  input:checked ~ .form__option__ui::after {
+    @extend %uisi-sm-tick;
   }
 }
 
@@ -714,7 +755,6 @@ label[for] {
     @for $child from 1 through $col-group {
       &:nth-child(#{$child}) {
         margin-top: 0;
-        background: red;
       }
       #{$child}: #{$child + 1}; 
     }
