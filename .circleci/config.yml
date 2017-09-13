@@ -1,0 +1,62 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:7
+
+    working_directory: ~/repo
+
+    environment:
+      - DEPLOY_BRANCH: master
+      - GH_REF: git@github.com:developmentseed/ui-seed.git
+      - GH_NAME: "Circle-CI"
+      - GH_EMAIL: "circle@developmentseed.com"
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn test
+
+      - add_ssh_keys:
+          fingerprints:
+            - "12:ac:f3:c7:2c:ad:b4:b0:f8:c7:c6:0d:bf:e5:3f:9c"
+
+      - run:
+          name: Building site
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "${DEPLOY_BRANCH}" ]; then
+              yarn build
+            else
+              echo "Skip building site"
+            fi
+
+      - run:
+          name: Deploy to GH Pages
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "${DEPLOY_BRANCH}" ]; then
+              cd dist
+              git init
+              git config user.name "$GH_NAME"
+              git config user.email "$GH_EMAIL"
+              git add .
+              git commit -m "CI deploy [skip ci]"
+              git remote add origin $GH_REF
+              git push origin --force --quiet HEAD:gh-pages
+              rm -rf .git
+            else
+              echo "Skip deploying to Github"
+            fi
