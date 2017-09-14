@@ -1,12 +1,13 @@
 'use strict';
 import React from 'react';
 import { render } from 'react-dom';
-import OpenAQ from '../../../assets/scripts/index';
-var { Modal, ModalHeader, ModalBody, ModalFooter } = OpenAQ.Modal;
-var ScrollArea = OpenAQ.ScrollArea;
-var Dropdown = OpenAQ.Dropdown;
+import UISeed from '../../../assets/scripts/index';
+var { Modal, ModalHeader, ModalBody, ModalFooter } = UISeed.Modal;
+var { GlobalLoading, showGlobalLoading, hideGlobalLoading } = UISeed.Loading;
+var ScrollArea = UISeed.ScrollArea;
+var Dropdown = UISeed.Dropdown;
 
-OpenAQ.hello();
+UISeed.hello();
 
 var ModalShowcase = React.createClass({
   displayName: 'ModalShowcase',
@@ -172,3 +173,31 @@ var renderDrop = function () {
 };
 
 renderDrop();
+
+// /////////////////////////////////////////////////////////////////////
+
+var LoadingShowcase = React.createClass({
+  displayName: 'LoadingShowcase',
+
+  showLoading: function () {
+    showGlobalLoading();
+    setTimeout(function () { hideGlobalLoading(); }, 1024);
+  },
+
+  render: function () {
+    return (
+      <div>
+        <button className='button button--primary-raised-dark' type='button' onClick={this.showLoading}><span>Show loading</span></button>
+        <GlobalLoading />
+      </div>
+    );
+  }
+});
+
+var renderLoading = function () {
+  var container = document.querySelector('[data-hook="loading"]');
+  if (container === null) return;
+  render(<LoadingShowcase />, container);
+};
+
+renderLoading();
