@@ -212,61 +212,34 @@ textarea.form__control {
 
 .form__input-group {
   display: flex;
+  width: 100%;
   line-height: 0;
-
-  * {
-    vertical-align: top;
-  }
-}
-
-.form__input-addon {
-  flex: 0 0 auto;
-  position: relative;
-
-  &:first-child > * {
-    z-index: 2;
-    margin-right: -2px;
-  }
-
-  &:last-child > * {
-    z-index: 2;
-    margin-left: -2px;
-  }
-}
-
-.form__input-group .form__control:not(:last-child),
-.form__input-addon:not(:last-child) .form__input-addon-label,
-.form__input-addon:not(:first-child) > .button-group:not(:last-child) > .button,
-.form__input-addon:not(:last-child) > .button,
-.form__input-addon:not(:last-child) > .button-group > .button {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-}
-
-.form__input-group .form__control:not(:first-child),
-.form__input-addon:not(:first-child) .form__input-addon-label,
-.form__input-addon:not(:first-child) > .button,
-.form__input-addon:not(:first-child) > .button-group > .button,
-.form__input-addon:not(:last-child) > .button-group:not(:first-child) > .button,
-.form__input-addon:not(:last-child) > .button:not(:first-child) {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
 }
 
 .form__input-addon,
-.form__input-group .form__control {
-  display: table-cell;
+.form__input-group > .button {
+  flex: 0 0 auto;
+
+  &:first-child {
+    position: relative;
+    margin-right: -1px;
+  }
+
+  &:last-child {
+    position: relative;
+    margin-left: -1px;
+  }
 }
 
 .form__input-group .form__control {
   position: relative;
-  float: left;
-  width: 100%;
+  z-index: 2;
+  flex: 1 1 auto;
+  width: 1%;
   margin-bottom: 0;
 }
 
-.form__input-addon-label {
-  display: inline-block;
+.form__input-addon {
   line-height: 1.5rem;
   font-size: 1rem;
   padding: 0.25rem 0.75rem;
@@ -279,14 +252,24 @@ textarea.form__control {
   margin-bottom: 0;
 }
 
+.form__input-group > *:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
 
-/* Form addon label size modifiers
+.form__input-group > *:not(:last-child) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+/* Input group size modifiers
    ========================================================================== */
 
 /* Small (24px) */
 
-.form__input-group--small .form__input-addon-label,
-.form__input-addon-label--small {
+.form__input-group--small .form__input-addon,
+.form__input-addon--small {
   font-size: 0.875rem;
   line-height: 1.25rem;
   padding: 0.125rem 0.5rem;
@@ -305,8 +288,8 @@ textarea.form__control {
    Default
 */
 
-.form__input-group--medium .form__input-addon-label,
-.form__input-addon-label--medium {
+.form__input-group--medium .form__input-addon,
+.form__input-addon--medium {
   font-size: 1rem;
   line-height: 1.5rem;
   padding: 0.25rem 0.75rem;
@@ -323,8 +306,8 @@ textarea.form__control {
 
 /* Large (40px) */
 
-.form__input-group--large .form__input-addon-label,
-.form__input-addon-label--large {
+.form__input-group--large .form__input-addon,
+.form__input-addon--large {
   font-size: 1rem;
   line-height: 1.5rem;
   padding: 0.5rem 1rem;
@@ -341,8 +324,8 @@ textarea.form__control {
 
 /* XLarge (48px) */
 
-.form__input-group--xlarge .form__input-addon-label,
-.form__input-addon-label--xlarge {
+.form__input-group--xlarge .form__input-addon,
+.form__input-addon--xlarge {
   font-size: 1.25rem;
   line-height: 2rem;
   padding: 0.5rem 1rem;
