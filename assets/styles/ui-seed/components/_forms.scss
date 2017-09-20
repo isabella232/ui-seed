@@ -211,11 +211,8 @@ textarea.form__control {
    ========================================================================== */
 
 .form__input-group {
-  position: relative;
-  display: table;
-  border-collapse: separate;
-  width: 100%;
-  white-space: nowrap;
+  display: flex;
+  line-height: 0;
 
   * {
     vertical-align: top;
@@ -223,8 +220,8 @@ textarea.form__control {
 }
 
 .form__input-addon {
+  flex: 0 0 auto;
   position: relative;
-  width: 1%;
 
   &:first-child > * {
     z-index: 2;
