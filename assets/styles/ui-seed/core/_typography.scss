@@ -182,7 +182,7 @@ dd {
 
 .ul--footnotes,
 .ol--footnotes {
-  @include font-feature-settings("pnum" 0); // Use proportional numbers
+  font-feature-settings: "pnum" 0; // Use proportional numbers
   position: relative;
   color: rgba($base-font-color, 0.64);
   font-size: 0.875rem;
@@ -475,7 +475,7 @@ abbr[title] {
 }
 
 .heading-alt {
-  @include font-feature-settings("pnum" 0); // Use proportional numbers
+  font-feature-settings: "pnum" 0; // Use proportional numbers
   font-family: $heading-font-family;
   font-weight: $heading-font-regular;
   text-transform: uppercase;

@@ -1,0 +1,71 @@
+/* ==========================================================================
+   Navs
+   ========================================================================== */
+
+
+/* Settings
+   ========================================================================== */
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  font-weight: $base-font-bold;
+}
+
+.menu__item {
+  display: inline-flex;
+  padding: ($global-spacing / 2) 0;
+
+  &,
+  &:visited,
+  &:hover {
+    color: inherit;
+  }
+
+}
+
+.menu__item-wrapper {
+  margin: 0 ($global-spacing * 1.5) 0 0;
+}
+
+.menu--vertical {
+  flex-direction: column;
+
+  .menu__item-wrapper {
+    margin: 0 0 $global-spacing 0;
+  }
+}
+
+.menu--tabs {
+  flex-wrap: nowrap;
+  box-shadow: inset 0 -1px 0 0 $base-alpha-color;
+
+  .menu__item {
+    padding: ($global-spacing / 4) 0;
+  }
+
+  .menu__item--active {
+    box-shadow: inset 0 -1px 0 0 $base-color;
+  }
+}
+
+.menu--tabs.menu--vertical {
+  box-shadow: inset 1px 0 0 0 $base-alpha-color;
+
+  .menu__item-wrapper {
+    margin: 0;
+  }
+
+  .menu__item {
+    padding: ($global-spacing / 4) $global-spacing;
+  }
+
+  .menu__item--active {
+    box-shadow: inset 1px 0 0 0 $base-color;
+  }
+}

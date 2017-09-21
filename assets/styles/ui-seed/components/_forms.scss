@@ -211,66 +211,37 @@ textarea.form__control {
    ========================================================================== */
 
 .form__input-group {
-  position: relative;
-  display: table;
-  border-collapse: separate;
+  display: flex;
   width: 100%;
-  white-space: nowrap;
-
-  * {
-    vertical-align: top;
-  }
+  line-height: 0;
 }
 
-.form__input-addon {
-  position: relative;
-  width: 1%;
-  vertical-align: middle;
-
-  &:first-child > * {
-    z-index: 2;
-    margin-right: -2px;
-  }
-
-  &:last-child > * {
-    z-index: 2;
-    margin-left: -2px;
-  }
-}
-
-.form__input-group .form__control:not(:last-child),
-.form__input-addon:not(:last-child) .form__input-addon-label,
-.form__input-addon:not(:first-child) > .button-group:not(:last-child) > .button,
-.form__input-addon:not(:last-child) > .button,
-.form__input-addon:not(:last-child) > .button-group > .button {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-}
-
-.form__input-group .form__control:not(:first-child),
-.form__input-addon:not(:first-child) .form__input-addon-label,
-.form__input-addon:not(:first-child) > .button,
-.form__input-addon:not(:first-child) > .button-group > .button,
-.form__input-addon:not(:last-child) > .button-group:not(:first-child) > .button,
-.form__input-addon:not(:last-child) > .button:not(:first-child) {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
+.form__input-addon + .form__input-addon,
+.form__input-addon + .button,
+.form__input-addon + .form__control,
+.form__control + .form__input-addon  {
+  margin-left: -1px;
 }
 
 .form__input-addon,
-.form__input-group .form__control {
-  display: table-cell;
+.form__input-group > .button {
+  flex: 0 0 auto;
+}
+
+.form__input-group > .button {
+  position: relative;
+  z-index: 3;
 }
 
 .form__input-group .form__control {
   position: relative;
-  float: left;
-  width: 100%;
+  z-index: 2;
+  flex: 1 1 auto;
+  width: 1%;
   margin-bottom: 0;
 }
 
-.form__input-addon-label {
-  display: inline-block;
+.form__input-addon {
   line-height: 1.5rem;
   font-size: 1rem;
   padding: 0.25rem 0.75rem;
@@ -283,49 +254,92 @@ textarea.form__control {
   margin-bottom: 0;
 }
 
-/* Form addon label size modifiers
+.form__input-group > *:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.form__input-group > *:not(:last-child) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+/* Input group size modifiers
    ========================================================================== */
 
 /* Small (24px) */
 
-.form__input-group--small .form__addon-label,
-.form__addon-label--small {
-  line-height: 1.25rem;
+.form__input-group--small .form__input-addon,
+.form__input-addon--small {
   font-size: 0.875rem;
+  line-height: 1.25rem;
   padding: 0.125rem 0.5rem;
   min-width: 1.75rem;
+}
+
+.form__input-group--small .button {
+  @extend .button--small;
+}
+
+.form__input-group--small .form__control {
+  @extend .form__control--small;
 }
 
 /* Medium (32px)
    Default
 */
 
-.form__input-group--medium .form__addon-label,
-.form__addon-label--medium {
-  line-height: 1.5rem;
+.form__input-group--medium .form__input-addon,
+.form__input-addon--medium {
   font-size: 1rem;
+  line-height: 1.5rem;
   padding: 0.25rem 0.75rem;
   min-width: 2rem;
 }
 
+.form__input-group--medium .button {
+  @extend .button--medium;
+}
+
+.form__input-group--medium .form__control {
+  @extend .form__control--medium;
+}
+
 /* Large (40px) */
 
-.form__input-group--large .form__addon-label,
-.form__addon-label--large {
+.form__input-group--large .form__input-addon,
+.form__input-addon--large {
+  font-size: 1rem;
   line-height: 1.5rem;
-  font-size: 1.25rem;
   padding: 0.5rem 1rem;
   min-width: 2.5rem;
 }
 
+.form__input-group--large .button {
+  @extend .button--large;
+}
+
+.form__input-group--large .form__control {
+  @extend .form__control--large;
+}
+
 /* XLarge (48px) */
 
-.form__input-group--xlarge .form__addon-label,
-.form__addon-label--xlarge {
-  line-height: 2rem;
+.form__input-group--xlarge .form__input-addon,
+.form__input-addon--xlarge {
   font-size: 1.25rem;
+  line-height: 2rem;
   padding: 0.5rem 1rem;
   min-width: 3rem;
+}
+
+.form__input-group--xlarge .button {
+  @extend .button--xlarge;
+}
+
+.form__input-group--xlarge .form__control {
+  @extend .form__control--xlarge;
 }
 
 
@@ -417,35 +431,49 @@ label[for] {
    ========================================================================== */
 
 .form__option {
-  position: relative;
-  display: block;
-  margin-top: $global-spacing / 2;
+  display: flex;
+  align-items: flex-start;
   font-size: 1rem;
   line-height: 1.5;
   cursor: pointer;
-  padding-left: $global-spacing * 1.25;
+  margin-top: $global-spacing / 2;
 
   input {
-    position: absolute;
-    top: $global-spacing / 4;
-    left: 0;
+    flex: none;
+    margin-top: 0.3125rem; // 5pxh
   }
 }
 
 .form__option__text {
-  max-width: 100%;
-  display: inline-block;
-  vertical-align: top;
+  padding: 0 0 0 ($global-spacing / 2);
+
+  &:not(:last-child) {
+    padding: 0 ($global-spacing / 2) 0 0;
+  }
+}
+
+.form__option__ui {
+  flex: none;
+  position: relative;
+  transition: all 0.16s ease 0s;
 }
 
 /* Form option inline modifier */
 
 .form__option--inline {
-  display: inline-block;
+  display: inline-flex;
 }
 
 .form__option--inline + .form__option--inline {
   margin-left: $global-spacing;
+}
+
+/* Form option text-hidden modifier */
+
+.form__option--text-hidden {
+  .form__option__text {
+    @extend .visually-hidden;
+  }
 }
 
 
@@ -454,21 +482,17 @@ label[for] {
 
 .form__option--custom-radio,
 .form__option--custom-checkbox {
-  padding-left: $global-spacing * 1.75;
 
   input {
     @extend .visually-hidden;
   }
 
   .form__option__ui {
-    position: absolute;
-    top: 0.125rem;
-    left: 0;
+    margin: 0.125rem 0;
     height: 1.25rem;
     width: 1.25rem;
     box-shadow: inset 0 0 0 1px rgba($base-color, 0.12);
     background: #fff;
-    transition: all 0.16s ease 0s;
 
     &::before {
       position: absolute;
@@ -531,45 +555,87 @@ label[for] {
    ========================================================================== */
 
 .form__option--switch {
-  position: relative;
-  padding: 0;
 
-  input,
-  .form__option__text {
+  input {
     @extend .visually-hidden;
   }
 
-  transition: all 0.16s ease 0s;
-
   .form__option__ui {
-    position: relative;
-    display: block;
-    width: 1.75rem;
-    height: 1rem;
-    background: tint($base-color, 64%);
+    margin: 0.125rem 0;
+    width: 2.75rem;
+    height: 1.25rem;
     border-radius: $full-border-radius;
+    background: rgba($base-color, 0.24);
+    box-shadow: inset 0 0 0 1px $base-alpha-color;
 
     &::before {
+      @extend .button--base-raised-light;
       position: absolute;
       top: 50%;
       left: 0;
-      transform: translate(0, -50%);
+      z-index: 2;
       content: '';
-      height: 0.75rem;
-      width: 0.75rem;
+      height: 1.25rem;
+      width: 1.25rem;
       border-radius: $full-border-radius;
-      background: #fff;
-      margin: 0 0.125rem;
-      transition: all 0.32s ease 0s;
+      transform: translate(0, -50%);
+      transition: all 0.24s ease 0s;
+    }
+
+    /* Icon handling */
+    [class^="uisi-"],
+    [class*=" uisi-"],
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 12%;
+      z-index: 1;
+      font-size: 1rem;
+      line-height: 1rem !important;
+      height: 1rem;
+      width: 1rem;
+      text-align: center;
+      color: #fff;
+      transform: translate(0, -50%);
+      transition: all 0.24s ease 0s;
     }
   }
 
+  &:hover .form__option__ui {
+    @extend .button--hover;
+  }
+
+  &.form__option--checked .form__option__ui,
   input:checked ~ .form__option__ui {
-    background: $primary-color;
+    background: $link-color;
 
     &::before {
+      left: 100%;
+      transform: translate(-100%, -50%);
+    }
+
+    /* Icon handling */
+    [class^="uisi-"],
+    [class*=" uisi-"],
+    &::after {
+      right: 88%;
       transform: translate(100%, -50%);
     }
+  }
+}
+
+/* Iconified cases */
+
+.form__option.fos-io {
+
+  .form__option__ui::after {
+    @extend %uisi-sm-xmark;
+    font-size: 0.875rem;
+  }
+
+  &.form__option--checked .form__option__ui::after,
+  input:checked ~ .form__option__ui::after {
+    @extend %uisi-sm-tick;
   }
 }
 
@@ -684,36 +750,42 @@ label[for] {
 
 .form__hascol--2 {
   > * {
-    @include column(6/12, $cycle: 2);
+    $col-group: 2;
+    @include column(6/12, $cycle: $col-group);
 
-    &:nth-child(1),
-    &:nth-child(2) {
-      margin-top: 0;
+    @for $child from 1 through $col-group {
+      &:nth-child(#{$child}) {
+        margin-top: 0;
+      }
+      #{$child}: #{$child + 1}; 
     }
   }
 }
 
 .form__hascol--3 {
   > * {
-    @include column(4/12, $cycle: 3);
+    $col-group: 3;
+    @include column(4/12, $cycle: $col-group);
 
-    &:nth-child(1),
-    &:nth-child(2),
-    &:nth-child(3) {
-      margin-top: 0;
+    @for $child from 1 through $col-group {
+      &:nth-child(#{$child}) {
+        margin-top: 0;
+      }
+      #{$child}: #{$child + 1}; 
     }
   }
 }
 
 .form__hascol--4 {
   > * {
-    @include column(3/12, $cycle: 4);
+    $col-group: 4;
+    @include column(3/12, $cycle: $col-group);
 
-    &:nth-child(1),
-    &:nth-child(2),
-    &:nth-child(3),
-    &:nth-child(4) {
-      margin-top: 0;
+    @for $child from 1 through $col-group {
+      &:nth-child(#{$child}) {
+        margin-top: 0;
+      }
+      #{$child}: #{$child + 1}; 
     }
   }
 }
@@ -728,6 +800,20 @@ label[for] {
   line-height: 1.25rem;
   color: rgba($base-font-color, 0.48);
   margin-top: $global-spacing / 2;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form__note {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgba($base-font-color, 0.64);
+  background: rgba($base-color, 0.04);
+  border-radius: $base-border-radius;
+  padding: $global-spacing;
+  margin-bottom: $global-spacing;
 
   > *:last-child {
     margin-bottom: 0;

@@ -460,6 +460,65 @@
                     </div>
                   </div>
 
+                  <h2>Navs</h2>
+                  <h3>Regular menu</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content">
+                      <ul class="menu">
+                        <li class="menu__item-wrapper">
+                          <a href="#" class="menu__item" title="View item">Item A</a>
+                        </li>
+                        <li class="menu__item-wrapper">
+                          <a href="#" class="menu__item menu__item--active" title="View item">Item B</a>
+                        </li>
+                        <li class="menu__item-wrapper">
+                          <a href="#" class="menu__item" title="View item">Item C</a>
+                        </li>
+                      </ul>
+
+                      <ul class="menu menu--vertical">
+                        <li class="menu__item-wrapper">
+                          <a href="#" class="menu__item" title="View item">Item A</a>
+                        </li>
+                        <li class="menu__item-wrapper">
+                          <a href="#" class="menu__item menu__item--active" title="View item">Item B</a>
+                        </li>
+                        <li class="menu__item-wrapper">
+                          <a href="#" class="menu__item" title="View item">Item C</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <h3>Tabs menu</h3>
+                  <div class="exhibit">
+                    <div class="exhibit__content">
+                      <ul class="menu menu--tabs">
+                        <li class="menu__item-wrapper">
+                          <a href="#" class="menu__item menu__item--active" title="View item">Item A</a>
+                        </li>
+                        <li class="menu__item-wrapper">
+                          <a href="#" class="menu__item" title="View item">Item B</a>
+                        </li>
+                        <li class="menu__item-wrapper">
+                          <a href="#" class="menu__item" title="View item">Item C</a>
+                        </li>
+                      </ul>
+
+                      <ul class="menu menu--tabs menu--vertical">
+                        <li class="menu__item-wrapper">
+                          <a href="#" class="menu__item menu__item--active" title="View item">Item A</a>
+                        </li>
+                        <li class="menu__item-wrapper">
+                          <a href="#" class="menu__item" title="View item">Item B</a>
+                        </li>
+                        <li class="menu__item-wrapper">
+                          <a href="#" class="menu__item" title="View item">Item C</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
                   <h2>Cards</h2>
                   <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
@@ -603,13 +662,13 @@
 
                             <label class="form__option form__option--inline form__option--custom-radio">
                               <input type="radio" name="form-radio" id="form-radio-1" value="Radio 1" checked />
-                              <span class="form__option__text">Radio 1</span>
                               <span class="form__option__ui"></span>
+                              <span class="form__option__text">Radio 1</span>
                             </label>
                             <label class="form__option form__option--inline form__option--custom-radio">
                               <input type="radio" name="form-radio" id="form-radio-2" value="Radio 2" />
-                              <span class="form__option__text">Radio 2</span>
                               <span class="form__option__ui"></span>
+                              <span class="form__option__text">Radio 2</span>
                             </label>
                           </div>
                         </fieldset>
@@ -665,21 +724,78 @@
                                 </dl>
                               </div>
                             </div>
+                            
+                            <div class="form__hascol form__hascol--3">
+                              <label class="form__option form__option--custom-checkbox">
+                                <input type="checkbox" name="form-checkbox-custom-1" id="form-checkbox-custom-1" value="Checkbox 1" />
+                                <span class="form__option__ui"></span>
+                                <span class="form__option__text">Checkbox 1</span>
+                              </label>
+                              <label class="form__option form__option--custom-checkbox">
+                                <input type="checkbox" name="form-checkbox-custom-2" value="form-checkbox-2" />
+                                <span class="form__option__ui"></span>
+                                <span class="form__option__text">Checkbox 2</span>
+                              </label>
+                              <label class="form__option form__option--custom-checkbox">
+                                <input type="checkbox" name="form-checkbox-custom-3" value="form-checkbox-3" />
+                                <span class="form__option__ui"></span>
+                                <span class="form__option__text">Checkbox 3</span>
+                              </label>
+                              <label class="form__option form__option--custom-checkbox">
+                                <input type="checkbox" name="form-checkbox-custom-4" value="form-checkbox-4" />
+                                <span class="form__option__ui"></span>
+                                <span class="form__option__text">Checkbox 4</span>
+                              </label>
+                              <label class="form__option form__option--custom-checkbox">
+                                <input type="checkbox" name="form-checkbox-custom-5" value="form-checkbox-5" />
+                                <span class="form__option__ui"></span>
+                                <span class="form__option__text">Checkbox 5</span>
+                              </label>
+                            </div>
 
-                            <label class="form__option form__option--custom-checkbox">
-                              <input type="checkbox" name="form-checkbox" id="form-checkbox-1" value="Checkbox 1" />
+                            <div class="form__group">
+                              <label class="form__label" for="Toggles">Toggles</label>
+                              <label for="switch1" class="form__option form__option--switch" title="Toggle on/off">
+                                <input type="checkbox" name="switch1" id="switch1" value="on">
+                                <span class="form__option__text">Switch 01</span>
+                                <span class="form__option__ui"></span>
+                              </label>
+                              <label for="switch2" class="form__option form__option--checked form__option--switch" title="Toggle on/off">
+                                <input type="checkbox" name="switch2" id="switch2" value="on">
+                                <span class="form__option__text">Switch 02</span>
+                                <span class="form__option__ui"></span>
+                              </label>
+                              <label for="switch3" class="form__option form__option--switch option fos-io" title="Toggle on/off">
+                                <input type="checkbox" name="switch3" id="switch3" value="on">
+                                <span class="form__option__ui"></span><span class="form__option__text">Switch 03</span>
+                              </label>
+                              <label for="switch4" class="form__option form__option--text-hidden form__option--switch" title="Toggle on/off">
+                                <input type="checkbox" name="switch4" id="switch4" value="on">
+                                <span class="form__option__ui"></span>
+                                <span class="form__option__text">Switch 04</span>
+                              </label>
+                            </div>
+                          </div>
+
+                          <div class="form__note">
+                            <p>This is some random information. It uses form note styles.</p>
+                            <p>Live long and prosper.</p>
+                          </div>
+
+                          <div class="form__group">
+                            <label class="form__label">Checkbox options (basic)</label>
+
+                            <label class="form__option">
+                              <input type="checkbox" name="form-checkbox-basic-1" id="form-checkbox-basic-1" value="Checkbox 1" />
                               <span class="form__option__text">Checkbox 1</span>
-                              <span class="form__option__ui"></span>
                             </label>
-                            <label class="form__option form__option--custom-checkbox">
-                              <input type="checkbox" name="form-checkbox" value="form-checkbox-2" />
+                            <label class="form__option">
+                              <input type="checkbox" name="form-checkbox-basic-2" value="form-checkbox-basic-2" />
                               <span class="form__option__text">Checkbox 2</span>
-                              <span class="form__option__ui"></span>
                             </label>
-                            <label class="form__option form__option--custom-checkbox">
-                              <input type="checkbox" name="form-checkbox" value="form-checkbox-3" />
+                            <label class="form__option">
                               <span class="form__option__text">Checkbox 3</span>
-                              <span class="form__option__ui"></span>
+                              <input type="checkbox" name="form-checkbox-basic-3" value="form-checkbox-basic-3" />
                             </label>
                           </div>
                         </fieldset>
@@ -705,15 +821,44 @@
                           </div>
 
                           <div class="form__group">
-                            <label class="form__label" for="inputText5">Input group</label>
-                            <div class="form__input-group">
-                              <div class="form__input-addon"><span class="form__input-addon-label">Prefix addon</span></div>
-                              <input type="text" id="inputText5" name="inputText5" class="form__control" placeholder="Input text">
-                              <div class="form__input-addon">
-                                <button type="button" class="button button--primary-raised-dark button--text-hidden" title="Delete fieldset"><i class="uisi-trash-bin"></i><span>Delete</span></button>
-                              </div>
+                            <label class="form__label" for="inputText5">Input group Small</label>
+                            <div class="form__input-group form__input-group--small">
+                              <span class="form__input-addon">Prefix addon</span>
+                              <span class="form__input-addon">Another prefix addon</span>
+                              <input type="text" id="inputText5" name="inputText5" class="form__control" placeholder="Input text" />
+                              <button type="button" class="button button--primary-raised-dark button--text-hidden" title="Delete"><i class="uisi-trash-bin"></i><span>Delete</span></button>
                             </div>
                           </div>
+
+                          <div class="form__group">
+                            <label class="form__label" for="inputText5">Input group Medium</label>
+                            <div class="form__input-group form__input-group--medium">
+                              <button type="button" class="button button--base-raised-dark" title="Submit"><span>Submit</span> <i class="uisi-sm-tick"></i></button>
+                              <input type="text" id="inputText5" name="inputText5" class="form__control" placeholder="Input text" />
+                              <span class="form__input-addon">Suffix addon</span>
+                              <span class="form__input-addon">Suffix addon</span>
+                              <button type="button" class="button button--base-raised-light" title="Submit"><span>Submit</span> <i class="uisi-sm-tick"></i></button>
+                            </div>
+                          </div>
+
+                          <div class="form__group">
+                            <label class="form__label" for="inputText5">Input group Large</label>
+                            <div class="form__input-group form__input-group--large">
+                              <span class="form__input-addon">Prefix addon</span>
+                              <input type="text" id="inputText5" name="inputText5" class="form__control" placeholder="Input text" />
+                              <button type="button" class="button button--base-raised-dark" title="Submit"><span>Submit</span> <i class="uisi-sm-tick"></i></button>
+                            </div>
+                          </div>
+
+                          <div class="form__group">
+                            <label class="form__label" for="inputText5">Input group XLarge</label>
+                            <div class="form__input-group form__input-group--xlarge">
+                              <span class="form__input-addon">Prefix addon</span>
+                              <input type="text" id="inputText5" name="inputText5" class="form__control" placeholder="Input text" />
+                              <button type="button" class="button button--primary-raised-dark button--text-hidden" title="Delete"><i class="uisi-trash-bin"></i> <span>Delete</span></button>
+                            </div>
+                          </div>
+
 
                         </fieldset>
                       </form>

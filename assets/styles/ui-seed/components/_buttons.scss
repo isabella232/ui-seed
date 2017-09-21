@@ -39,11 +39,13 @@
 
   /* Icon handling */
 
-  &::before, &::after,
-  [class^="openaq-ds-icon-"], [class*=" openaq-ds-icon-"],
-  [class^="uisis-"], [class*=" uisis-"] {
+  &::before,
+  &::after,
+  [class^="uisi-"],
+  [class*=" uisi-"] {
     font-size: 1rem;
   }
+
   &::before { margin-right: 0.375rem; }
   &::after { margin-left: 0.375rem; }
 

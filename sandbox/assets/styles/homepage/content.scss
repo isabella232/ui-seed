@@ -142,6 +142,11 @@
     margin: 0 ($global-spacing / 2) ($global-spacing / 2) 0;
   }
 
+  > .menu {
+    margin: 0 0 ($global-spacing * 2) 0;
+  }
+
+
   > .card {
     margin: 0 0 ($global-spacing * 2) 0;
   }
