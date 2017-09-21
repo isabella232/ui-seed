@@ -34,7 +34,7 @@
   .desktop &,
   .mobile &,
   .overflow & {
-    @include transform(translate(-50%, 0));
+    transform: translate(-50%, 0);
     position: absolute;
     top: 0;
     left: 50%;
@@ -58,7 +58,7 @@
   }
   @include media(medium-up) {
     .desktop & {
-      @include transform(translate(0, 0));
+      transform: translate(0, 0);
       width: 200%;
       .set-section.type-left & {
         left: 0;
@@ -71,13 +71,13 @@
     .mobile & {
       width: 100%;
       .set-section.type-right & {
-        @include transform(translate(50%, 0));
+        transform: translate(50%, 0);
         left: auto;
         right: 50%;
       }
     }
     .overflow & {
-      @include transform(translate(0, 0));
+      transform: translate(0, 0);
       width: 200%;
       .set-section.type-left & {
         left: 0;
