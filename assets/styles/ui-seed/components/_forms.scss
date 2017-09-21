@@ -216,19 +216,20 @@ textarea.form__control {
   line-height: 0;
 }
 
+.form__input-addon + .form__input-addon,
+.form__input-addon + .form__control,
+.form__control + .form__input-addon {
+  margin-left: -1px;
+}
+
 .form__input-addon,
 .form__input-group > .button {
   flex: 0 0 auto;
+}
 
-  &:first-child {
-    position: relative;
-    margin-right: -1px;
-  }
-
-  &:last-child {
-    position: relative;
-    margin-left: -1px;
-  }
+.form__input-group > .button {
+  position: relative;
+  z-index: 3;
 }
 
 .form__input-group .form__control {
