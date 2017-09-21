@@ -217,8 +217,9 @@ textarea.form__control {
 }
 
 .form__input-addon + .form__input-addon,
+.form__input-addon + .button,
 .form__input-addon + .form__control,
-.form__control + .form__input-addon {
+.form__control + .form__input-addon  {
   margin-left: -1px;
 }
 
