@@ -490,22 +490,32 @@
                     </div>
                   </div>
 
-                  <h3>Tabs menu</h3>
+                  <h3>Tabs</h3>
                   <div class="exhibit">
                     <div class="exhibit__content">
-                      <ul class="menu menu--tabs">
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item menu__item--active" title="View item">Item A</a>
-                        </li>
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item" title="View item">Item B</a>
-                        </li>
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item" title="View item">Item C</a>
-                        </li>
-                      </ul>
+                      <nav class="nav">
+                        <div class="nav__contents">
+                          <h3 class="nav__label">Label:</h3>
+                          <ul class="menu menu--tabs" role="tablist">
+                            <li class="menu__item-wrapper">
+                              <a href="#" class="menu__item menu__item--active" title="View item" role="tab">Item A</a>
+                            </li>
+                            <li class="menu__item-wrapper">
+                              <a href="#" class="menu__item" title="View item" role="tab">Item B</a>
+                            </li>
+                            <li class="menu__item-wrapper">
+                              <a href="#" class="menu__item" title="View item" role="tab">Item C</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </nav>
+                    </div>
+                  </div>
 
-                      <ul class="menu menu--tabs menu--vertical">
+
+                  <div class="exhibit exhibit--dark">
+                    <div class="exhibit__content">
+                      <ul class="menu menu--tabs menu--vertical menu--negative">
                         <li class="menu__item-wrapper">
                           <a href="#" class="menu__item menu__item--active" title="View item">Item A</a>
                         </li>
