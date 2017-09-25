@@ -2,14 +2,33 @@
    Navs
    ========================================================================== */
 
-.nav {
+.nav__contents {
   display: flex;
   flex-wrap: nowrap;
-  box-shadow: inset 0 -1px 0 0 $base-alpha-color;
+  align-items:: flex-start;
+  line-height: 1rem;
 
   > * {
     display: inline-flex;
   }
+
+  > a {
+    padding: $global-spacing;
+
+    &,
+    &:visited,
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  .nav__label:not(:first-child) {
+    margin: 0 0 0 $global-spacing;
+  }
+}
+
+.nav--contained {
+  box-shadow: inset 0 -1px 0 0 $base-alpha-color;
 }
 
 .nav__label {
@@ -21,6 +40,19 @@
   margin: 0;
 }
 
+.nav--vertical {
+  &.nav--contained {
+    box-shadow: inset 1px 0 0 0 $base-alpha-color;
+  }
+
+  .nav__contents {
+    flex-direction: column;
+  }
+
+  .nav__label:not(:first-child) {
+    margin: $global-spacing 0 0 0;
+  }
+}
 
 
 /* Menu
@@ -29,7 +61,6 @@
 .menu {
   @extend .heading-alt;
   display: flex;
-  
   list-style: none;
   font-size: 0.875rem;
   line-height: 1rem;
@@ -57,7 +88,8 @@
   padding: 0;
 }
 
-.menu--vertical {
+.menu--vertical,
+.nav--vertical .menu {
   flex-direction: column;
 }
 
@@ -72,12 +104,17 @@
   .menu__item--active {
     box-shadow: inset 0 -1px 0 0 $base-color;
   }
+
+  .nav--contained & {
+    box-shadow: none;
+  }
 }
 
 .menu--tabs.menu--vertical {
   box-shadow: inset 1px 0 0 0 $base-alpha-color;
+}
 
-  .menu__item--active {
-    box-shadow: inset 1px 0 0 0 $base-color;
-  }
+.menu--tabs.menu--vertical .menu__item--active,
+.nav--vertical .menu--tabs .menu__item--active {
+  box-shadow: inset 1px 0 0 0 $base-color;
 }
