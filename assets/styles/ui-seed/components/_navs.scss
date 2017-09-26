@@ -40,14 +40,12 @@
     color: inherit;
   }
 
-  &:active,
   &--active {
     box-shadow: inset 0 -1px 0 0 $base-color;
   }
 
   /* Vertical */
 
-  &:active,
   &--active {
     box-shadow: inset 0 -1px 0 0 $base-color;
   }
@@ -74,7 +72,6 @@
   }
 
   .nav__link {
-    &:active,
     &--active {
       box-shadow: inset 0 -1px 0 0 #fff;
     }
@@ -97,7 +94,6 @@
   }
 
   .nav__link {
-    &:active,
     &--active {
       box-shadow: inset 1px 0 0 0 $base-color;
     }
@@ -108,7 +104,6 @@
 
 .nav--vertical.nav--negative {
   .nav__link {
-    &:active,
     &--active {
       box-shadow: inset 1px 0 0 0 #fff;
     }
