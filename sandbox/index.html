@@ -460,86 +460,23 @@
                     </div>
                   </div>
 
-                  <h2>Navigation</h2>
-                  <h3>Menu</h3>
-                  <div class="exhibit">
-                    <div class="exhibit__content">
-                      <ul class="menu">
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item" title="View item">Item A</a>
-                        </li>
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item menu__item--active" title="View item">Item B</a>
-                        </li>
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item" title="View item">Item C</a>
-                        </li>
-                      </ul>
-
-                      <ul class="menu menu--vertical">
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item" title="View item">Item A</a>
-                        </li>
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item menu__item--active" title="View item">Item B</a>
-                        </li>
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item" title="View item">Item C</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <h3>Tabs</h3>
-                  <div class="exhibit">
-                    <div class="exhibit__content">
-                      <ul class="menu menu--tabs" role="tablist">
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item menu__item--active" title="View item" role="tab">Item A</a>
-                        </li>
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item" title="View item" role="tab">Item B</a>
-                        </li>
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item" title="View item" role="tab">Item C</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="exhibit exhibit--dark">
-                    <div class="exhibit__content">
-                      <ul class="menu menu--tabs menu--vertical menu--negative">
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item menu__item--active" title="View item">Item A</a>
-                        </li>
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item" title="View item">Item B</a>
-                        </li>
-                        <li class="menu__item-wrapper">
-                          <a href="#" class="menu__item" title="View item">Item C</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <h3>Nav</h3>
+                  <h2>Navs</h2>
                   <div class="exhibit">
                     <div class="exhibit__content">
                       <nav class="nav nav--contained">
                         <div class="nav__contents">
                           <h3 class="nav__label">Topics:</h3>
-                          <a class="drop__toggle drop__toggle--caret" title="Choose a topic"><span>All</span></a>
+                          <a class="nav__link drop__toggle drop__toggle--caret" title="Choose a topic"><span>All</span></a>
                           <h3 class="nav__label">Display:</h3>
-                          <ul class="menu menu--tabs" role="tablist">
-                            <li class="menu__item-wrapper">
-                              <a href="#" class="menu__item menu__item--active" title="View item" role="tab"><span>Cards</span></a>
+                          <ul class="nav__tablist" role="tablist">
+                            <li class="nav__tab" role="presentation">
+                              <a href="#" class="nav__link nav__link--active" title="View item" role="tab"><span>Cards</span></a>
                             </li>
-                            <li class="menu__item-wrapper">
-                              <a href="#" class="menu__item" title="View item" role="tab"><span>List</span></a>
+                            <li class="tablist__item" role="presentation">
+                              <a href="#" class="nav__link" title="View item" role="tab"><span>List</span></a>
                             </li>
-                            <li class="menu__item-wrapper">
-                              <a href="#" class="menu__item" title="View item" role="tab"><span>Map</span></a>
+                            <li class="tablist__item" role="presentation">
+                              <a href="#" class="nav__link" title="View item" role="tab"><span>Map</span></a>
                             </li>
                           </ul>
                         </div>
@@ -548,17 +485,59 @@
                       <nav class="nav nav--contained nav--vertical">
                         <div class="nav__contents">
                           <h3 class="nav__label">Topics:</h3>
-                          <a class="drop__toggle drop__toggle--caret" title="Choose a topic"><span>All</span></a>
+                          <a class="nav__link drop__toggle drop__toggle--caret" title="Choose a topic"><span>All</span></a>
                           <h3 class="nav__label">Display:</h3>
-                          <ul class="menu menu--tabs" role="tablist">
-                            <li class="menu__item-wrapper">
-                              <a href="#" class="menu__item menu__item--active" title="View item" role="tab"><span>Cards</span></a>
+                          <ul class="nav__tablist" role="tablist">
+                            <li class="nav__tab" role="presentation">
+                              <a href="#" class="nav__link nav__link--active" title="View item" role="tab"><span>Cards</span></a>
                             </li>
-                            <li class="menu__item-wrapper">
-                              <a href="#" class="menu__item" title="View item" role="tab"><span>List</span></a>
+                            <li class="tablist__item" role="presentation">
+                              <a href="#" class="nav__link" title="View item" role="tab"><span>List</span></a>
                             </li>
-                            <li class="menu__item-wrapper">
-                              <a href="#" class="menu__item" title="View item" role="tab"><span>Map</span></a>
+                            <li class="tablist__item" role="presentation">
+                              <a href="#" class="nav__link" title="View item" role="tab"><span>Map</span></a>
+                            </li>
+                          </ul>
+                        </div>
+                      </nav>
+                    </div>
+                  </div>
+
+                  <div class="exhibit exhibit--dark">
+                    <div class="exhibit__content">
+                      <nav class="nav nav--negative nav--contained">
+                        <div class="nav__contents">
+                          <h3 class="nav__label">Topics:</h3>
+                          <a class="nav__link drop__toggle drop__toggle--caret" title="Choose a topic"><span>All</span></a>
+                          <h3 class="nav__label">Display:</h3>
+                          <ul class="nav__tablist" role="tablist">
+                            <li class="nav__tab" role="presentation">
+                              <a href="#" class="nav__link nav__link--active" title="View item" role="tab"><span>Cards</span></a>
+                            </li>
+                            <li class="tablist__item" role="presentation">
+                              <a href="#" class="nav__link" title="View item" role="tab"><span>List</span></a>
+                            </li>
+                            <li class="tablist__item" role="presentation">
+                              <a href="#" class="nav__link" title="View item" role="tab"><span>Map</span></a>
+                            </li>
+                          </ul>
+                        </div>
+                      </nav>
+
+                      <nav class="nav nav--negative nav--contained nav--vertical">
+                        <div class="nav__contents">
+                          <h3 class="nav__label">Topics:</h3>
+                          <a class="nav__link drop__toggle drop__toggle--caret" title="Choose a topic"><span>All</span></a>
+                          <h3 class="nav__label">Display:</h3>
+                          <ul class="nav__tablist" role="tablist">
+                            <li class="nav__tab" role="presentation">
+                              <a href="#" class="nav__link nav__link--active" title="View item" role="tab"><span>Cards</span></a>
+                            </li>
+                            <li class="tablist__item" role="presentation">
+                              <a href="#" class="nav__link" title="View item" role="tab"><span>List</span></a>
+                            </li>
+                            <li class="tablist__item" role="presentation">
+                              <a href="#" class="nav__link" title="View item" role="tab"><span>Map</span></a>
                             </li>
                           </ul>
                         </div>

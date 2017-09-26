@@ -2,43 +2,75 @@
    Navs
    ========================================================================== */
 
+.nav {
+   color: $base-font-color;
+}
+
 .nav__contents {
   display: flex;
   flex-wrap: nowrap;
-  align-items:: flex-start;
-  line-height: 1rem;
 
   > * {
     display: inline-flex;
   }
+}
 
-  > a {
-    padding: $global-spacing;
+.nav__label,
+.nav__link {
+  @extend .heading-alt;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  display: inline-flex;
+  padding: $global-spacing;
+  margin: 0;
+}
 
-    &,
-    &:visited,
-    &:hover {
-      color: inherit;
-    }
-  }
+.nav__label {
+  color: rgba($base-font-color, 0.64);
 
-  .nav__label:not(:first-child) {
+  &:not(:first-child) {
     margin: 0 0 0 $global-spacing;
   }
 }
+
+.nav__link {
+  &,
+  &:hover,
+  &:visited {
+    color: inherit;
+  }
+
+  &:active,
+  &--active {
+    box-shadow: inset 0 -1px 0 0 $base-color;
+  }
+
+  /* Vertical */
+
+  &:active,
+  &--active {
+    box-shadow: inset 0 -1px 0 0 $base-color;
+  }
+}
+
+
+/* Nav modifiers
+   ========================================================================== */
 
 .nav--contained {
   box-shadow: inset 0 -1px 0 0 $base-alpha-color;
 }
 
-.nav__label {
-  @extend .heading-alt;
-  font-size: 0.875rem;
-  color: rgba($base-font-color, 0.64);
-  line-height: 1rem;
-  padding: $global-spacing;
-  margin: 0;
+.nav--negative {
+  @extend .antialiased;
+  color: #fff;
+
+  .nav__label {
+    color: rgba(#fff, 0.48);
+  }
 }
+
+/* Vertical */
 
 .nav--vertical {
   &.nav--contained {
@@ -52,69 +84,51 @@
   .nav__label:not(:first-child) {
     margin: $global-spacing 0 0 0;
   }
+
+  .nav__link {
+    &:active,
+    &--active {
+      box-shadow: inset 1px 0 0 0 $base-color;
+    }
+  }
+}
+
+/* Vertical & Negative */
+
+.nav--vertical.nav--negative {
+  .nav__link {
+    &:active,
+    &--active {
+      box-shadow: inset 1px 0 0 0 #fff;
+    }
+  }
+}
+
+/* Vertical, Negative & Contained */
+
+.nav--vertical.nav--negative.nav--contained {
+  box-shadow: inset 1px 0 0 0 rgba(#fff, 0.12);
 }
 
 
-/* Menu
+/* Tablist
    ========================================================================== */
 
-.menu {
-  @extend .heading-alt;
+.nav__tablist {
   display: flex;
+  flex-wrap: nowrap;
   list-style: none;
-  font-size: 0.875rem;
-  line-height: 1rem;
-}
-
-.menu__item {
-  display: inline-flex;
-  padding: $global-spacing;
-
-  &,
-  &:visited,
-  &:hover {
-    color: inherit;
-  }
-
-  &:active,
-  &--active {
-    color: $base-font-color;
-  }
-}
-
-.menu,
-.menu__item-wrapper {
   margin: 0;
   padding: 0;
-}
 
-.menu--vertical,
-.nav--vertical .menu {
-  flex-direction: column;
-}
+  /* Vertical */
 
-
-/* Menu tabs modifier
-   ========================================================================== */
-
-.menu--tabs {
-  flex-wrap: nowrap;
-  box-shadow: inset 0 -1px 0 0 $base-alpha-color;
-
-  .menu__item--active {
-    box-shadow: inset 0 -1px 0 0 $base-color;
-  }
-
-  .nav--contained & {
-    box-shadow: none;
+  .nav--vertical & {
+    flex-direction: column;
   }
 }
 
-.menu--tabs.menu--vertical {
-  box-shadow: inset 1px 0 0 0 $base-alpha-color;
-}
-
-.menu--tabs.menu--vertical .menu__item--active,
-.nav--vertical .menu--tabs .menu__item--active {
-  box-shadow: inset 1px 0 0 0 $base-color;
+.nav__tab {
+  margin: 0;
+  padding: 0;
 }
