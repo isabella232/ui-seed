@@ -101,6 +101,7 @@ _README.md
 *~
 *#
 .DS_STORE
+.DS_Store
 .netbeans
 nbproject
 .idea

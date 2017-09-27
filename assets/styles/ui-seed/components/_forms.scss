@@ -17,7 +17,7 @@
   font-size: 1rem;
   line-height: 1.5rem;
   color: $base-font-color;
-  background: #fff;
+  background-color: #fff;
   border: 0;
   border-radius: 0;
   font-family: inherit;
@@ -48,7 +48,7 @@
   &:active,
   &--active {
     outline: 0;
-    box-shadow: inset 0 0 0 1px $link-color;
+    box-shadow: inset 0 0 0 1px rgba($base-color, 0.32);
   }
 
   /* Animation */
@@ -65,7 +65,23 @@ select.form__control {
   appearance: none;
   padding-right: 2rem;
   cursor: pointer;
-  background: #fff url('data:image/svg+xml;utf8,' + urlencode('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="5px" viewBox="0 0 10 5" enable-background="new 0 0 10 5" xml:space="preserve"><g><polygon fill="#{$link-color}" points="5,5 0,0 10,0  "/></g></svg>')) calc(100% - 0.5rem) center no-repeat;
+  background-image: url('data:image/svg+xml;utf8,' + urlencode('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="5px" viewBox="0 0 10 5" enable-background="new 0 0 10 5" xml:space="preserve"><g><polygon fill="#{$link-color}" points="5,5 0,0 10,0  "/></g></svg>'));
+  background-position: calc(100% - 0.5rem) center;
+  background-repeat: no-repeat;
+
+  /* Size modifiers */
+
+  &.form__control--small,
+  &.form__control--medium {
+    padding-right: 2rem;
+    background-position: calc(100% - 0.5rem) center;
+  }
+
+  &.form__control--large,
+  &.form__control--xlarge {
+    padding-right: 2.25rem;
+    background-position: calc(100% - 0.75rem) center;
+  }
 }
 
 /* IE specific */
@@ -95,36 +111,6 @@ select.form__control:-moz-focusring {
 textarea.form__control {
   height: auto;
   resize: none;
-}
-
-
-/* Form file
-   ========================================================================== */
-
-.form__file {
-  @extend .form__control;
-  position: relative;
-  cursor: pointer;
-  padding-right: 1.5rem;
-
-  &::before {
-    @extend %uisi-folder;
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    right: 0;
-    transform: translate(0, -50%);
-    color: $link-color;
-  }
-
-  > input {
-    @extend .visually-hidden;
-  }
-
-  &--remove::before {
-    @extend %uisi-trash-bin;
-    color: $danger-color;
-  }
 }
 
 
@@ -170,6 +156,104 @@ textarea.form__control {
 }
 
 
+/* Form file
+   ========================================================================== */
+
+.form__file {
+  @extend .form__control;
+  position: relative;
+  cursor: pointer;
+  padding-right: 2rem;
+
+  &::before {
+    @extend %uisi-folder;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: 0.5rem;
+    transform: translate(0, -50%);
+    color: $link-color;
+    font-size: 1rem;
+    line-height: 1;
+    width: 1rem;
+    text-align: center;
+  }
+
+  > input {
+    @extend .visually-hidden;
+  }
+
+  &--remove::before {
+    @extend %uisi-trash-bin;
+    color: $danger-color;
+  }
+}
+
+/* Size modifiers */
+
+.form__file--small {
+  @extend .form__control--small;
+}
+
+.form__file--medium {
+  @extend .form__control--medium;
+}
+
+.form__file--large {
+  @extend .form__control--large;
+}
+
+.form__file--xlarge {
+  @extend .form__control--xlarge;
+}
+
+.form__file--small,
+.form__file--medium {
+  padding-right: 2rem;
+
+  &::before {
+    right: 0.5rem;
+  }
+}
+
+.form__file--large,
+.form__file--xlarge {
+  padding-right: 2.25rem;
+
+  &::before {
+    right: 0.75rem;
+  }
+}
+
+
+/* Color modifiers
+   ========================================================================== */
+
+.form__control--success {
+  box-shadow: inset 0 0 0 1px $success-color;
+}
+
+.form__control.form__limit--near,
+.form__control--warning {
+  box-shadow: inset 0 0 0 1px $warning-color;
+}
+
+.form__help.form__limit--near,
+.form__help--warning {
+  color: $warning-color
+}
+
+.form__control.form__limit--reached,
+.form__control--danger {
+  box-shadow: inset 0 0 0 1px $danger-color;
+}
+
+.form__help.form__limit--reached,
+.form__help--danger {
+  color: $danger-color
+}
+
+
 /* Form groups
    ========================================================================== */
 
@@ -180,30 +264,6 @@ textarea.form__control {
   > *:last-child {
     margin-bottom: 0;
   }
-}
-
-
-/* Color modifiers
-   ========================================================================== */
-
-.form__control.form__limit--near,
-.form__control--warning {
-  box-shadow: inset 0 -2px 0 0 $warning-color;
-}
-
-.form__help.form__limit--near,
-.form__help--warning {
-  color: $warning-color
-}
-
-.form__control.form__limit--reached,
-.form__control--danger {
-  box-shadow: inset 0 -2px 0 0 $danger-color;
-}
-
-.form__help.form__limit--reached,
-.form__help--danger {
-  color: $danger-color
 }
 
 
@@ -510,7 +570,7 @@ label[for] {
 
   input:focus  ~ .form__option__ui,
   &:active .form__option__ui {
-    box-shadow: inset 0 0 0 1px $link-color;
+    box-shadow: inset 0 0 0 1px rgba($base-color, 0.32);
   }
 
   input:checked ~ .form__option__ui {
