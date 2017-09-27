@@ -98,36 +98,6 @@ textarea.form__control {
 }
 
 
-/* Form file
-   ========================================================================== */
-
-.form__file {
-  @extend .form__control;
-  position: relative;
-  cursor: pointer;
-  padding-right: 1.5rem;
-
-  &::before {
-    @extend %uisi-folder;
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    right: 0;
-    transform: translate(0, -50%);
-    color: $link-color;
-  }
-
-  > input {
-    @extend .visually-hidden;
-  }
-
-  &--remove::before {
-    @extend %uisi-trash-bin;
-    color: $danger-color;
-  }
-}
-
-
 /* Form control size modifiers
    ========================================================================== */
 
@@ -167,6 +137,74 @@ textarea.form__control {
   font-size: 1.25rem;
   line-height: 2rem;
   height: 3rem;
+}
+
+
+/* Form file
+   ========================================================================== */
+
+.form__file {
+  @extend .form__control;
+  position: relative;
+  cursor: pointer;
+  padding-right: 2rem;
+
+  &::before {
+    @extend %uisi-folder;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: 0.5rem;
+    transform: translate(0, -50%);
+    color: $link-color;
+    font-size: 1rem;
+    line-height: 1;
+    width: 1rem;
+    text-align: center;
+  }
+
+  > input {
+    @extend .visually-hidden;
+  }
+
+  &--remove::before {
+    @extend %uisi-trash-bin;
+    color: $danger-color;
+  }
+}
+
+.form__file--small {
+  @extend .form__control--small;
+}
+
+.form__file--medium {
+  @extend .form__control--medium;
+}
+
+.form__file--large {
+  @extend .form__control--large;
+}
+
+.form__file--xlarge {
+  @extend .form__control--xlarge;
+}
+
+.form__file--small,
+.form__file--medium {
+  padding-right: 2rem;
+
+  &::before {
+    right: 0.5rem;
+  }
+}
+
+.form__file--large,
+.form__file--xlarge {
+  padding-right: 2.25rem;
+
+  &::before {
+    right: 0.75rem;
+  }
 }
 
 
