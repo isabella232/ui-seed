@@ -17,7 +17,7 @@
   font-size: 1rem;
   line-height: 1.5rem;
   color: $base-font-color;
-  background: #fff;
+  background-color: #fff;
   border: 0;
   border-radius: 0;
   font-family: inherit;
@@ -65,10 +65,22 @@ select.form__control {
   appearance: none;
   padding-right: 2rem;
   cursor: pointer;
-  // background: #fff url('data:image/svg+xml;utf8,' + urlencode('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="5px" viewBox="0 0 10 5" enable-background="new 0 0 10 5" xml:space="preserve"><g><polygon fill="#{$link-color}" points="5,5 0,0 10,0  "/></g></svg>')) calc(100% - 0.5rem) center no-repeat;
+  background-image: url('data:image/svg+xml;utf8,' + urlencode('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="5px" viewBox="0 0 10 5" enable-background="new 0 0 10 5" xml:space="preserve"><g><polygon fill="#{$link-color}" points="5,5 0,0 10,0  "/></g></svg>'));
+  background-position: calc(100% - 0.5rem) center;
+  background-repeat: no-repeat;
 
-  &:before {
+  /* Size modifiers */
 
+  &.form__control--small,
+  &.form__control--medium {
+    padding-right: 2rem;
+    background-position: calc(100% - 0.5rem) center;
+  }
+
+  &.form__control--large,
+  &.form__control--xlarge {
+    padding-right: 2.25rem;
+    background-position: calc(100% - 0.75rem) center;
   }
 }
 
@@ -214,19 +226,6 @@ textarea.form__control {
 }
 
 
-/* Form groups
-   ========================================================================== */
-
-.form__group {
-  @extend .clearfix;
-  margin-bottom: $global-spacing;
-
-  > *:last-child {
-    margin-bottom: 0;
-  }
-}
-
-
 /* Color modifiers
    ========================================================================== */
 
@@ -252,6 +251,19 @@ textarea.form__control {
 .form__help.form__limit--reached,
 .form__help--danger {
   color: $danger-color
+}
+
+
+/* Form groups
+   ========================================================================== */
+
+.form__group {
+  @extend .clearfix;
+  margin-bottom: $global-spacing;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 
