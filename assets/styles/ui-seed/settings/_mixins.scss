@@ -153,6 +153,7 @@
     box-shadow: inset 0 0 0 1px $shadow-color, 0 2px 8px 0 $shadow-color;
   }
 
+  &.button--hover,
   &:hover {
     background-color: $bg-color-hover;
   }

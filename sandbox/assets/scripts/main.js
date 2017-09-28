@@ -6,6 +6,7 @@ var { Modal, ModalHeader, ModalBody, ModalFooter } = UISeed.Modal;
 var { GlobalLoading, showGlobalLoading, hideGlobalLoading } = UISeed.Loading;
 var ScrollArea = UISeed.ScrollArea;
 var Dropdown = UISeed.Dropdown;
+var FileInput = UISeed.FileInput;
 
 UISeed.hello();
 
@@ -201,3 +202,36 @@ var renderLoading = function () {
 };
 
 renderLoading();
+
+// /////////////////////////////////////////////////////////////////////
+
+class FileExample extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = { file: null };
+  }
+
+  onFileSelected (file) {
+    this.setState({ file });
+  }
+
+  render () {
+    return (
+      <FileInput
+        id='file-upload-example'
+        name='file-upload-example'
+        label='Custom input file - React'
+        value={this.state.file}
+        placeholder='Choose a file'
+        onFileSelect={this.onFileSelected.bind(this)}/>
+    );
+  }
+}
+
+var renderFileInput = function () {
+  var container = document.querySelector('[data-hook="react:file"]');
+  if (container === null) return;
+  render(<FileExample />, container);
+};
+
+renderFileInput();
