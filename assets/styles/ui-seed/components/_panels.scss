@@ -22,7 +22,7 @@
   display: flex;
   width: 100%;
   border-radius: $base-border-radius $base-border-radius 0 0;
-  box-shadow: 0 1px 0 0 $base-alpha-color;
+  box-shadow: 0 $base-border-width 0 0 $base-alpha-color;
 
   > *:last-child {
     margin-bottom: 0;
@@ -100,7 +100,7 @@
   background: #fff;
   min-height: 1rem;
   border-radius: 0 0 $base-border-radius $base-border-radius;
-  box-shadow: 0 -1px 0 0 $base-alpha-color;
+  box-shadow: 0 (-$base-border-width) 0 0 $base-alpha-color;
 
   &:empty {
     padding: 0;
@@ -130,7 +130,7 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  box-shadow: inset -1px 0 0 0 $base-alpha-color;
+  box-shadow: inset (-$base-border-width) 0 0 0 $base-alpha-color;
   padding: 0 ($global-spacing / 2);
 
   &:last-child {

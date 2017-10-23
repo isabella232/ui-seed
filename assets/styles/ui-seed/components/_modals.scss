@@ -139,10 +139,10 @@
     &::after {
       content: '';
       width: 2rem;
-      height: 1px;
+      height: $base-border-width;
       background: $base-font-color;
       display: block;
-      margin: calc(0.5em - 1px) auto 0 auto;
+      margin: calc(0.5em - #{$base-border-width}) auto 0 auto;
     }
   }
 
