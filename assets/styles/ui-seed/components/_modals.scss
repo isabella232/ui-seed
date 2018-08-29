@@ -7,7 +7,7 @@
  * http://css-tricks.com/centering-in-the-unknown/
  */
 
-.modal {
+ .modal {
   text-align: center;
   background: #fff;
   position: fixed;
@@ -15,7 +15,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 9996;
+  z-index: 99999999;
   overflow-y: auto;
 
   // The ghost, nudged to maintain perfect centering
@@ -99,12 +99,12 @@
   }
 }
 
-.modal-leave {
+.modal-exit {
   transition: opacity 0.32s ease 0s, visibility 0.32s linear 0s;
   opacity: 1;
   visibility: visible;
 
-  &.modal-leave-active {
+  &.modal-exit-active {
     opacity: 0;
     visibility: hidden;
   }
@@ -130,19 +130,8 @@
   }
 
   &__headline {
-    margin-bottom: $global-spacing;
-
     > *:last-child {
       margin-bottom: 0;
-    }
-
-    &::after {
-      content: '';
-      width: 2rem;
-      height: $base-border-width;
-      background: $base-font-color;
-      display: block;
-      margin: calc(0.5em - #{$base-border-width}) auto 0 auto;
     }
   }
 
@@ -151,26 +140,17 @@
   }
 
   &__subtitle {
-    position: relative;
-    @extend .heading-alt;
-    color: rgba($base-font-color, 0.64);
+    text-transform: uppercase;
+    font-weight: $base-font-regular;
+    color: rgba($base-font-color, 0.48);
     font-size: 0.875rem;
-    line-height: 1rem;
-    margin: ($global-spacing / 4) 0;
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+    line-height: 1.25;
+    margin: 0;
+    width: 100%;
   }
 
-  &__introduction {
+  &__description {
     color: rgba($base-font-color, 0.64);
-    font-size: 1rem;
-    line-height: 1.5rem;
 
     > *:last-child {
       margin-bottom: 0;
@@ -203,52 +183,14 @@
 }
 
 
-/* Modal footer actions
+/* Modal buttons
    ========================================================================== */
 
-/**
- * "mfa-" prefix stands for "modal footer action"
- */
-
-[class^="mfa-"],
-[class*=" mfa-"] {
-  @extend .button;
-  min-width: 6rem;
-}
-
-.mfa-tick, {
-  @extend .button--primary-raised-dark;
-}
-
-.mfa-tick::before {
-  @extend %uisi-sm-tick;
-}
-
-.mfa-xmark, {
-  @extend .button--base-raised-light;
-
-  &::before {
-    @extend %uisi-sm-xmark;
-  }
-}
-
-
-/* Modal meta actions
-   ========================================================================== */
-
-/**
- * "mma-" prefix stands for "modal meta action"
- */
-
-[class^="mma-"],
-[class*=" mma-"] {
-  @extend .button, .button--medium, .button--primary-plain, .button--text-hidden;
-}
-
-.mma-xmark {
+.modal__button-dismiss {
+  @extend .button, .button--medium, .button--base-plain, .button--text-hidden;
   position: absolute;
   top: $global-spacing * 2;
-  right: $global-spacing * 2;
+    right: $global-spacing * 2;
   z-index: 10;
 
   &::before {
@@ -267,4 +209,34 @@
 
 .modal__unscrollable-x {
   overflow-x: hidden;
+}
+
+
+/* Modal footer actions
+  ========================================================================== */
+
+/**
+  * "mfa-" prefix stands for "modal footer action"
+  */
+
+[class^="mfa-"],
+[class*=" mfa-"] {
+  @extend .button;
+  min-width: 8rem;
+}
+
+.mfa-main {
+  @extend .button--primary-raised-dark;
+}
+
+.mfa-tick::before {
+  @extend %uisi-sm-tick;
+}
+
+.mfa-xmark, {
+  @extend .button--base-raised-light;
+}
+
+.mfa-xmark::before {
+  @extend %uisi-sm-xmark;
 }

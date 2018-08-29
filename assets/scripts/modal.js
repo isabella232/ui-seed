@@ -1,16 +1,151 @@
 'use strict';
-import React, { PropTypes as T } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import React from 'react';
+import { createPortal } from 'react-dom';
+import { PropTypes as T } from 'prop-types';
+import { CSSTransition } from 'react-transition-group';
 
-var Modal = React.createClass({
+export class Modal extends React.Component {
+  constructor (props) {
+    super(props);
 
-  propTypes: {
+    this.componentAddedBodyClass = false;
+
+    this.onOverlayClick = this.onOverlayClick.bind(this);
+    this.onCloseClick = this.onCloseClick.bind(this);
+    this.keyListener = this.keyListener.bind(this);
+
+    this.el = document.createElement('div');
+    this.el.className = `modal-portal-${Math.random().toString()}`;
+    this.rootEl = document.body;
+    if (!this.rootEl) throw new Error('Portal root element does not exist.');
+  }
+
+  keyListener (e) {
+    // ESC.
+    if (this.props.revealed && e.keyCode === 27) {
+      e.preventDefault();
+      this.props.onCloseClick();
+    }
+  }
+
+  // closeModal () {
+  //   this.setState({ revealed: false });
+  // },
+
+  // openModal () {
+  //   this.setState({ revealed: true });
+  // },
+
+  // getInitialState () {
+  //   return {
+  //     revealed: this.props.revealed
+  //   };
+  // },
+
+  toggleBodyClass (revealed) {
+    let bd = document.getElementsByTagName('body')[0];
+    if (revealed) {
+      this.componentAddedBodyClass = true;
+      bd.classList.add('modal__unscrollable-y');
+    } else if (this.componentAddedBodyClass) {
+      // Only act if the class was added by this component.
+      this.componentAddedBodyClass = false;
+      bd.classList.remove('modal__unscrollable-y');
+    }
+  }
+
+  componentDidUpdate () {
+    this.toggleBodyClass(this.props.revealed);
+  }
+
+  componentDidMount () {
+    document.addEventListener('keyup', this.keyListener);
+    this.toggleBodyClass(this.props.revealed);
+
+    this.rootEl.appendChild(this.el);
+  }
+
+  componentWillUnmount () {
+    document.removeEventListener('keyup', this.keyListener);
+    this.toggleBodyClass(false);
+
+    this.rootEl.removeChild(this.el);
+  }
+
+  onOverlayClick (e) {
+    // Prevent children from triggering this.
+    if (e.target === e.currentTarget) {
+      // Overlay click is disabled.
+      // this.props.onOverlayClick.call(this, e);
+    }
+  }
+
+  onCloseClick (e) {
+    e.preventDefault();
+    this.props.onCloseClick(e);
+  }
+
+  getChild (klass) {
+    let c = null;
+    React.Children.forEach(this.props.children, o => {
+      if (!c && o.type === klass) {
+        c = o;
+      }
+    });
+    return c;
+  }
+
+  render () {
+    var klasses = ['modal'];
+    if (this.props.className) {
+      klasses.push(this.props.className);
+    }
+
+    return createPortal((
+        <CSSTransition
+          in={this.props.revealed}
+          appear={true}
+          unmountOnExit={true}
+          classNames='modal'
+          timeout={{ enter: 300, exit: 300 }}>
+
+          <section className={klasses.join(' ')} key={'modal-' + this.props.id} onClick={this.onOverlayClick} id={this.props.id}>
+            <div className='modal__inner'>
+              {this.getChild(ModalHeader)}
+              {this.getChild(ModalBody)}
+              {this.getChild(ModalFooter)}
+            </div>
+            <button className='modal__button-dismiss' title='Close' onClick={this.onCloseClick}><span>Dismiss</span></button>
+          </section>
+
+        </CSSTransition>
+    ), this.el);
+  }
+}
+
+Modal.defaultProps = {
+  revealed: false,
+
+  onOverlayClick: function (e) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Modal', 'onOverlayClick handler not implemented');
+    }
+  },
+
+  onCloseClick: function (e) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Modal', 'onCloseClick handler not implemented');
+    }
+  }
+};
+
+if (process.env.NODE_ENV !== 'production') {
+  Modal.propTypes = {
     id: T.string.isRequired,
     revealed: T.bool,
     className: T.string,
     onOverlayClick: T.func,
     onCloseClick: T.func,
-
     children: function (props, propName, componentName) {
       let types = ['ModalHeader', 'ModalBody', 'ModalFooter'];
       let typesRequired = ['ModalHeader', 'ModalBody'];
@@ -25,7 +160,7 @@ var Modal = React.createClass({
 
       for (let i = 0; i < c; i++) {
         let o = children[i];
-        let name = o.type.displayName || o.type;
+        let name = o.type.name;
         if (types.indexOf(name) === -1) {
           return new Error(`${componentName} children should be of the following types: ${types.join(', ')}`);
         }
@@ -43,180 +178,53 @@ var Modal = React.createClass({
         }
       }
     }
-  },
+  };
+}
 
-  componentAddedBodyClass: false,
-
-  keyListener: function (e) {
-    // ESC.
-    if (this.props.revealed && e.keyCode === 27) {
-      e.preventDefault();
-      this.props.onCloseClick();
-    }
-  },
-
-  // closeModal: function () {
-  //   this.setState({ revealed: false });
-  // },
-
-  // openModal: function () {
-  //   this.setState({ revealed: true });
-  // },
-
-  // getInitialState: function () {
-  //   return {
-  //     revealed: this.props.revealed
-  //   };
-  // },
-
-  toggleBodyClass: function (revealed) {
-    let bd = document.getElementsByTagName('body')[0];
-    if (revealed) {
-      this.componentAddedBodyClass = true;
-      bd.classList.add('modal__unscrollable-y');
-    } else if (this.componentAddedBodyClass) {
-      // Only act if the class was added by this component.
-      this.componentAddedBodyClass = false;
-      bd.classList.remove('modal__unscrollable-y');
-    }
-  },
-
-  componentDidUpdate: function () {
-    this.toggleBodyClass(this.props.revealed);
-  },
-
-  componentDidMount: function () {
-    document.addEventListener('keyup', this.keyListener);
-    this.toggleBodyClass(this.props.revealed);
-  },
-
-  componentWillUnmount: function () {
-    document.removeEventListener('keyup', this.keyListener);
-    this.toggleBodyClass(false);
-  },
-
-  getDefaultProps: function () {
-    return {
-      revealed: false,
-
-      onOverlayClick: function (e) {
-        if (process.env.NODE_ENV !== 'production') {
-          console.warn('Modal', 'onOverlayClick handler not implemented');
-        }
-      },
-
-      onCloseClick: function (e) {
-        if (process.env.NODE_ENV !== 'production') {
-          console.warn('Modal', 'onCloseClick handler not implemented');
-        }
-      }
-    };
-  },
-
-  onOverlayClick: function (e) {
-    // Prevent children from triggering this.
-    if (e.target === e.currentTarget) {
-      // Overlay click is disabled.
-      // this.props.onOverlayClick.call(this, e);
-    }
-  },
-
-  onCloseClick: function (e) {
-    e.preventDefault();
-    this.props.onCloseClick.call(this, e);
-  },
-
-  getChild: function (name) {
-    let c = null;
-    React.Children.forEach(this.props.children, o => {
-      if (!c && o.type.displayName === name) {
-        c = o;
-        return;
-      }
-    });
-    return c;
-  },
-
-  render: function () {
-    var klasses = ['modal'];
-    if (this.props.className) {
-      klasses.push(this.props.className);
-    }
-
-    return (
-      <ReactCSSTransitionGroup
-        component='div'
-        transitionName='modal'
-        transitionEnterTimeout={300}
-        transitionLeaveTimeout={300} >
-
-        {this.props.revealed ? (
-          <section className={klasses.join(' ')} key={'modal-' + this.props.id} onClick={this.onOverlayClick} id={this.props.id}>
-            <div className='modal__inner'>
-              {this.getChild('ModalHeader')}
-              {this.getChild('ModalBody')}
-              {this.getChild('ModalFooter')}
-            </div>
-            <button className='mma-xmark' title='Close' onClick={this.onCloseClick}><span>Dismiss</span></button>
-          </section>
-        ) : null}
-
-      </ReactCSSTransitionGroup>
-    );
-  }
-});
-
-var ModalHeader = React.createClass({
-  displayName: 'ModalHeader',
-
-  propTypes: {
-    children: T.node
-  },
-
-  render: function () {
+export class ModalHeader extends React.Component {
+  render () {
     return (
       <header className='modal__header'>
         {this.props.children}
       </header>
     );
   }
-});
+}
 
-var ModalBody = React.createClass({
-  displayName: 'ModalBody',
-
-  propTypes: {
+if (process.env.NODE_ENV !== 'production') {
+  ModalHeader.propTypes = {
     children: T.node
-  },
+  };
+}
 
-  render: function () {
+export class ModalBody extends React.Component {
+  render () {
     return (
       <div className='modal__body'>
         {this.props.children}
       </div>
     );
   }
-});
+}
 
-var ModalFooter = React.createClass({
-  displayName: 'ModalFooter',
-
-  propTypes: {
+if (process.env.NODE_ENV !== 'production') {
+  ModalBody.propTypes = {
     children: T.node
-  },
+  };
+}
 
-  render: function () {
+export class ModalFooter extends React.Component {
+  render () {
     return (
       <footer className='modal__footer'>
         {this.props.children}
       </footer>
     );
   }
-});
+}
 
-module.exports = {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter
-};
+if (process.env.NODE_ENV !== 'production') {
+  ModalFooter.propTypes = {
+    children: T.node
+  };
+}

@@ -11,7 +11,7 @@ The main purpose of this system is to modularize the assets, therefore is import
 ## Development environment
 To set up the development environment for this website, you'll need to install the following on your system:
 
-- [Node](http://nodejs.org/) v6 (To manage multiple node versions we recommend [nvm](https://github.com/creationix/nvm))
+- [Node](http://nodejs.org/) v8.11 (To manage multiple node versions we recommend [nvm](https://github.com/creationix/nvm))
 - [Yarn](https://yarnpkg.com/) Package manager
 
 After these basic requirements are met, run the following commands in the website's folder:
