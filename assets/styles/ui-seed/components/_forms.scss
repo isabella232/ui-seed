@@ -707,7 +707,7 @@ label[for] {
 }
 
 
-/* Form inner actions
+/* Form inner *
    ========================================================================== */
 
 .form__inner-header {
@@ -727,13 +727,11 @@ label[for] {
 }
 
 .form__inner-actions {
-  flex: 1 1 auto;
-  text-align: right;
-  font-size: 0;
-  white-space: nowrap;
+  display: flex;
+  margin: 0 0 0 auto;
 
-  * {
-    vertical-align: top;
+  > *:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -760,20 +758,22 @@ label[for] {
 }
 
 .form__options-menu {
-  display: inline-block;
-  margin: 0 0 ($global-spacing / 2) 0;
-
-  > * {
-    display: inline-block;
-    margin: 0;
-  }
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  list-style: none;
+  padding-left: $global-spacing;
+  line-height: 1.5rem;
 
   dt {
     @extend .heading-alt;
     font-size: 0.75rem;
-    line-height: 1.5rem;
     color: rgba($base-font-color, 0.64);
     margin: 0 ($global-spacing / 2) 0 0;
+  }
+
+  dd {
+    margin: 0;
   }
 }
 
