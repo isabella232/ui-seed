@@ -190,6 +190,7 @@
     bottom: initial;
     right: initial;
     margin-bottom: $global-spacing;
+    z-index: 10;
   }
 
   > .callout,
