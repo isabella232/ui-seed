@@ -174,7 +174,7 @@ textarea.form__control {
     top: 50%;
     right: 0.5rem;
     transform: translate(0, -50%);
-    color: $link-color;
+    color: $base-font-color;
     font-size: 1rem;
     line-height: 1;
     width: 1rem;
@@ -583,7 +583,7 @@ label[for] {
   }
 
   input:checked ~ .form__option__ui {
-    box-shadow: inset 0 0 0 $base-border-width $link-color;
+    box-shadow: inset 0 0 0 $base-border-width $base-font-color;
 
     &::before {
       opacity: 1;
@@ -601,7 +601,7 @@ label[for] {
       content: "";
       height: 0.5rem;
       width: 0.5rem;
-      background: $link-color;
+      background: $base-font-color;
     }
   }
 }
@@ -614,7 +614,7 @@ label[for] {
 
     &::before {
       @extend %uisi-sm-tick;
-      color: $link-color;
+      color: $base-font-color;
     }
   }
 }
@@ -676,7 +676,7 @@ label[for] {
 
   &.form__option--checked .form__option__ui,
   input:checked ~ .form__option__ui {
-    background: $link-color;
+    background: $base-font-color;
 
     &::before {
       left: 100%;

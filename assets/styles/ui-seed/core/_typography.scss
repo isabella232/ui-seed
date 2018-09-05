@@ -29,7 +29,6 @@
     margin-right: $global-spacing * 1.5;
   }
 
-
   .align-right {
     float: right;
     margin-left:  $global-spacing * 1.5;
@@ -43,7 +42,7 @@
   @include media(medium-up) {
     font-size: $prose-resp-font-size;
     line-height: $prose-resp-line-height;
-  
+
     > * {
       margin-bottom: $prose-resp-font-size * $prose-resp-line-height; // same as line-height
     }
