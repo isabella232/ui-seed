@@ -290,13 +290,30 @@
     position: relative;
     display: block;
     padding: 0.25rem 1rem;
-    color: $link-color;
+    color: $base-font-color;
     transition: all 0.16s ease 0s;
-    
+
     &:hover,
     &:focus {
-      background-color: tint($link-color, 92%);
+      background-color: rgba($base-color, 0.04);
       opacity: 1;
+    }
+  }
+
+  .drop__menu-item--active {
+    color: inherit;
+
+    &::after {
+      @extend %uisi-sm-tick;
+      position: absolute;
+      z-index: 1;
+      top: $global-spacing / 4;
+      right: $global-spacing / 2;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      opacity: 0.48;
+      width: 1.5rem;
+      text-align: center;
     }
   }
 
@@ -317,24 +334,6 @@
 .drop__menu--select {
   .drop__menu-item {
     padding-right: $global-spacing * 2.5;
-  }
-
-  .drop__menu-item--active {
-    color: $link-color;
-    font-weight: $base-font-regular;
-
-    &::after {
-      @extend %uisi-sm-tick;
-      position: absolute;
-      z-index: 1;
-      top: $global-spacing / 4;
-      right: $global-spacing / 2;
-      font-size: 1rem;
-      line-height: 1.5rem;
-      opacity: 0.48;
-      width: 1.5rem;
-      text-align: center;
-    }
   }
 }
 
