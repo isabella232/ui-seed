@@ -7,13 +7,11 @@
   position: relative;
   font-size: $base-font-size;
   line-height: $base-line-height;
-  text-align: initial;
 }
 
 .panel__header,
 .panel__footer {
   display: flex;
-  width: 100%;
   align-items: flex-start;
   position: relative;
   z-index: 2;

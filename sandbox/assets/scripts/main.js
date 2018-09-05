@@ -86,9 +86,9 @@ var renderPanel = function () {
         </div>
         <div className='panel__header-toolbar'>
           <ul className='toolbar__menu'>
-            <li className='toolbar__menu-item'><a href='#' title='Learn more' className='tba-question'><span>What is this?</span></a></li>
-            <li className='toolbar__menu-item toolbar__menu-item--sep'><a href='#' title='Download' className='tba-pencil'><span>Download</span></a></li>
-            <li className='toolbar__menu-item'><a href='#' title='Close' className='tba-xmark'><span>Close</span></a></li>
+            <li className='toolbar__menu-item'><a href='#' title='Learn more' className='tba-question tba--text-hidden'><span>What is this?</span></a></li>
+            <li className='toolbar__menu-item toolbar__menu-item--sep'><a href='#' title='Download' className='tba-pencil tba--text-hidden'><span>Download</span></a></li>
+            <li className='toolbar__menu-item'><a href='#' title='Close' className='tba-xmark tba--text-hidden'><span>Close</span></a></li>
           </ul>
         </div>
       </header>

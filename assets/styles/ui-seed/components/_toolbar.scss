@@ -8,6 +8,10 @@
   flex-flow: row nowrap;
   align-items: center;
 
+  > * {
+    margin: 0;
+  }
+
   > *:not(:last-child) {
     margin-right: $global-spacing / 4;
   }
@@ -42,14 +46,17 @@
   box-shadow: inset -1px 0 0 $base-alpha-color;
 }
 
-
 /**
  * "tba-" prefix stands for "toolbar action"
  */
 
 [class^="tba-"],
 [class*=" tba-"] {
-  @extend .button, .button--base-plain, .button--text-hidden;
+  @extend .button, .button--base-plain;
+}
+
+.tba--text-hidden {
+  @extend .button--text-hidden;
 }
 
 .tba-ellipsis::before {
@@ -66,6 +73,14 @@
 
 .tba-pencil::before {
   @extend %uisi-pencil;
+}
+
+.tba-trash::before {
+  @extend %uisi-trash-bin;
+}
+
+.tba-xmark::before {
+  @extend %uisi-sm-xmark;
 }
 
 .tba-xmark::before {

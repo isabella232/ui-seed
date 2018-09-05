@@ -3,6 +3,8 @@
    ========================================================================== */
 
 .form {
+  font-size: $base-font-size;
+  line-height: $base-line-height;
   margin-bottom: $global-spacing;
 
   > *:last-child {
@@ -712,8 +714,12 @@ label[for] {
 
 .form__inner-header {
   display: flex;
-  width: 100%;
   margin-bottom: ($global-spacing / 2);
+  align-items: flex-start;
+
+  > *:not(:first-child) {
+    margin-left: $global-spacing;
+  }
 
   > *:last-child {
     margin-bottom: 0;
@@ -726,54 +732,18 @@ label[for] {
   }
 }
 
+.form__inner-toolbar {
+  @extend .toolbar, .toolbar--small;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+}
+
 .form__inner-actions {
   display: flex;
   margin: 0 0 0 auto;
 
   > *:last-child {
     margin-bottom: 0;
-  }
-}
-
-/**
- * "fia-" prefix stands for "form inner action"
- * Used in "form__inner-actions"
- */
-
-[class^="fia-"],
-[class*=" fia-"] {
-  @extend .button, .button--small;
-}
-
-.fia-trash {
-  @extend .button--danger-plain, .button--text-hidden;
-
-  &::before {
-    @extend %uisi-trash-bin;
-  }
-}
-
-.fia-global {
-  @extend .button--primary-plain;
-}
-
-.form__options-menu {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  list-style: none;
-  padding-left: $global-spacing;
-  line-height: 1.5rem;
-
-  dt {
-    @extend .heading-alt;
-    font-size: 0.75rem;
-    color: rgba($base-font-color, 0.64);
-    margin: 0 ($global-spacing / 2) 0 0;
-  }
-
-  dd {
-    margin: 0;
   }
 }
 
