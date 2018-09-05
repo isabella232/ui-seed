@@ -8,6 +8,10 @@
   flex-flow: row nowrap;
   align-items: center;
 
+  > *:not(:last-child) {
+    margin-right: $global-spacing / 4;
+  }
+
   .button {
     vertical-align: top;
   }
@@ -62,6 +66,10 @@
 
 .tba-pencil::before {
   @extend %uisi-pencil;
+}
+
+.tba-xmark::before {
+  @extend %uisi-sm-xmark;
 }
 
 

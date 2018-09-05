@@ -108,6 +108,10 @@ a.card__contents {
   margin-bottom: $global-spacing;
   align-items: flex-start;
 
+  > *:not(:first-child) {
+    margin-left: $global-spacing;
+  }
+
   > *:last-child {
     margin-bottom: 0;
   }
@@ -234,6 +238,7 @@ a.card__contents {
    ========================================================================== */
 
 .card__header-toolbar {
+  @extend .toolbar, .toolbar--small;
   justify-content: flex-end;
   flex: 1 1 auto;
 }
