@@ -2,14 +2,7 @@
    Modals
    ========================================================================== */
 
-/**
- * This element can be of any width and height
- * http://css-tricks.com/centering-in-the-unknown/
- */
-
 .modal {
-  text-align: center;
-  background: #fff;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -17,30 +10,16 @@
   right: 0;
   z-index: 9996;
   overflow-y: auto;
-
-  // The ghost, nudged to maintain perfect centering
-  // Only medium-up queries
-  &::before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    width: 1px;
-    margin-right: -6px; // Adjusts for spacing
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
 }
-
-/**
-  * The element to be centered, can also be of any width and height
-  */
 
 .modal__inner {
   @extend .row;
   position: relative;
-  display: inline-block;
-  vertical-align: middle;
   margin: ($global-spacing * 2) 0;
-  text-align: left;
   width: 100%;
   max-width: 48rem;
 
@@ -242,7 +221,7 @@
 
 [class^="mma-"],
 [class*=" mma-"] {
-  @extend .button, .button--medium, .button--primary-plain, .button--text-hidden;
+  @extend .button, .button--medium, .button--base-plain, .button--text-hidden;
 }
 
 .mma-xmark {
