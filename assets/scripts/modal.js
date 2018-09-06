@@ -115,7 +115,7 @@ export class Modal extends React.Component {
               {this.getChild(ModalBody)}
               {this.getChild(ModalFooter)}
             </div>
-            <button className='modal__button-dismiss' title='Close' onClick={this.onCloseClick}><span>Dismiss</span></button>
+            <button className='mma-xmark' title='Close' onClick={this.onCloseClick}><span>Dismiss</span></button>
           </section>
 
         </CSSTransition>

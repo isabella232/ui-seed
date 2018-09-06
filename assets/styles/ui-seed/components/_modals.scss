@@ -2,45 +2,24 @@
    Modals
    ========================================================================== */
 
-/**
- * This element can be of any width and height
- * http://css-tricks.com/centering-in-the-unknown/
- */
-
- .modal {
-  text-align: center;
-  background: #fff;
+.modal {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 99999999;
+  z-index: 9990;
   overflow-y: auto;
-
-  // The ghost, nudged to maintain perfect centering
-  // Only medium-up queries
-  &::before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    width: 1px;
-    margin-right: -6px; // Adjusts for spacing
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
 }
-
-/**
-  * The element to be centered, can also be of any width and height
-  */
 
 .modal__inner {
   @extend .row;
   position: relative;
-  display: inline-block;
-  vertical-align: middle;
   margin: ($global-spacing * 2) 0;
-  text-align: left;
   width: 100%;
   max-width: 48rem;
 
@@ -130,8 +109,19 @@
   }
 
   &__headline {
+    margin-bottom: $global-spacing;
+
     > *:last-child {
       margin-bottom: 0;
+    }
+
+    &::after {
+      content: '';
+      width: 2rem;
+      height: $base-border-width;
+      background: $base-font-color;
+      display: block;
+      margin: calc(0.5em - #{$base-border-width}) auto 0 auto;
     }
   }
 
@@ -140,17 +130,26 @@
   }
 
   &__subtitle {
-    text-transform: uppercase;
-    font-weight: $base-font-regular;
-    color: rgba($base-font-color, 0.48);
+    position: relative;
+    @extend .heading-alt;
+    color: rgba($base-font-color, 0.64);
     font-size: 0.875rem;
-    line-height: 1.25;
-    margin: 0;
-    width: 100%;
+    line-height: 1rem;
+    margin: ($global-spacing / 4) 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
-  &__description {
+  &__introduction {
     color: rgba($base-font-color, 0.64);
+    font-size: 1rem;
+    line-height: 1.5rem;
 
     > *:last-child {
       margin-bottom: 0;
@@ -183,14 +182,52 @@
 }
 
 
-/* Modal buttons
+/* Modal footer actions
    ========================================================================== */
 
-.modal__button-dismiss {
+/**
+ * "mfa-" prefix stands for "modal footer action"
+ */
+
+[class^="mfa-"],
+[class*=" mfa-"] {
+  @extend .button;
+  min-width: 6rem;
+}
+
+.mfa-tick, {
+  @extend .button--primary-raised-dark;
+}
+
+.mfa-tick::before {
+  @extend %uisi-sm-tick;
+}
+
+.mfa-xmark, {
+  @extend .button--base-raised-light;
+
+  &::before {
+    @extend %uisi-sm-xmark;
+  }
+}
+
+
+/* Modal meta actions
+   ========================================================================== */
+
+/**
+ * "mma-" prefix stands for "modal meta action"
+ */
+
+[class^="mma-"],
+[class*=" mma-"] {
   @extend .button, .button--medium, .button--base-plain, .button--text-hidden;
+}
+
+.mma-xmark {
   position: absolute;
   top: $global-spacing * 2;
-    right: $global-spacing * 2;
+  right: $global-spacing * 2;
   z-index: 10;
 
   &::before {
@@ -209,34 +246,4 @@
 
 .modal__unscrollable-x {
   overflow-x: hidden;
-}
-
-
-/* Modal footer actions
-  ========================================================================== */
-
-/**
-  * "mfa-" prefix stands for "modal footer action"
-  */
-
-[class^="mfa-"],
-[class*=" mfa-"] {
-  @extend .button;
-  min-width: 8rem;
-}
-
-.mfa-main {
-  @extend .button--primary-raised-dark;
-}
-
-.mfa-tick::before {
-  @extend %uisi-sm-tick;
-}
-
-.mfa-xmark, {
-  @extend .button--base-raised-light;
-}
-
-.mfa-xmark::before {
-  @extend %uisi-sm-xmark;
 }

@@ -55,7 +55,7 @@ class ModalShowcase extends React.Component {
             </div>
           </ModalBody>
           <ModalFooter>
-            <button className='mfa-xmark' type='button' title='Cancel'><span>Cancel</span></button>
+            <button className='mfa-xmark' type='button' title='Cancel' onClick={this.closeModal}><span>Cancel</span></button>
             <button className='mfa-tick' type='submit' title='Save'><span>Save</span></button>
           </ModalFooter>
         </Modal>
@@ -85,13 +85,11 @@ var renderPanel = function () {
           <h1 className='panel__title'>Panel title</h1>
           <p className='panel__subtitle'>Panel subtitle</p>
         </div>
-        <div className='panel__h-actions'>
-          <ul className='panel__h-actions__menu actions'>
-            <li><a className='actions__menu-item pha-question' title='Learn more' href='#'><span>What is this?</span></a></li>
-            <li><a className='actions__menu-item pha-download' title='Download' href='#'><span>Download</span></a></li>
-          </ul>
-          <ul className='panel__h-actions__menu actions'>
-            <li><button className='actions__menu-item pha-xmark' type='button' title='Dismiss panel'><span>Dismiss</span></button></li>
+        <div className='panel__header-toolbar'>
+          <ul className='toolbar__menu'>
+            <li className='toolbar__menu-item'><a href='#' title='Learn more' className='tba-question tba--text-hidden'><span>What is this?</span></a></li>
+            <li className='toolbar__menu-item toolbar__menu-item--sep'><a href='#' title='Download' className='tba-pencil tba--text-hidden'><span>Download</span></a></li>
+            <li className='toolbar__menu-item'><a href='#' title='Close' className='tba-xmark tba--text-hidden'><span>Close</span></a></li>
           </ul>
         </div>
       </header>
