@@ -1,4 +1,4 @@
-<!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -29,14 +29,14 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/graphics/meta/apple-touch-icon.png" />
 
     <link rel="author" type="text/plain" href="humans.txt" />
-    
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i" />
 
     <!-- build:css assets/styles/vendor.css -->
     <!-- endbuild -->
 
-    <!-- build:css assets/styles/main.css -->
-    <link rel="stylesheet" href="assets/styles/main.css" />
+    <!-- build:css /assets/styles/main.css -->
+    <link rel="stylesheet" href="/assets/styles/main.css" />
     <!-- endbuild -->
 
   </head>
@@ -128,8 +128,8 @@
                   <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
                       <blockquote>
-                        <p>As my fellow HTML5 Doctor, Oli Studholme has showed, people seldom quote exactly 
-                        – so sacrosanctity of the quoted text isn’t a useful ideal – and in print etc, 
+                        <p>As my fellow HTML5 Doctor, Oli Studholme has showed, people seldom quote exactly
+                        – so sacrosanctity of the quoted text isn’t a useful ideal – and in print etc,
                         citations almost always appear as part of the quotation – it’s highly conventional.</p>
                         <footer>
                           <cite><a href="http://www.brucelawson.co.uk/2013/on-citing-quotations-again/">Bruce Lawson</a></cite>
@@ -141,8 +141,8 @@
                   <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
                       <blockquote class="blockquote--quote-left">
-                        <p>As my fellow HTML5 Doctor, Oli Studholme has showed, people seldom quote exactly 
-                        – so sacrosanctity of the quoted text isn’t a useful ideal – and in print etc, 
+                        <p>As my fellow HTML5 Doctor, Oli Studholme has showed, people seldom quote exactly
+                        – so sacrosanctity of the quoted text isn’t a useful ideal – and in print etc,
                         citations almost always appear as part of the quotation – it’s highly conventional.</p>
                         <footer>
                           <cite><a href="http://www.brucelawson.co.uk/2013/on-citing-quotations-again/">Bruce Lawson</a></cite>
@@ -551,8 +551,8 @@
                           </figure>
                           <header class="card__header">
                             <div class="card__headline">
-                              <p class="card__subtitle">Card subtitle</p>
                               <h1 class="card__title">This is a fully clickable card</h1>
+                              <p class="card__subtitle">Card subtitle</p>
                             </div>
                           </header>
                           <div class="card__body">
@@ -574,13 +574,18 @@
                           </figure>
                           <header class="card__header">
                             <div class="card__headline">
+                              <p class="card__subtitle">Card subtitle <a title="View content" href="#">containing a link</a></p>
                               <a title="View card content" class="link-wrapper" href="#">
                                 <h1 class="card__title">This is a regular card</h1>
                               </a>
-                              <p class="card__subtitle">Card subtitle</p>
                             </div>
-                            <div class="card__h-actions actions">
-                              <button class="drop__toggle cha-ellipsis" type="button" title="Card options"><span>Options</span></button>
+                            <div class="card__header-toolbar">
+                              <h3 class="toolbar__label">Label</h3>
+                              <button class="tba-ellipsis tba--text-hidden" type="button" title="Card options"><span>Options</span></button>
+                              <ul class="toolbar__menu">
+                                <li class="toolbar__menu-item toolbar__menu-item--sep"><a href="#" title="Download" class="tba-pencil tba--text-hidden"><span>Edit</span></a></li>
+                                <li class="toolbar__menu-item"><a href="#" title="Close" class="tba-download tba--text-hidden"><span>Download</span></a></li>
+                              </ul>
                             </div>
                           </header>
                           <div class="card__body">
@@ -732,19 +737,19 @@
                               <div class="form__inner-headline">
                                 <label class="form__label">Checkbox options (custom)</label>
                               </div>
-                              <div class="form__inner-actions">
-                                <dl class="form__options-menu">
-                                  <dt>Select</dt>
-                                  <dd>
-                                    <button type="button" class="fia-global" title="Select all"><span>All</span></button>
+                              <div class="form__inner-toolbar">
+                                <dl class="toolbar__menu">
+                                  <dt class="toolbar__label">Select</dt>
+                                  <dd class="toolbar__menu-item">
+                                    <button type="button" class="tba-global" title="Select all"><span>All</span></button>
                                   </dd>
-                                  <dd>
-                                    <button type="button" class="fia-global" title="Deselect none"><span>None</span></button>
+                                  <dd class="toolbar__menu-item">
+                                    <button type="button" class="tba-global" title="Deselect none"><span>None</span></button>
                                   </dd>
                                 </dl>
                               </div>
                             </div>
-                            
+
                             <div class="form__hascol form__hascol--3">
                               <label class="form__option form__option--custom-checkbox">
                                 <input type="checkbox" name="form-checkbox-custom-1" id="form-checkbox-custom-1" value="Checkbox 1" />
@@ -825,8 +830,8 @@
                             <div class="form__inner-headline">
                               <legend class="form__legend">Fieldset legend 3</legend>
                             </div>
-                            <div class="form__inner-actions">
-                              <button type="button" class="fia-trash" title="Delete fieldset"><span>Delete</span></button>
+                            <div class="form__inner-toolbar">
+                              <button class="tba-trash tba--text-hidden" type="button" title="Delete fieldset"><span>Delete</span></button>
                             </div>
                           </div>
 
@@ -992,12 +997,11 @@
     </div>
     <!--/ page -->
 
-    <!-- build:js assets/scripts/vendor.js -->
-    <script src="assets/scripts/vendor.js"></script>
+    <!-- build:js /assets/scripts/vendor.js -->
+    <script src="/assets/scripts/vendor.js"></script>
     <!-- endbuild -->
-
-    <!-- build:js assets/scripts/bundle.js -->
-    <script src="assets/scripts/bundle.js"></script>
+    <!-- build:js /assets/scripts/bundle.js -->
+    <script src="/assets/scripts/bundle.js"></script>
     <!-- endbuild -->
 
   </body>

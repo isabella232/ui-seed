@@ -1,6 +1,6 @@
 {
   "name": "ui-seed",
-  "version": "0.2.1-beta",
+  "version": "0.3.1-beta",
   "description": "UI Seed",
   "repository": {
     "type": "git",
@@ -17,11 +17,14 @@
   "homepage": "https://developmentseed.org",
   "main": "assets/scripts",
   "scripts": {
-    "serve": "DS_ENV=development gulp ui-seed:icons && gulp serve",
+    "serve": "DS_ENV=development gulp ui-seed:icons && DS_ENV=development gulp serve",
     "ui-seed-icons": "gulp ui-seed:icons",
     "lint": "eslint sandbox/assets/scripts/ assets/scripts --ext .js",
-    "build": "NODE_ENV=production gulp build",
+    "build": "NODE_ENV=production DS_ENV=production gulp build",
     "test": "echo \"No tests\" && exit 0"
+  },
+  "engines": {
+    "node": "8.x"
   },
   "browserify": {
     "transform": [
@@ -29,8 +32,12 @@
         "babelify",
         {
           "presets": [
-            "es2015",
+            "env",
             "react"
+          ],
+          "plugins": [
+            "transform-es2015-spread",
+            "transform-object-rest-spread"
           ]
         }
       ],
@@ -39,57 +46,63 @@
     ]
   },
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-react": "^6.23.0",
-    "babelify": "^7.3.0",
-    "browser-sync": "^2.18.8",
-    "browserify": "^14.1.0",
-    "collecticons-processor": "^3.0.0",
-    "del": "^2.2.2",
-    "envify": "^4.0.0",
-    "eslint": "^3.15.0",
-    "eslint-config-standard": "^6.2.1",
-    "eslint-plugin-promise": "^3.4.1",
-    "eslint-plugin-react": "^6.9.0",
-    "eslint-plugin-standard": "^2.0.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-es2015-spread": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browser-sync": "^2.24.4",
+    "browserify": "^16.2.2",
+    "collecticons-processor": "^3.1.0",
+    "del": "^3.0.0",
+    "envify": "^4.1.0",
+    "eslint": "^5.4.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "fancy-log": "^1.3.2",
     "gulp": "^3.9.1",
-    "gulp-cache": "^0.4.5",
-    "gulp-csso": "^2.0.0",
+    "gulp-csso": "^3.0.1",
     "gulp-ejs": "^3.0.1",
     "gulp-exit": "0.0.2",
     "gulp-if": "^2.0.2",
-    "gulp-imagemin": "^3.1.1",
+    "gulp-imagemin": "^4.1.0",
     "gulp-load-plugins": "^1.5.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-rev": "^7.1.2",
-    "gulp-rev-replace": "^0.4.3",
-    "gulp-sass": "^3.1.0",
-    "gulp-size": "^2.1.0",
-    "gulp-sourcemaps": "^2.4.1",
-    "gulp-uglify": "^2.0.1",
-    "gulp-useref": "^3.1.2",
-    "gulp-util": "^3.0.8",
+    "gulp-plumber": "^1.2.0",
+    "gulp-rev": "^8.1.1",
+    "gulp-rev-rewrite": "^1.1.1",
+    "gulp-sass": "^4.0.1",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "gulp-useref": "^3.1.5",
     "jeet": "7.1.0",
     "node-bourbon": "^4.2.8",
-    "node-notifier": "^5.0.2",
-    "node-sass": "^4.5.0",
+    "node-notifier": "^5.2.1",
+    "node-sass": "^4.9.0",
     "require-globify": "^1.4.1",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.9.0"
+    "run-sequence": "^2.2.1",
+    "through2": "^2.0.3",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0",
+    "watchify": "^3.11.0"
   },
   "dependencies": {
-    "react": ">15.0.1",
-    "react-addons-css-transition-group": ">15.0.2",
-    "react-dom": ">15.0.1",
-    "react-scrollbar": "git+https://github.com/danielfdsilva/reactScrollbar.git#3c3976fc82359c1b46bace48d89ce716ba748dca",
-    "react-tether": "^0.5.1"
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scrollbar": "git+https://github.com/danielfdsilva/reactScrollbar.git#v2.0.0-custom",
+    "react-tether": "^1.0.1",
+    "react-transition-group": "^2.4.0"
   },
   "peerDependencies": {
-    "react": ">15.0.1",
-    "react-addons-css-transition-group": ">15.0.2",
-    "react-dom": ">15.0.1",
-    "react-tether": "^0.5.1"
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-tether": "^1.0.1",
+    "react-transition-group": "^2.4.0"
   }
 }

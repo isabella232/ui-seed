@@ -1,29 +1,46 @@
 'use strict';
 import React from 'react';
+import { PropTypes as T } from 'prop-types';
 import TetherComponent from 'react-tether';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransition } from 'react-transition-group';
 
-const Dropdown = React.createClass({
-  displayName: 'Dropdown',
+let activeDropdowns = [];
 
-  propTypes: {
-    id: React.PropTypes.string,
-    onChange: React.PropTypes.func,
+/*
+<Dropdown
+  className='browse-menu'
+  triggerClassName='browse-button'
+  triggerActiveClassName='button--active'
+  triggerText='Menu'
+  triggerTitle='Toggle menu options'
+  direction='down'
+  alignment='right' >
 
-    triggerElement: React.PropTypes.oneOf(['a', 'button']),
-    triggerClassName: React.PropTypes.string,
-    triggerActiveClassName: React.PropTypes.string,
-    triggerTitle: React.PropTypes.string,
-    triggerText: React.PropTypes.string.isRequired,
+  <h6 className='drop__title'>Browse</h6>
+  <ul className='drop__menu drop__menu--select'>
+    <li><Link to='' className='drop__menu-item' activeClassName='drop__menu-item--active'>Label</Link></li>
+  </ul>
 
-    direction: React.PropTypes.oneOf(['up', 'down', 'left', 'right']),
-    alignment: React.PropTypes.oneOf(['left', 'center', 'right']),
+</Dropdown>
+*/
 
-    className: React.PropTypes.string,
-    children: React.PropTypes.node
-  },
+export default class Dropdown extends React.Component {
+  constructor (props) {
+    super(props);
 
-  _bodyListener: function (e) {
+    this.state = {
+      open: false
+    };
+
+    this._bodyListener = this._bodyListener.bind(this);
+    this._toggleDropdown = this._toggleDropdown.bind(this);
+  }
+
+  static closeAll () {
+    activeDropdowns.forEach(d => d.close());
+  }
+
+  _bodyListener (e) {
     // Get the dropdown that is a parent of the clicked element. If any.
     let theSelf = e.target;
     if (theSelf.tagName === 'BODY' ||
@@ -65,52 +82,40 @@ const Dropdown = React.createClass({
     if (theSelf !== this.dropdownRef) {
       this.close();
     }
-  },
+  }
 
-  getDefaultProps: function () {
-    return {
-      triggerElement: 'button',
-      direction: 'down',
-      alignment: 'center'
-    };
-  },
-
-  getInitialState: function () {
-    return {
-      open: false
-    };
-  },
+  _toggleDropdown (e) {
+    e.preventDefault();
+    this.toggle();
+  }
 
   // Lifecycle method.
   // Called once as soon as the component has a DOM representation.
-  componentDidMount: function () {
+  componentDidMount () {
+    activeDropdowns.push(this);
     window.addEventListener('click', this._bodyListener);
-  },
+  }
 
   // Lifecycle method.
-  componentWillUnmount: function () {
+  componentWillUnmount () {
+    activeDropdowns.splice(activeDropdowns.indexOf(this), 1);
     window.removeEventListener('click', this._bodyListener);
-  },
+  }
 
-  _toggleDropdown: function (e) {
-    e.preventDefault();
-    this.toggle();
-  },
-
-  toggle: function () {
+  toggle () {
     this.setState({ open: !this.state.open });
-  },
+  }
 
-  open: function () {
+  open () {
     !this.state.open && this.setState({ open: true });
-  },
+  }
 
-  close: function () {
+  close () {
     this.state.open && this.setState({ open: false });
-  },
+  }
 
-  renderTriggerElement: function () {
-    let {
+  renderTriggerElement () {
+    const {
       id,
       triggerTitle,
       triggerText,
@@ -151,13 +156,13 @@ const Dropdown = React.createClass({
 
     return (
       <TriggerElement {...triggerProps} >
-          <span>{ triggerText }</span>
+        <span>{ triggerText }</span>
       </TriggerElement>
     );
-  },
+  }
 
-  renderContent: function () {
-    let { id, direction, className } = this.props;
+  renderContent () {
+    const { id, direction, className } = this.props;
 
     // Base and additional classes for the trigger and the content.
     let klasses = ['drop__content', 'drop__content--react', `drop-trans--${direction}`];
@@ -177,30 +182,37 @@ const Dropdown = React.createClass({
     }
 
     return (
-    <ReactCSSTransitionGroup
-      component='div'
-      transitionName='drop-trans'
-      transitionEnterTimeout={300}
-      transitionLeaveTimeout={300} >
-        { this.state.open
-          ? <TransitionItem
-              props={dropdownContentProps}
-              onChange={this.props.onChange}
-            >{ this.props.children }</TransitionItem>
-        : null }
-    </ReactCSSTransitionGroup>
-    );
-  },
+      <CSSTransition
+        in={this.state.open}
+        appear={true}
+        unmountOnExit={true}
+        classNames='drop-trans'
+        timeout={{ enter: 300, exit: 300 }}>
 
-  render: function () {
+        <TransitionItem
+          props={dropdownContentProps}
+          onChange={this.props.onChange} >
+          { this.props.children }
+        </TransitionItem>
+
+      </CSSTransition>
+    );
+  }
+
+  render () {
     let { alignment, direction } = this.props;
 
-    if (direction === 'left' || direction === 'right') {
-      if (alignment !== 'center') {
-        console.error(`Dropdown: alignment "${alignment}" is not supported. Defaulting to "center"`);
-      }
-      // When left and right "center" becomes "middle".
-      alignment = 'middle';
+    let allowed;
+    if (direction === 'up' || direction === 'down') {
+      allowed = ['left', 'center', 'right'];
+    } else if (direction === 'left' || direction === 'right') {
+      allowed = ['top', 'middle', 'bottom'];
+    } else {
+      throw new Error(`Dropdown: direction "${direction}" is not supported. Use one of: up, down, left, right`);
+    }
+
+    if (allowed.indexOf(alignment) === -1) {
+      throw new Error(`Dropdown: alignment "${alignment}" is not supported when direction is ${direction}. Use one of: ${allowed.join(', ')}`);
     }
 
     let tetherAttachment;
@@ -224,9 +236,13 @@ const Dropdown = React.createClass({
         break;
     }
 
+    // attachment={tetherAttachment}
+    // targetAttachment={tetherTargetAttachment}
     return (
       <TetherComponent
+        // attachment is the content.
         attachment={tetherAttachment}
+        // targetAttachment is the trigger
         targetAttachment={tetherTargetAttachment}
         constraints={[{
           to: 'scrollParent',
@@ -237,28 +253,51 @@ const Dropdown = React.createClass({
       </TetherComponent>
     );
   }
-});
+}
 
-module.exports = Dropdown;
+Dropdown.defaultProps = {
+  triggerElement: 'button',
+  direction: 'down',
+  alignment: 'center'
+};
 
-const TransitionItem = React.createClass({
-  displayName: 'TransitionItem',
+if (process.env.NODE_ENV !== 'production') {
+  Dropdown.propTypes = {
+    id: T.string,
+    onChange: T.func,
 
-  propTypes: {
-    onChange: React.PropTypes.func,
-    props: React.PropTypes.object,
-    children: React.PropTypes.node
-  },
+    triggerElement: T.oneOf(['a', 'button']),
+    triggerClassName: T.string,
+    triggerActiveClassName: T.string,
+    triggerTitle: T.string,
+    triggerText: T.string.isRequired,
 
-  componentDidMount: function () {
+    direction: T.oneOf(['up', 'down', 'left', 'right']),
+    alignment: T.oneOf(['left', 'center', 'right', 'top', 'middle', 'bottom']),
+
+    className: T.string,
+    children: T.node
+  };
+}
+
+class TransitionItem extends React.Component {
+  componentDidMount () {
     this.props.onChange && this.props.onChange(true);
-  },
+  }
 
-  componentWillUnmount: function () {
+  componentWillUnmount () {
     this.props.onChange && this.props.onChange(false);
-  },
+  }
 
-  render: function () {
+  render () {
     return <div {...this.props.props}>{ this.props.children }</div>;
   }
-});
+}
+
+if (process.env.NODE_ENV !== 'production') {
+  TransitionItem.propTypes = {
+    onChange: T.func,
+    props: T.object,
+    children: T.node
+  };
+}

@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 
 // /////////////////////////////////////////////////////////////////////////////
 // ----------------------- Node module settings ------------------------------//
@@ -9,8 +9,8 @@ module.exports.graphicsPath = path.join(__dirname, './assets/graphics');
 
 module.exports.graphicsMiddleware = function (fs) {
   return function (req, res, next) {
-    var r = new RegExp('/?assets/graphics/(.+)');
-    var pieces = req.url.match(r);
+    const r = new RegExp('/?assets/graphics/(.+)');
+    const pieces = req.url.match(r);
     if (!pieces) return next();
     try {
       if (pieces[1].match(/\.svgz?$/)) {
