@@ -43,7 +43,7 @@
 .toolbar__menu-item--sep:not(:last-child) {
   margin-right: $global-spacing / 2;
   padding-right: $global-spacing / 2;
-  box-shadow: inset -$base-border-width 0 0 $base-alpha-color;
+  box-shadow: inset (-$base-border-width) 0 0 $base-alpha-color;
 }
 
 /**
