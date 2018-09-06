@@ -10,7 +10,7 @@ Style guide and UI components library that aims to standardize the look and feel
 
 Install it as an `node module`: (Not available on `npm`, use direct link)
 ```
-yarn add git+ssh://git@github.com/developmentseed/ui-seed.git#v0.2.1-beta
+yarn add git+ssh://git@github.com/developmentseed/ui-seed.git#v0.3.0-beta
 ```
 For the most recent version omit the tag.
 
