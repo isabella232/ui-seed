@@ -117,7 +117,7 @@
 
 .desktop .media-frame {
   padding: 2rem 0 0.5rem 0;
-  border-radius: $base-border-radius*2 $base-border-radius*2 $base-border-radius $base-border-radius;
+  border-radius: ($base-border-radius * 2) ($base-border-radius * 2) $base-border-radius $base-border-radius;
   background-image: svg-desktop-top($base-alpha-color);
   background-position: 0.625rem 0.625rem;
 
@@ -128,7 +128,7 @@
 
 .mobile .media-frame {
   padding: 6rem 1rem;
-  border-radius: $base-border-radius*16;
+  border-radius: $base-border-radius * 16;
   background-image: svg-mobile-top($base-alpha-color), svg-mobile-bottom($base-alpha-color);
   background-position: center 2.5rem, center calc(100% - 1rem);
 
