@@ -112,15 +112,13 @@
 
 .drop-trans--right {
   &.drop__content {
-    transition: opacity .16s ease, right .16s ease;
-    margin-right: 1rem;
+    transition: opacity .16s ease, transform .16s ease;
   }
 }
 
 .drop-trans--left {
   &.drop__content {
-    transition: opacity .16s ease, left .16s ease;
-    margin-left: 1rem;
+    transition: opacity .16s ease, transform .16s ease;
   }
 }
 
@@ -146,26 +144,22 @@
 
 @mixin drop-left-start() {
   opacity: 0;
-  left: -100%;
-  // transform: translate(-100%, 0);
+  transform: translate(($global-spacing / 2), 0);
 }
 
 @mixin drop-left-end() {
   opacity: 1;
-  left: 0;
-  // transform: translate(1rem, 0);
+  transform: translate(-1rem, 0);
 }
 
 @mixin drop-right-start() {
   opacity: 0;
-  right: -100%;
-  // transform: translate(100%, 0);
+  transform: translate(-($global-spacing / 2), 0);
 }
 
 @mixin drop-right-end() {
   opacity: 1;
-  right: 0;
-  // transform: translate(-1rem, 0);
+  transform: translate(1rem, 0);
 }
 
 .drop-trans--down {
@@ -173,18 +167,20 @@
     @include drop-top-end();
   }
 
+  &.drop-trans-appear,
   &.drop-trans-enter {
     @include drop-top-start();
 
-    &.drop-trans-enter-active {
+    &.drop-trans-enter-active,
+    &.drop-trans-appear-active {
       @include drop-top-end();
     }
   }
 
-  &.drop-trans-leave {
+  &.drop-trans-exit {
     @include drop-top-end();
 
-    &.drop-trans-leave-active {
+    &.drop-trans-exit-active {
       @include drop-top-start();
     }
   }
@@ -195,18 +191,20 @@
     @include drop-bottom-end();
   }
 
+  &.drop-trans-appear,
   &.drop-trans-enter {
     @include drop-bottom-start();
 
-    &.drop-trans-enter-active {
+    &.drop-trans-enter-active,
+    &.drop-trans-appear-active {
       @include drop-bottom-end();
     }
   }
 
-  &.drop-trans-leave {
+  &.drop-trans-exit {
     @include drop-bottom-end();
 
-    &.drop-trans-leave-active {
+    &.drop-trans-exit-active {
       @include drop-bottom-start();
     }
   }
@@ -214,21 +212,23 @@
 
 .drop-trans--left {
   &.drop__content {
-    // @include drop-left-end();
+    @include drop-left-end();
   }
 
+  &.drop-trans-appear,
   &.drop-trans-enter {
     @include drop-left-start();
 
-    &.drop-trans-enter-active {
+    &.drop-trans-enter-active,
+    &.drop-trans-appear-active {
       @include drop-left-end();
     }
   }
 
-  &.drop-trans-leave {
+  &.drop-trans-exit {
     @include drop-left-end();
 
-    &.drop-trans-leave-active {
+    &.drop-trans-exit-active {
       @include drop-left-start();
     }
   }
@@ -236,21 +236,23 @@
 
 .drop-trans--right {
   &.drop__content {
-    // @include drop-right-end();
+    @include drop-right-end();
   }
 
+  &.drop-trans-appear,
   &.drop-trans-enter {
     @include drop-right-start();
 
-    &.drop-trans-enter-active {
+    &.drop-trans-enter-active,
+    &.drop-trans-appear-active {
       @include drop-right-end();
     }
   }
 
-  &.drop-trans-leave {
+  &.drop-trans-exit {
     @include drop-right-end();
 
-    &.drop-trans-leave-active {
+    &.drop-trans-exit-active {
       @include drop-right-start();
     }
   }
@@ -276,7 +278,7 @@
   @extend .clearfix;
   list-style: none;
   margin: (-$global-spacing) (-$global-spacing) $global-spacing (-$global-spacing);
-  box-shadow: 0 1px 0 0 $base-alpha-color;
+  box-shadow: 0 $base-border-width 0 0 $base-alpha-color;
   padding: ($global-spacing / 2) 0;
   font-weight: $base-font-bold;
   min-width: 12rem;
@@ -290,13 +292,30 @@
     position: relative;
     display: block;
     padding: 0.25rem 1rem;
-    color: $link-color;
+    color: $base-font-color;
     transition: all 0.16s ease 0s;
-    
+
     &:hover,
     &:focus {
-      background-color: tint($link-color, 92%);
+      background-color: rgba($base-color, 0.04);
       opacity: 1;
+    }
+  }
+
+  .drop__menu-item--active {
+    color: inherit;
+
+    &::after {
+      @extend %uisi-sm-tick;
+      position: absolute;
+      z-index: 1;
+      top: $global-spacing / 4;
+      right: $global-spacing / 2;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      opacity: 0.48;
+      width: 1.5rem;
+      text-align: center;
     }
   }
 
@@ -317,24 +336,6 @@
 .drop__menu--select {
   .drop__menu-item {
     padding-right: $global-spacing * 2.5;
-  }
-
-  .drop__menu-item--active {
-    color: $link-color;
-    font-weight: $base-font-regular;
-
-    &::after {
-      @extend %uisi-sm-tick;
-      position: absolute;
-      z-index: 1;
-      top: $global-spacing / 4;
-      right: $global-spacing / 2;
-      font-size: 1rem;
-      line-height: 1.5rem;
-      opacity: 0.48;
-      width: 1.5rem;
-      text-align: center;
-    }
   }
 }
 
@@ -364,17 +365,17 @@
 .drop__inset {
   @extend %inset-skin;
   color: tint($base-font-color, 32%);
-  box-shadow: inset 0 1px 0 0 $base-alpha-color, inset 0 -1px 0 0 $base-alpha-color;
+  box-shadow: inset 0 $base-border-width 0 0 $base-alpha-color, inset 0 -$base-border-width 0 0 $base-alpha-color;
   margin: (-$global-spacing) (-$global-spacing) $global-spacing (-$global-spacing);
   padding: $global-spacing;
 
   &:first-child {
-    box-shadow: inset 0 -1px 0 0 $base-alpha-color;
+    box-shadow: inset 0 -$base-border-width 0 0 $base-alpha-color;
   }
 
   &:last-child {
     margin-bottom: (-$global-spacing);
-    box-shadow: inset 0 1px 0 0 $base-alpha-color;
+    box-shadow: inset 0 $base-border-width 0 0 $base-alpha-color;
   }
 
   &:only-child {

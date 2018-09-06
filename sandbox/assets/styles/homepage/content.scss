@@ -132,7 +132,7 @@
 }
 
 .drop__menu-item--example-icon:before {
-  @extend %uisi-download;
+  @extend %uisi-download-2;
 }
 
 .exhibit__content {
@@ -190,6 +190,7 @@
     bottom: initial;
     right: initial;
     margin-bottom: $global-spacing;
+    z-index: 10;
   }
 
   > .callout,

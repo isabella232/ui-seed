@@ -2,10 +2,10 @@
 // ------------------------ Available modules --------------------------------//
 // ---------------------------------------------------------------------------//
 module.exports.hello = require('./hello');
-module.exports.Dropdown = require('./dropdown');
 module.exports.Loading = require('./loading');
-module.exports.Modal = require('./modal');
 module.exports.ScrollArea = require('./scrollarea');
 
 // ES6 classes.
+module.exports.Dropdown = require('./dropdown').default;
+module.exports.Modal = require('./modal');
 module.exports.FileInput = require('./file-input').default;

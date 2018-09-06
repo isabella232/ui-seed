@@ -1,23 +1,21 @@
 'use strict';
-var fs = require('fs');
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var del = require('del');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
-var watchify = require('watchify');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var sourcemaps = require('gulp-sourcemaps');
-var gutil = require('gulp-util');
-var exit = require('gulp-exit');
-var rev = require('gulp-rev');
-var revReplace = require('gulp-rev-replace');
-var notifier = require('node-notifier');
-var cp = require('child_process');
-var ejs = require('gulp-ejs');
-var SassString = require('node-sass').types.String;
+const fs = require('fs');
+const cp = require('child_process');
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const del = require('del');
+const browserSync = require('browser-sync');
+const reload = browserSync.reload;
+const watchify = require('watchify');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const sourcemaps = require('gulp-sourcemaps');
+const log = require('fancy-log');
+const SassString = require('node-sass').types.String;
+const notifier = require('node-notifier');
+const runSequence = require('run-sequence');
+const through2 = require('through2');
 var GULP_ADDONS = require('./gulp-addons');
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -26,6 +24,17 @@ var GULP_ADDONS = require('./gulp-addons');
 
 // The package.json
 var pkg;
+
+// Environment
+// Set the correct environment, which controls what happens in config.js
+if (!process.env.DS_ENV) {
+  if (!process.env.CIRCLE_BRANCH || process.env.CIRCLE_BRANCH !== process.env.PRODUCTION_BRANCH) {
+    process.env.DS_ENV = 'staging';
+  } else {
+    process.env.DS_ENV = 'production';
+  }
+}
+
 var prodBuild = false;
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -63,7 +72,7 @@ gulp.task('serve', ['vendorScripts', 'javascript', 'styles'], function () {
     'sandbox/**/*.html',
     'sandbox/assets/graphics/**/*',
     '!sandbox/assets/graphics/collecticons/**/*'
-  ], function (e) { return reload(); });
+  ]).on('change', reload);
 
   gulp.watch('assets/icons/ui-seed-icons/**', ['ui-seed:icons']);
   gulp.watch('sandbox/assets/graphics/collecticons/**', ['collecticons']);
@@ -73,10 +82,7 @@ gulp.task('serve', ['vendorScripts', 'javascript', 'styles'], function () {
 });
 
 gulp.task('clean', function () {
-  return del(['.tmp', 'dist'])
-    .then(function () {
-      $.cache.clearAll();
-    });
+  return del(['.tmp', 'dist']);
 });
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -94,7 +100,7 @@ gulp.task('javascript', function () {
     cache: {},
     packageCache: {},
     fullPaths: true
-  }));
+  }), { poll: true });
 
   function bundler () {
     if (pkg.dependencies) {
@@ -116,15 +122,15 @@ gulp.task('javascript', function () {
       .pipe(source('bundle.js'))
       .pipe(buffer())
       // Source maps.
-      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest('.tmp/assets/scripts'))
-      .pipe(reload({stream: true}));
+      .pipe(reload({ stream: true }));
   }
 
   watcher
-  .on('log', gutil.log)
-  .on('update', bundler);
+    .on('log', log)
+    .on('update', bundler);
 
   return bundler();
 });
@@ -139,13 +145,13 @@ gulp.task('vendorScripts', function () {
     require: pkg.dependencies ? Object.keys(pkg.dependencies) : []
   });
   return vb.bundle()
-    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+    .on('error', log.bind(log, 'Browserify Error'))
     .pipe(source('vendor.js'))
     .pipe(buffer())
-    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('.tmp/assets/scripts/'))
-    .pipe(reload({stream: true}));
+    .pipe(reload({ stream: true }));
 });
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -178,11 +184,11 @@ gulp.task('ui-seed:icons', function (done) {
 // --------------------------- Helper tasks -----------------------------------//
 // ----------------------------------------------------------------------------//
 
-gulp.task('build', ['vendorScripts', 'javascript'], function () {
-  gulp.start(['html', 'images', 'extras'], function () {
+gulp.task('build', function () {
+  runSequence(['vendorScripts', 'javascript', 'styles'], ['html', 'images', 'extras'], function () {
     return gulp.src('dist/**/*')
-      .pipe($.size({title: 'build', gzip: true}))
-      .pipe(exit());
+      .pipe($.size({ title: 'build', gzip: true }))
+      .pipe($.exit());
   });
 });
 
@@ -215,29 +221,32 @@ gulp.task('styles', function () {
     }))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/assets/styles'))
-    .pipe(reload({stream: true}));
+    .pipe(reload({ stream: true }));
 });
 
-gulp.task('html', ['styles'], function () {
+gulp.task('html', function () {
   return gulp.src('sandbox/*.html')
-    .pipe($.useref({searchPath: ['.tmp', 'sandbox', '.']}))
-    .pipe($.if('*.js', $.uglify()))
+    .pipe($.useref({ searchPath: ['.tmp', 'sandbox', '.'] }))
+    .pipe(cacheUseref())
+    // Do not compress comparisons, to avoid MapboxGLJS minification issue
+    // https://github.com/mapbox/mapbox-gl-js/issues/4359#issuecomment-286277540
+    .pipe($.if('*.js', $.uglify({ compress: { comparisons: false } })))
     .pipe($.if('*.css', $.csso()))
-    .pipe($.if(/\.(css|js)$/, rev()))
-    .pipe(revReplace())
+    .pipe($.if(/\.(css|js)$/, $.rev()))
+    .pipe($.revRewrite())
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('images', function () {
   return gulp.src(['sandbox/assets/graphics/**/*', GULP_ADDONS.graphicsPath + '/**/*'])
-    .pipe($.cache($.imagemin([
-      $.imagemin.gifsicle({interlaced: true}),
-      $.imagemin.jpegtran({progressive: true}),
-      $.imagemin.optipng({optimizationLevel: 5}),
-      // don't remove IDs from SVGs, they are often used
-      // as hooks for embedding and styling
-      $.imagemin.svgo({plugins: [{cleanupIDs: false}]})
-    ])))
+  .pipe($.imagemin([
+    $.imagemin.gifsicle({ interlaced: true }),
+    $.imagemin.jpegtran({ progressive: true }),
+    $.imagemin.optipng({ optimizationLevel: 5 }),
+    // don't remove IDs from SVGs, they are often used
+    // as hooks for embedding and styling
+    $.imagemin.svgo({ plugins: [{ cleanupIDs: false }] })
+  ]))
     .pipe(gulp.dest('dist/assets/graphics'));
 });
 
@@ -250,7 +259,7 @@ gulp.task('humans', function () {
   let year = date.getFullYear();
 
   return gulp.src('sandbox/humans.txt')
-    .pipe(ejs({
+    .pipe($.ejs({
       lastUpdate: `${year}/${month}/${day}`
     }))
     .pipe(gulp.dest('dist'));
@@ -269,3 +278,29 @@ gulp.task('extras', ['humans'], function () {
     dot: true
   }).pipe(gulp.dest('dist'));
 });
+
+/**
+ * Caches the useref files.
+ * Avoid sending repeated js and css files through the minification pipeline.
+ * This happens when there are multiple html pages to process.
+ */
+function cacheUseref () {
+  let files = {
+    // path: content
+  };
+  return through2.obj(function (file, enc, cb) {
+    const path = file.relative;
+    if (files[path]) {
+      // There's a file in cache. Check if it's the same.
+      const prev = files[path];
+      if (Buffer.compare(file.contents, prev) !== 0) {
+        this.push(file);
+      }
+    } else {
+      files[path] = file.contents;
+      this.push(file);
+    }
+    cb();
+  });
+}
+

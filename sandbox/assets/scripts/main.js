@@ -2,32 +2,33 @@
 import React from 'react';
 import { render } from 'react-dom';
 import UISeed from '../../../assets/scripts/index';
-var { Modal, ModalHeader, ModalBody, ModalFooter } = UISeed.Modal;
-var { GlobalLoading, showGlobalLoading, hideGlobalLoading } = UISeed.Loading;
+const { Modal, ModalHeader, ModalBody, ModalFooter } = UISeed.Modal;
+const { GlobalLoading, showGlobalLoading, hideGlobalLoading } = UISeed.Loading;
 var ScrollArea = UISeed.ScrollArea;
-var Dropdown = UISeed.Dropdown;
+const Dropdown = UISeed.Dropdown;
 var FileInput = UISeed.FileInput;
 
 UISeed.hello();
 
-var ModalShowcase = React.createClass({
-  displayName: 'ModalShowcase',
+console.log('UISeed.Loading', UISeed.Loading);
 
-  getInitialState: function () {
-    return {
-      open: false
-    };
-  },
+class ModalShowcase extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = { open: false };
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
 
-  openModal: function () {
+  openModal () {
     this.setState({open: true});
-  },
+  }
 
-  closeModal: function () {
+  closeModal () {
     this.setState({open: false});
-  },
+  }
 
-  render: function () {
+  render () {
     return (
       <div>
         <button className='button button--primary-raised-dark' type='button' onClick={this.openModal}><span>Open Modal</span></button>
@@ -54,16 +55,16 @@ var ModalShowcase = React.createClass({
             </div>
           </ModalBody>
           <ModalFooter>
-            <button className='mfa-xmark' type='button' title='Cancel'><span>Cancel</span></button>
+            <button className='mfa-xmark' type='button' title='Cancel' onClick={this.closeModal}><span>Cancel</span></button>
             <button className='mfa-tick' type='submit' title='Save'><span>Save</span></button>
           </ModalFooter>
         </Modal>
       </div>
     );
   }
-});
+}
 
-var renderModal = function () {
+const renderModal = function () {
   var container = document.querySelector('[data-hook="modal"]');
   if (container === null) return;
   render(<ModalShowcase />, container);
@@ -71,7 +72,7 @@ var renderModal = function () {
 
 renderModal();
 
-// /////////////////////////////////////////////////////////////////////
+// // /////////////////////////////////////////////////////////////////////
 
 var renderPanel = function () {
   var container = document.querySelector('[data-hook="scroll"]');
@@ -84,13 +85,11 @@ var renderPanel = function () {
           <h1 className='panel__title'>Panel title</h1>
           <p className='panel__subtitle'>Panel subtitle</p>
         </div>
-        <div className='panel__h-actions'>
-          <ul className='panel__h-actions__menu actions'>
-            <li><a className='actions__menu-item pha-question' title='Learn more' href='#'><span>What is this?</span></a></li>
-            <li><a className='actions__menu-item pha-download' title='Download' href='#'><span>Download</span></a></li>
-          </ul>
-          <ul className='panel__h-actions__menu actions'>
-            <li><button className='actions__menu-item pha-xmark' type='button' title='Dismiss panel'><span>Dismiss</span></button></li>
+        <div className='panel__header-toolbar'>
+          <ul className='toolbar__menu'>
+            <li className='toolbar__menu-item'><a href='#' title='Learn more' className='tba-question tba--text-hidden'><span>What is this?</span></a></li>
+            <li className='toolbar__menu-item toolbar__menu-item--sep'><a href='#' title='Download' className='tba-pencil tba--text-hidden'><span>Download</span></a></li>
+            <li className='toolbar__menu-item'><a href='#' title='Close' className='tba-xmark tba--text-hidden'><span>Close</span></a></li>
           </ul>
         </div>
       </header>
@@ -122,70 +121,68 @@ renderPanel();
 
 // /////////////////////////////////////////////////////////////////////
 
-var renderDrop = function () {
-  var container = document.querySelector('[data-hook="react:drops"]');
+const renderDrop = function () {
+  const container = document.querySelector('[data-hook="react:drops"]');
   if (container === null) return;
 
-  var el = React.createElement('div', null,
-    <Dropdown
-      triggerClassName='button button--primary-plain'
-      triggerActiveClassName='button--active'
-      triggerText='Drop down center'
-      direction='down'
-      alignment='center' >
+  const Main = () => (
+    <div>
+      <Dropdown
+        triggerClassName='button button--primary-plain'
+        triggerActiveClassName='button--active'
+        triggerText='Drop down center'
+        direction='down'
+        alignment='center' >
 
-      <h6 className='drop__title'>This is a title</h6>
-      <ul className='drop__menu drop__menu--iconified' role='menu'>
-        <li><a href='#' title='This is Item 1a' className='drop__menu-item'><i className='uisi-pencil'></i>Edit</a></li>
-        <li><a href='#' title='This is Item 2a' className='drop__menu-item drop__menu-item--example-icon'>Download</a></li>
-      </ul>
-      <ul className='drop__menu drop__menu--iconified' role='menu'>
-        <li><a href='#' title='This is Item 1a' className='drop__menu-item delete'><i className='uisi-trash-bin'></i>Delete</a></li>
-      </ul>
+        <h6 className='drop__title'>This is a title</h6>
+        <ul className='drop__menu drop__menu--iconified' role='menu'>
+          <li><a href='#' title='This is Item 1a' className='drop__menu-item'><i className='uisi-pencil'></i>Edit</a></li>
+          <li><a href='#' title='This is Item 2a' className='drop__menu-item drop__menu-item--example-icon'>Download</a></li>
+        </ul>
+        <ul className='drop__menu drop__menu--iconified' role='menu'>
+          <li><a href='#' title='This is Item 1a' className='drop__menu-item delete'><i className='uisi-trash-bin'></i>Delete</a></li>
+        </ul>
+      </Dropdown>
 
-    </Dropdown>,
+      <Dropdown
+        className='drop__content--special'
+        triggerElement='a'
+        triggerClassName='button button--base-plain'
+        triggerActiveClassName='button--active'
+        triggerTitle='Show/hide options'
+        triggerText='Drop up left'
+        direction='up'
+        alignment='left' >
 
-    <Dropdown
-      className='drop__content--special'
-      triggerElement='a'
-      triggerClassName='button button--base-plain'
-      triggerActiveClassName='button--active'
-      triggerTitle='Show/hide options'
-      triggerText='Drop up left'
-      direction='up'
-      alignment='left' >
-
-      <ul className='drop__menu' role='menu'>
-        <li><a href='#' title='This is Item 1a' className='drop__menu-item'>Item 1a</a></li>
-        <li><a href='#' title='This is Item 2a' className='drop__menu-item'>Item 2a</a></li>
-      </ul>
-      <ul className='drop__menu' role='menu'>
-        <li><a href='#' title='This is Item 1b' className='drop__menu-item'>Item 1b</a></li>
-        <li><a href='#' title='This is Item 2b' className='drop__menu-item'>Item 2b</a></li>
-      </ul>
-      <div className='drop__inset'>
-        <p>This is a drop inset.</p>
-      </div>
-
-    </Dropdown>
+        <ul className='drop__menu' role='menu'>
+          <li><a href='#' title='This is Item 1a' className='drop__menu-item'>Item 1a</a></li>
+          <li><a href='#' title='This is Item 2a' className='drop__menu-item'>Item 2a</a></li>
+        </ul>
+        <ul className='drop__menu' role='menu'>
+          <li><a href='#' title='This is Item 1b' className='drop__menu-item'>Item 1b</a></li>
+          <li><a href='#' title='This is Item 2b' className='drop__menu-item'>Item 2b</a></li>
+        </ul>
+        <div className='drop__inset'>
+          <p>This is a drop inset.</p>
+        </div>
+      </Dropdown>
+    </div>
   );
 
-  render(el, container);
+  render(<Main />, container);
 };
 
 renderDrop();
 
 // /////////////////////////////////////////////////////////////////////
 
-var LoadingShowcase = React.createClass({
-  displayName: 'LoadingShowcase',
-
-  showLoading: function () {
+class LoadingShowcase extends React.Component {
+  showLoading () {
     showGlobalLoading();
-    setTimeout(function () { hideGlobalLoading(); }, 1024);
-  },
+    setTimeout(() => hideGlobalLoading(), 1024);
+  }
 
-  render: function () {
+  render () {
     return (
       <div>
         <button className='button button--primary-raised-dark' type='button' onClick={this.showLoading}><span>Show loading</span></button>
@@ -193,7 +190,7 @@ var LoadingShowcase = React.createClass({
       </div>
     );
   }
-});
+}
 
 var renderLoading = function () {
   var container = document.querySelector('[data-hook="loading"]');
@@ -203,7 +200,7 @@ var renderLoading = function () {
 
 renderLoading();
 
-// /////////////////////////////////////////////////////////////////////
+// // /////////////////////////////////////////////////////////////////////
 
 class FileExample extends React.Component {
   constructor (props) {

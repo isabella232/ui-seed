@@ -1,4 +1,4 @@
-<!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -24,25 +24,19 @@
     <meta property="og:image" content="assets/graphics/meta/default-meta-image.png" />
     <!--/ OG -->
 
-    <link rel="shortcut icon" href="assets/graphics/meta/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="assets/graphics/meta/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="assets/graphics/meta/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/graphics/meta/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/graphics/meta/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/graphics/meta/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="assets/graphics/meta/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="assets/graphics/meta/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/graphics/meta/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/graphics/meta/favicon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/graphics/meta/android-chrome.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/graphics/meta/apple-touch-icon.png" />
 
     <link rel="author" type="text/plain" href="humans.txt" />
-    
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i" />
 
     <!-- build:css assets/styles/vendor.css -->
     <!-- endbuild -->
 
-    <!-- build:css assets/styles/main.css -->
-    <link rel="stylesheet" href="assets/styles/main.css" />
+    <!-- build:css /assets/styles/main.css -->
+    <link rel="stylesheet" href="/assets/styles/main.css" />
     <!-- endbuild -->
 
   </head>
@@ -82,7 +76,7 @@
           <header class="inpage__header">
             <div class="inner">
               <div class="inpage__headline">
-                <p class="inpage__subtitle">UI Seed</p>
+                <p class="inpage__subtitle">UI Seed v0.3.0-beta</p>
                 <h1 class="inpage__title">Sandbox</h1>
               </div>
               <div class="inpage__introduction">
@@ -134,8 +128,8 @@
                   <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
                       <blockquote>
-                        <p>As my fellow HTML5 Doctor, Oli Studholme has showed, people seldom quote exactly 
-                        – so sacrosanctity of the quoted text isn’t a useful ideal – and in print etc, 
+                        <p>As my fellow HTML5 Doctor, Oli Studholme has showed, people seldom quote exactly
+                        – so sacrosanctity of the quoted text isn’t a useful ideal – and in print etc,
                         citations almost always appear as part of the quotation – it’s highly conventional.</p>
                         <footer>
                           <cite><a href="http://www.brucelawson.co.uk/2013/on-citing-quotations-again/">Bruce Lawson</a></cite>
@@ -147,8 +141,8 @@
                   <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
                       <blockquote class="blockquote--quote-left">
-                        <p>As my fellow HTML5 Doctor, Oli Studholme has showed, people seldom quote exactly 
-                        – so sacrosanctity of the quoted text isn’t a useful ideal – and in print etc, 
+                        <p>As my fellow HTML5 Doctor, Oli Studholme has showed, people seldom quote exactly
+                        – so sacrosanctity of the quoted text isn’t a useful ideal – and in print etc,
                         citations almost always appear as part of the quotation – it’s highly conventional.</p>
                         <footer>
                           <cite><a href="http://www.brucelawson.co.uk/2013/on-citing-quotations-again/">Bruce Lawson</a></cite>
@@ -545,6 +539,26 @@
                     </div>
                   </div>
 
+                  <h2>Toolbar</h2>
+                  <div class="exhibit">
+                    <div class="exhibit__content">
+                      <div class="toolbar">
+                        <h3 class="toolbar__label">Toolbar label</h3>
+                        <button class="tba-ellipsis tba--text-hidden" type="button" title="View options"><span>Options</span></button>
+                        <ul class="toolbar__menu">
+                          <li class="toolbar__menu-item toolbar__menu-item--sep"><a href="#" title="Edit content" class="tba-pencil tba--text-hidden"><span>Edit</span></a></li>
+                          <li class="toolbar__menu-item"><a href="#" title="Download content" class="tba-download tba--text-hidden"><span>Download</span></a></li>
+                        </ul>
+                        <h3 class="toolbar__label">Another label</h3>
+                        <ul class="toolbar__menu">
+                          <li class="toolbar__menu-item toolbar__menu-item--sep"><a href="#" title="Delete content" class="tba-trash"><span>Delete</span></a></li>
+                          <li class="toolbar__menu-item toolbar__menu-item--sep"><a href="#" title="Learn more" class="tba-question"><span>What is this?</span></a></li>
+                          <li class="toolbar__menu-item"><a href="#" title="Close" class="tba-xmark tba--text-hidden"><span>Close</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
                   <h2>Cards</h2>
                   <div class="exhibit">
                     <div class="exhibit__content prose prose--responsive">
@@ -557,8 +571,8 @@
                           </figure>
                           <header class="card__header">
                             <div class="card__headline">
-                              <p class="card__subtitle">Card subtitle</p>
                               <h1 class="card__title">This is a fully clickable card</h1>
+                              <p class="card__subtitle">Card subtitle</p>
                             </div>
                           </header>
                           <div class="card__body">
@@ -580,13 +594,16 @@
                           </figure>
                           <header class="card__header">
                             <div class="card__headline">
+                              <p class="card__subtitle">Card subtitle <a title="View content" href="#">containing a link</a></p>
                               <a title="View card content" class="link-wrapper" href="#">
                                 <h1 class="card__title">This is a regular card</h1>
                               </a>
-                              <p class="card__subtitle">Card subtitle</p>
                             </div>
-                            <div class="card__h-actions actions">
-                              <button class="drop__toggle cha-ellipsis" type="button" title="Card options"><span>Options</span></button>
+                            <div class="card__header-toolbar">
+                              <ul class="toolbar__menu">
+                                <li class="toolbar__menu-item toolbar__menu-item--sep"><button class="tba-ellipsis tba--text-hidden" type="button" title="View card options"><span>Options</span></button></li>
+                                <li class="toolbar__menu-item"><a href="#" title="Edit card" class="tba-pencil tba--text-hidden"><span>Edit</span></a></li>
+                              </ul>
                             </div>
                           </header>
                           <div class="card__body">
@@ -738,19 +755,19 @@
                               <div class="form__inner-headline">
                                 <label class="form__label">Checkbox options (custom)</label>
                               </div>
-                              <div class="form__inner-actions">
-                                <dl class="form__options-menu">
-                                  <dt>Select</dt>
-                                  <dd>
-                                    <button type="button" class="fia-global" title="Select all"><span>All</span></button>
+                              <div class="form__inner-toolbar">
+                                <dl class="toolbar__menu">
+                                  <dt class="toolbar__label">Select</dt>
+                                  <dd class="toolbar__menu-item">
+                                    <button type="button" class="tba-global" title="Select all"><span>All</span></button>
                                   </dd>
-                                  <dd>
-                                    <button type="button" class="fia-global" title="Deselect none"><span>None</span></button>
+                                  <dd class="toolbar__menu-item">
+                                    <button type="button" class="tba-global" title="Deselect none"><span>None</span></button>
                                   </dd>
                                 </dl>
                               </div>
                             </div>
-                            
+
                             <div class="form__hascol form__hascol--3">
                               <label class="form__option form__option--custom-checkbox">
                                 <input type="checkbox" name="form-checkbox-custom-1" id="form-checkbox-custom-1" value="Checkbox 1" />
@@ -831,8 +848,8 @@
                             <div class="form__inner-headline">
                               <legend class="form__legend">Fieldset legend 3</legend>
                             </div>
-                            <div class="form__inner-actions">
-                              <button type="button" class="fia-trash" title="Delete fieldset"><span>Delete</span></button>
+                            <div class="form__inner-toolbar">
+                              <button class="tba-trash tba--text-hidden" type="button" title="Delete fieldset"><span>Delete</span></button>
                             </div>
                           </div>
 
@@ -872,7 +889,13 @@
                           <div class="form__group">
                             <label class="form__label" for="inputText5">Input group Large</label>
                             <div class="form__input-group form__input-group--large">
-                              <span class="form__input-addon">Prefix addon</span>
+                              <select class="form__control" id="form-select-2">
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                                <option>Option 4</option>
+                                <option>Option 5</option>
+                              </select>
                               <input type="text" id="inputText5" name="inputText5" class="form__control" placeholder="Input text" />
                               <button type="button" class="button button--base-raised-dark" title="Submit"><span>Submit</span> <i class="uisi-sm-tick"></i></button>
                             </div>
@@ -886,8 +909,6 @@
                               <button type="button" class="button button--primary-raised-dark button--text-hidden" title="Delete"><i class="uisi-trash-bin"></i> <span>Delete</span></button>
                             </div>
                           </div>
-
-
                         </fieldset>
                       </form>
                     </div>
@@ -994,12 +1015,11 @@
     </div>
     <!--/ page -->
 
-    <!-- build:js assets/scripts/vendor.js -->
-    <script src="assets/scripts/vendor.js"></script>
+    <!-- build:js /assets/scripts/vendor.js -->
+    <script src="/assets/scripts/vendor.js"></script>
     <!-- endbuild -->
-
-    <!-- build:js assets/scripts/bundle.js -->
-    <script src="assets/scripts/bundle.js"></script>
+    <!-- build:js /assets/scripts/bundle.js -->
+    <script src="/assets/scripts/bundle.js"></script>
     <!-- endbuild -->
 
   </body>
