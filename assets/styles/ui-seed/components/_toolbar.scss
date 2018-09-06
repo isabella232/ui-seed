@@ -30,7 +30,7 @@
   color: rgba($base-font-color, 0.64);
 
   &:not(:first-child) {
-    margin: 0 0 0 $global-spacing;
+    margin-left: $global-spacing;
   }
 }
 
@@ -77,10 +77,6 @@
 
 .tba-trash::before {
   @extend %uisi-trash-bin;
-}
-
-.tba-xmark::before {
-  @extend %uisi-sm-xmark;
 }
 
 .tba-xmark::before {
